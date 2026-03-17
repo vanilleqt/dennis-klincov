@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Betriebliches Gesundheitsmanagement – Dennis Klincov</title>
+  <meta name="description" content="Betriebliches Gesundheitsmanagement für Unternehmen. §3 Nr. 34 EStG, SYLO Digital, BEM, Präventionskurse und Kombination mit BKV. Honorarberatung Berlin.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C8922A; --gold-light: #E8B96A; --gold-pale: #F7EDD8; --gold-dark: #8A6010;
+      --ink: #1A1814; --ink-soft: #3D3830; --ink-muted: #7A7268;
+      --paper: #FDFAF5; --paper-warm: #F5EFE2;
+      --border: rgba(200,146,42,0.18); --border-ink: rgba(26,24,20,0.10);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 64px; height: 68px; display: flex; align-items: center; justify-content: space-between; background: rgba(253,250,245,0.93); backdrop-filter: blur(14px); border-bottom: 0.5px solid var(--border-ink); }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(26,24,20,0.06); }
+    .nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 400; color: var(--ink-muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { font-size: 12px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 10px 22px; background: var(--gold); color: #fff; border: none; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--gold-dark); }
+
+    .hero { padding: 148px 80px 100px; background: var(--ink); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 55%; height: 100%; background: radial-gradient(ellipse at 75% 50%, rgba(200,146,42,0.08) 0%, transparent 65%); pointer-events: none; }
+    .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); display: block; }
+    .eyebrow span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .hero-title { font-family: var(--serif); font-size: clamp(40px, 4.5vw, 64px); font-weight: 500; line-height: 1.08; color: var(--paper); margin-bottom: 24px; }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-lead { font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.65); line-height: 1.8; margin-bottom: 36px; max-width: 460px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 32px; background: var(--gold); color: #fff; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .hero-cta:hover { background: var(--gold-dark); transform: translateY(-1px); }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(253,250,245,0.08); border: 0.5px solid rgba(253,250,245,0.1); }
+    .hero-stat { background: rgba(253,250,245,0.04); padding: 28px 24px; }
+    .hero-stat-num { font-family: var(--serif); font-size: 40px; font-weight: 500; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+    .hero-stat-label { font-size: 12px; font-weight: 300; color: rgba(253,250,245,0.5); line-height: 1.4; }
+
+    .section { padding: 112px 80px; }
+    .section-warm { background: var(--paper-warm); border-top: 0.5px solid var(--border-ink); border-bottom: 0.5px solid var(--border-ink); }
+    .section-dark { background: var(--ink); }
+    .inner { max-width: 1200px; margin: 0 auto; }
+    .sect-label { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .sect-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
+    .sect-label span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .sect-heading { font-family: var(--serif); font-size: clamp(30px, 3.5vw, 48px); font-weight: 500; line-height: 1.12; margin-bottom: 20px; }
+    .sect-heading em { font-style: italic; color: var(--gold); }
+    .sect-intro { font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; max-width: 620px; margin-bottom: 52px; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+    /* NUTZEN */
+    .nutzen-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-top: 48px; }
+    .nutzen-card { background: var(--paper); padding: 32px 28px; transition: background 0.2s; position: relative; overflow: hidden; }
+    .nutzen-card:hover { background: var(--paper-warm); }
+    .nutzen-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); opacity: 0; transition: opacity 0.2s; }
+    .nutzen-card:hover::after { opacity: 1; }
+    .nutzen-num { font-family: var(--serif); font-size: 48px; font-weight: 400; color: var(--gold-pale); line-height: 1; margin-bottom: 14px; }
+    .nutzen-title { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+    .nutzen-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; }
+    .nutzen-fact { margin-top: 12px; font-size: 12px; font-weight: 500; color: var(--gold-dark); }
+
+    /* STEUER */
+    .steuer-blocks { display: flex; flex-direction: column; gap: 1px; background: rgba(253,250,245,0.08); border: 0.5px solid rgba(253,250,245,0.1); }
+    .steuer-block { background: rgba(253,250,245,0.04); padding: 26px 30px; }
+    .steuer-para { font-size: 11px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .steuer-betrag { font-family: var(--serif); font-size: 32px; font-weight: 500; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+    .steuer-title { font-family: var(--serif); font-size: 19px; font-weight: 500; color: var(--paper); margin-bottom: 8px; }
+    .steuer-desc { font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.55); line-height: 1.7; }
+    .disclaimer-dark { padding: 16px 18px; border-left: 2px solid var(--gold); background: rgba(200,146,42,0.12); font-size: 12px; font-weight: 300; color: var(--gold-light); line-height: 1.7; margin-top: 32px; }
+    .disclaimer-dark strong { font-weight: 500; }
+
+    /* BGM BAUSTEINE */
+    .bausteine-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); }
+    .baustein-card { background: var(--paper-warm); padding: 32px 28px; }
+    .baustein-icon { width: 36px; height: 36px; border: 0.5px solid var(--border); background: var(--paper); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .baustein-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .baustein-title { font-family: var(--serif); font-size: 19px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+    .baustein-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; }
+    .baustein-tag { display: inline-block; margin-top: 12px; font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 3px 9px; border: 0.5px solid var(--border); color: var(--gold-dark); background: var(--paper); }
+
+    /* GF SPEZIELL */
+    .gf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(253,250,245,0.08); border: 0.5px solid rgba(253,250,245,0.1); margin-top: 48px; }
+    .gf-card { background: rgba(253,250,245,0.04); padding: 36px 32px; }
+    .gf-num { font-family: var(--serif); font-size: 48px; font-weight: 400; color: rgba(200,146,42,0.25); line-height: 1; margin-bottom: 14px; }
+    .gf-title { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--paper); margin-bottom: 10px; }
+    .gf-desc { font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.55); line-height: 1.75; }
+    .gf-highlight { margin-top: 14px; padding: 10px 12px; border-left: 2px solid var(--gold); font-size: 12px; font-weight: 400; color: var(--gold-light); line-height: 1.6; }
+
+    /* SYLO */
+    .sylo-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-top: 48px; }
+    .sylo-left { background: var(--ink); padding: 48px; }
+    .sylo-right { background: var(--paper-warm); padding: 48px; }
+    .sylo-badge { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; background: rgba(200,146,42,0.2); color: var(--gold-light); margin-bottom: 16px; }
+    .sylo-title { font-family: var(--serif); font-size: 30px; font-weight: 500; color: var(--paper); margin-bottom: 14px; line-height: 1.15; }
+    .sylo-title em { font-style: italic; color: var(--gold); }
+    .sylo-desc { font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.6); line-height: 1.8; margin-bottom: 24px; }
+    .sylo-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .sylo-item { display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.8); line-height: 1.5; }
+    .sylo-item::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+    .sylo-note { margin-top: 24px; padding: 14px 16px; border-left: 2px solid var(--gold); font-size: 12px; font-weight: 300; color: var(--gold-light); line-height: 1.65; }
+    .sylo-right-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .sylo-right-heading { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 16px; }
+    .sylo-steps { display: flex; flex-direction: column; gap: 0; }
+    .sylo-step { display: flex; gap: 16px; padding: 16px 0; border-bottom: 0.5px solid var(--border-ink); }
+    .sylo-step:last-child { border-bottom: none; }
+    .sylo-step-num { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--gold); line-height: 1; min-width: 22px; }
+    .sylo-step-body strong { display: block; font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+    .sylo-step-body span { font-size: 12px; font-weight: 300; color: var(--ink-muted); line-height: 1.5; }
+
+    /* KOMBINATION */
+    .kombi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-top: 48px; }
+    .kombi-card { background: var(--paper); padding: 32px 28px; position: relative; overflow: hidden; transition: background 0.2s; }
+    .kombi-card:hover { background: var(--paper-warm); }
+    .kombi-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); }
+    .kombi-num { font-family: var(--serif); font-size: 12px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 12px; }
+    .kombi-title { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+    .kombi-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; }
+    .kombi-link { display: inline-block; margin-top: 14px; font-size: 12px; font-weight: 500; color: var(--gold); text-decoration: none; }
+    .kombi-link:hover { text-decoration: underline; }
+
+    .cta-section { padding: 112px 80px; background: var(--paper-warm); border-top: 0.5px solid var(--border-ink); text-align: center; }
+    .cta-inner { max-width: 600px; margin: 0 auto; }
+    .cta-heading { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 500; color: var(--ink); line-height: 1.1; margin-bottom: 18px; }
+    .cta-heading em { font-style: italic; color: var(--gold); }
+    .cta-sub { font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.75; margin-bottom: 40px; }
+    .btn-gold-lg { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 16px 44px; background: var(--gold); color: #fff; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s; }
+    .btn-gold-lg:hover { background: var(--gold-dark); }
+    .cta-note { display: block; margin-top: 14px; font-size: 12px; color: var(--ink-muted); }
+
+    footer { background: var(--paper); border-top: 0.5px solid var(--border-ink); padding: 48px 80px 32px; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; max-width: 240px; }
+    .footer-col h4 { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 13px; font-weight: 300; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 20px; border-top: 0.5px solid var(--border-ink); display: flex; justify-content: flex-end; }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: var(--ink-muted); text-decoration: none; }
+    .footer-legal a:hover { color: var(--gold); }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.7s ease both; }
+    .delay-1 { animation-delay: 0.12s; }
+    .delay-2 { animation-delay: 0.24s; }
+    .delay-3 { animation-delay: 0.36s; }
+
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 120px 28px 72px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .section { padding: 72px 28px; }
+      .cta-section, footer { padding: 72px 28px; }
+      .two-col { grid-template-columns: 1fr; gap: 48px; }
+      .nutzen-grid, .bausteine-grid, .kombi-grid { grid-template-columns: 1fr; }
+      .gf-grid, .sylo-wrap { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav">
+    <a href="index.html" class="nav-logo">Dennis <span>Klincov</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="ggf-versorgung.html">GGF-Versorgung</a></li>
+      <li><a href="company-benefits.html">Company Benefits</a></li>
+      <li><a href="ueber-mich.html">Über mich</a></li>
+    </ul>
+    <a href="kontakt.html" class="nav-cta">Termin anfragen</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow fade-up"><span>Betriebliches Gesundheitsmanagement</span></div>
+        <h1 class="hero-title fade-up delay-1">BGM ist keine<br>Wellness-Zugabe –<br><em>es ist Strategie.</em></h1>
+        <p class="hero-lead fade-up delay-2">Unternehmen, die in die Gesundheit ihrer Mitarbeiter investieren, reduzieren Fehlzeiten, steigern Produktivität und gewinnen im Wettbewerb um Fachkräfte. BGM ist heute kein Luxus mehr – es ist ein kalkulierbares Instrument mit messbarem ROI und steuerlicher Förderung.</p>
+        <a href="kontakt.html" class="hero-cta fade-up delay-3">
+          BGM-Beratung anfragen
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <div class="fade-up delay-2">
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">600 €</div>
+            <div class="hero-stat-label">jährlich steuerfrei pro Mitarbeiter für Gesundheitsförderung (§3 Nr. 34 EStG)</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">1 : 2,7</div>
+            <div class="hero-stat-label">ROI-Verhältnis laut BKK-Studien: 1 € BGM-Investition spart 2,70 € Folgekosten</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">§ 20</div>
+            <div class="hero-stat-label">SGB V – gesetzlich anerkannte Präventionsmaßnahmen als Fördervoraussetzung</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">SYLO</div>
+            <div class="hero-stat-label">KI-gestützte Meditation – Kooperationspartner für Mental Health im Unternehmen</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUTZEN FÜR ARBEITGEBER -->
+  <section class="section" id="nutzen">
+    <div class="inner">
+      <div class="two-col">
+        <div>
+          <div class="sect-label reveal"><span>Warum BGM</span></div>
+          <h2 class="sect-heading reveal" style="color: var(--ink);">Kein Wohlfühlprogramm –<br><em>ein Geschäftsmodell.</em></h2>
+          <p class="reveal" style="font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8;">BGM wird oft als Zusatzleistung verstanden. Das ist falsch. Unternehmen mit strukturiertem Gesundheitsmanagement haben nachweislich niedrigere Fehlzeiten, höhere Mitarbeiterzufriedenheit und eine stärkere Arbeitgebermarke. Das sind keine weichen Faktoren – das sind Zahlen in der GuV.</p>
+        </div>
+        <div class="reveal" style="padding-top: 8px;">
+          <p style="font-size: 14px; font-weight: 300; color: var(--ink-muted); line-height: 1.8;">Der durchschnittliche Krankenstand in Deutschland liegt bei über 5 %. Bei einem Unternehmen mit 20 Mitarbeitern und einem durchschnittlichen Gehalt von 50.000 € bedeutet das jährliche Ausfallkosten von über 50.000 € – ohne die Kosten für Vertretungen und Qualitätsverluste einzurechnen.</p>
+          <p style="font-size: 14px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; margin-top: 16px;">Wer 600 € pro Mitarbeiter und Jahr in zertifizierte Gesundheitsmaßnahmen investiert – steuerfrei nach § 3 Nr. 34 EStG – bekommt nachweislich mehr zurück als er ausgibt.</p>
+        </div>
+      </div>
+      <div class="nutzen-grid">
+        <div class="nutzen-card reveal">
+          <div class="nutzen-num">I</div>
+          <h3 class="nutzen-title">Fehlzeiten reduzieren</h3>
+          <p class="nutzen-desc">Betriebe mit aktivem BGM haben laut wissenschaftlichen Studien 25–30 % niedrigere krankheitsbedingte Fehlzeiten. Das ist kein Zufall – präventive Maßnahmen greifen, bevor Erkrankungen entstehen.</p>
+          <div class="nutzen-fact">Ø 5 % Krankenstand = ca. 12,5 Arbeitstage pro Mitarbeiter und Jahr</div>
+        </div>
+        <div class="nutzen-card reveal">
+          <div class="nutzen-num">II</div>
+          <h3 class="nutzen-title">Produktivität steigern</h3>
+          <p class="nutzen-desc">Gesunde Mitarbeiter arbeiten konzentrierter und leistungsfähiger. Besonders Stressmanagement und Mental-Health-Angebote haben nachweislich positive Effekte auf Kreativität, Entscheidungsqualität und Teamdynamik.</p>
+          <div class="nutzen-fact">Präsentismus – Anwesend sein aber nicht leistungsfähig – kostet mehr als Abwesenheit</div>
+        </div>
+        <div class="nutzen-card reveal">
+          <div class="nutzen-num">III</div>
+          <h3 class="nutzen-title">Recruiting-Argument</h3>
+          <p class="nutzen-desc">BGM ist im Wettbewerb um Fachkräfte ein konkretes, messbares Angebot. Bewerber fragen zunehmend nach Gesundheitsangeboten. Wer nichts bieten kann, verliert Kandidaten an Wettbewerber, die etwas bieten.</p>
+          <div class="nutzen-fact">BGM wird im Stellenmarkt zunehmend als Must-have kommuniziert</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEUERLICHE FÖRDERUNG -->
+  <section class="section section-dark" id="steuer">
+    <div class="inner">
+      <div class="two-col">
+        <div>
+          <div class="sect-label reveal"><span>Steuerliche Förderung</span></div>
+          <h2 class="sect-heading reveal" style="color: var(--paper);">Was der Staat<br><em>fördert – und wie.</em></h2>
+          <p class="reveal" style="font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.6); line-height: 1.8; margin-bottom: 24px;">BGM ist nicht nur sinnvoll – es ist steuerlich gefördert. Der Gesetzgeber hat klare Instrumente geschaffen, die Arbeitgebern erlauben, Gesundheitsmaßnahmen steueroptimiert zu finanzieren.</p>
+          <div class="disclaimer-dark reveal">
+            <strong>Hinweis:</strong> Ich bin Versicherungsmakler, kein Steuerberater. Alle steuerlichen Angaben dienen der Orientierung und werden ausschließlich in Abstimmung mit Ihrem Steuerberater umgesetzt.
+          </div>
+        </div>
+        <div class="steuer-blocks reveal">
+          <div class="steuer-block">
+            <div class="steuer-para">§ 3 Nr. 34 EStG</div>
+            <div class="steuer-betrag">600 €</div>
+            <h3 class="steuer-title">Steuerfreie Gesundheitsförderung</h3>
+            <p class="steuer-desc">Arbeitgeberzuschüsse zur Gesundheitsförderung und Prävention sind bis 600 € jährlich pro Mitarbeiter steuer- und sozialversicherungsfrei. Voraussetzung: Die Maßnahmen müssen zertifiziert oder nach § 20 SGB V anerkannt sein. Kurse zu Bewegung, Entspannung, Ernährung und Stressmanagement fallen typischerweise darunter.</p>
+          </div>
+          <div class="steuer-block">
+            <div class="steuer-para">§ 20 SGB V</div>
+            <div class="steuer-betrag">Zertifiziert</div>
+            <h3 class="steuer-title">Anerkannte Präventionsmaßnahmen</h3>
+            <p class="steuer-desc">Damit eine BGM-Maßnahme unter § 3 Nr. 34 EStG fällt, muss sie nach § 20 SGB V zertifiziert oder von einer Krankenkasse anerkannt sein. Die Kassen fördern zudem viele Maßnahmen anteilig – das reduziert die Kosten für den Arbeitgeber zusätzlich.</p>
+          </div>
+          <div class="steuer-block">
+            <div class="steuer-para">Betriebsausgabe</div>
+            <div class="steuer-betrag">100 %</div>
+            <h3 class="steuer-title">BGM-Kosten als Betriebsausgabe</h3>
+            <p class="steuer-desc">Alle BGM-Kosten – ob Kurse, Beratung, Software oder externe Dienstleister – sind vollständige Betriebsausgaben und reduzieren den steuerlichen Gewinn des Unternehmens. In Kombination mit der Steuerfreiheit beim Arbeitnehmer entsteht ein doppelter Steuervorteil.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BGM BAUSTEINE -->
+  <section class="section section-warm" id="bausteine">
+    <div class="inner">
+      <div class="sect-label reveal"><span>BGM-Bausteine</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">Was strukturiertes BGM<br><em>konkret umfasst.</em></h2>
+      <p class="sect-intro reveal">BGM ist kein einzelnes Produkt – es ist ein System aus aufeinander abgestimmten Bausteinen. Ich helfe dabei, die richtigen Elemente für Ihr Unternehmen auszuwählen und steuerlich einzubetten.</p>
+      <div class="bausteine-grid">
+        <div class="baustein-card reveal">
+          <div class="baustein-icon"><svg viewBox="0 0 16 16"><path d="M8 2C5 2 2 5 2 8s3 6 6 6 6-3 6-6-3-6-6-6z"/><path d="M8 5v3l2 2"/></svg></div>
+          <h3 class="baustein-title">Gesundheitschecks &amp; Vorsorge</h3>
+          <p class="baustein-desc">Strukturierte Vorsorgeuntersuchungen für Führungskräfte und Belegschaft. Über den GKV-Standard hinaus – mit erweitertem Blutbild, Herzcheck und individueller Risikoanalyse. Steuerlich förderbar nach § 3 Nr. 34 EStG.</p>
+          <span class="baustein-tag">§ 3 Nr. 34 EStG</span>
+        </div>
+        <div class="baustein-card reveal">
+          <div class="baustein-icon"><svg viewBox="0 0 16 16"><path d="M8 14s-6-4.5-6-8a6 6 0 0112 0c0 3.5-6 8-6 8z"/></svg></div>
+          <h3 class="baustein-title">Stressmanagement &amp; Mental Health</h3>
+          <p class="baustein-desc">Programme zur Stressreduktion, Resilienz und mentalen Stärke – für Führungskräfte und Teams. Nachweislich einer der wirkungsvollsten BGM-Bausteine. Inklusive Kooperation mit SYLO Digital für KI-gestützte Meditation.</p>
+          <span class="baustein-tag">§ 20 SGB V</span>
+        </div>
+        <div class="baustein-card reveal">
+          <div class="baustein-icon"><svg viewBox="0 0 16 16"><path d="M2 12l4-4 3 3 5-7"/></svg></div>
+          <h3 class="baustein-title">Präventionskurse &amp; Workshops</h3>
+          <p class="baustein-desc">Zertifizierte Kurse zu Bewegung, Ernährung, Entspannung und Ergonomie. Als Einzelkurs oder als strukturiertes Jahresprogramm. Krankenkassen fördern viele Maßnahmen mit bis zu 80 % der Kurskosten.</p>
+          <span class="baustein-tag">§ 20 SGB V · Kassenförderung möglich</span>
+        </div>
+        <div class="baustein-card reveal">
+          <div class="baustein-icon"><svg viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 8h6M8 5v6"/></svg></div>
+          <h3 class="baustein-title">Betriebliche Eingliederung (BEM)</h3>
+          <p class="baustein-desc">Strukturiertes Wiedereingliederungsmanagement nach Langzeiterkrankungen. Rechtlich verpflichtend ab 6 Wochen Fehlzeit im Jahr – aber auch präventiv sinnvoll. Schützt den Arbeitgeber rechtlich und fördert die Rückkehr leistungsfähiger Mitarbeiter.</p>
+          <span class="baustein-tag">§ 167 SGB IX · Rechtspflicht</span>
+        </div>
+        <div class="baustein-card reveal">
+          <div class="baustein-icon"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2.5 2.5"/></svg></div>
+          <h3 class="baustein-title">Gesundheitsbudgets</h3>
+          <p class="baustein-desc">Flexible Budgets für individuelle Gesundheitsmaßnahmen – Mitarbeiter entscheiden selbst. Kombinierbar mit BKV-Tarifen und Company Benefits-Plattformen. Steuerlich als Sachbezug bis 50 € / Monat oder nach § 3 Nr. 34 EStG bis 600 € / Jahr.</p>
+          <span class="baustein-tag">Kombinierbar mit BKV</span>
+        </div>
+        <div class="baustein-card reveal">
+          <div class="baustein-icon"><svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></div>
+          <h3 class="baustein-title">BGM-Strategie &amp; Kommunikation</h3>
+          <p class="baustein-desc">Ein BGM-Programm bringt nur dann etwas, wenn Mitarbeiter es kennen und nutzen. Ich helfe bei der internen Kommunikation, dem Rollout und der jährlichen Überprüfung der Maßnahmen.</p>
+          <span class="baustein-tag">Beratung &amp; Umsetzung</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BGM FÜR GESCHÄFTSFÜHRER -->
+  <section class="section section-dark" id="gf">
+    <div class="inner">
+      <div class="sect-label reveal"><span>BGM für Geschäftsführer</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--paper);">Gesundheit der<br><em>Führungsebene – oft vergessen.</em></h2>
+      <p class="reveal" style="font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.6); line-height: 1.8; max-width: 620px; margin-bottom: 52px;">BGM-Programme richten sich oft nur an die Belegschaft. Dabei sind Geschäftsführer und Vorstände besonders belastet – und ihr Ausfall hat überproportionale Konsequenzen für das Unternehmen.</p>
+      <div class="gf-grid">
+        <div class="gf-card reveal">
+          <div class="gf-num">I</div>
+          <h3 class="gf-title">Individuelle Gesundheitsstrategie für den GF</h3>
+          <p class="gf-desc">Ein Geschäftsführer trägt eine andere Last als ein Mitarbeiter. Entscheidungsdruck, Verantwortung und Erreichbarkeit rund um die Uhr sind reale Stressoren. Ein individuelles BGM-Konzept für die Führungsebene – Präventionschecks, Stressmanagement, Coaching – ist Investition in die Stabilität des Unternehmens.</p>
+          <div class="gf-highlight">Auch der GF kann BGM-Leistungen über das Unternehmen steueroptimiert finanzieren – als Teil seines Versorgungspakets.</div>
+        </div>
+        <div class="gf-card reveal">
+          <div class="gf-num">II</div>
+          <h3 class="gf-title">Vorbildfunktion und Unternehmenskultur</h3>
+          <p class="gf-desc">BGM auf Führungsebene sendet ein klares Signal an die gesamte Belegschaft. Wenn der Geschäftsführer selbst an Präventionskursen teilnimmt, Gesundheitsbudgets nutzt und psychische Gesundheit thematisiert, verändert das die Unternehmenskultur nachhaltig – mehr als jedes Incentive-Programm.</p>
+          <div class="gf-highlight">Führung durch Vorbild ist der stärkste BGM-Hebel – und kostet nichts außer Konsequenz.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYLO DIGITAL -->
+  <section class="section" id="sylo">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Kooperationspartner</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">SYLO Digital –<br><em>Mental Health messbar machen.</em></h2>
+      <div class="sylo-wrap">
+        <div class="reveal">
+          <div class="sylo-left">
+            <div class="sylo-badge">Exklusiver Kooperationspartner</div>
+            <h3 class="sylo-title">KI-gestützte<br><em>Meditation</em><br>für Arbeitnehmer.</h3>
+            <p class="sylo-desc">SYLO Digital ist eine KI-gestützte Meditationsapp, die vom Arbeitgeber als Teil des BGM gefördert wird. Mitarbeiter erhalten personalisierte Meditationsprogramme – basierend auf ihrem Stresslevel, ihrer Arbeitsbelastung und ihren persönlichen Zielen. Mental Health wird damit skalierbar, messbar und steuerlich einbettbar.</p>
+            <ul class="sylo-list">
+              <li class="sylo-item">KI-personalisierte Programme für jeden Mitarbeiter individuell</li>
+              <li class="sylo-item">Vom Arbeitgeber finanziert – als geförderter Sachbezug oder BGM-Budget</li>
+              <li class="sylo-item">Nahtlose Integration in bestehende BGM- und BKV-Strukturen</li>
+              <li class="sylo-item">Messbare Effekte auf Stressreduktion und Mitarbeiterzufriedenheit</li>
+              <li class="sylo-item">Erfüllt Anforderungen für steuerfreie Gesundheitsförderung</li>
+              <li class="sylo-item">Kein Aufwand für den Arbeitgeber – Mitarbeiter nutzen die App eigenständig</li>
+            </ul>
+            <div class="sylo-note">Ich bin der einzige Punkt, durch den Unternehmen Zugang zur SYLO-Kooperation im BGM-Kontext erhalten. Die Integration in das Gesamtkonzept übernehme ich.</div>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="sylo-right">
+            <div class="sylo-right-label">Wie SYLO im BGM funktioniert</div>
+            <h3 class="sylo-right-heading">Von der Einführung bis zur laufenden Nutzung.</h3>
+            <div class="sylo-steps">
+              <div class="sylo-step">
+                <div class="sylo-step-num">1</div>
+                <div class="sylo-step-body"><strong>BGM-Konzept mit SYLO integrieren</strong><span>Ich binde SYLO Digital in das Gesamtkonzept ein – steuerlich, kommunikativ und organisatorisch.</span></div>
+              </div>
+              <div class="sylo-step">
+                <div class="sylo-step-num">2</div>
+                <div class="sylo-step-body"><strong>Arbeitgeber stellt Budget bereit</strong><span>Das SYLO-Budget wird als Teil des BGM-Budgets (§ 3 Nr. 34 EStG) oder als Sachbezug finanziert.</span></div>
+              </div>
+              <div class="sylo-step">
+                <div class="sylo-step-num">3</div>
+                <div class="sylo-step-body"><strong>Mitarbeiter erhalten Zugang</strong><span>Jeder Mitarbeiter lädt die App und startet sein personalisiertes Programm – ohne Aufwand für den AG.</span></div>
+              </div>
+              <div class="sylo-step">
+                <div class="sylo-step-num">4</div>
+                <div class="sylo-step-body"><strong>KI passt Programme an</strong><span>Die KI analysiert Nutzungsverhalten und Stressmuster und passt die Meditationsinhalte kontinuierlich an.</span></div>
+              </div>
+              <div class="sylo-step">
+                <div class="sylo-step-num">5</div>
+                <div class="sylo-step-body"><strong>Messbare Ergebnisse</strong><span>Anonymisierte Auswertungen zeigen dem Arbeitgeber den Effekt auf Stressniveau und Nutzungsintensität.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- KRANKENKASSEN -->
+  <section class="section" id="krankenkasse">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Umsetzungspartner</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">BGM läuft immer<br><em>mit der Krankenkasse.</em></h2>
+      <p class="sect-intro reveal">BGM ist kein isoliertes Angebot – es wird immer in enger Abstimmung mit einer Krankenkasse umgesetzt. Das ist keine Formalität: Die Kasse ist Förderpartner, Zertifizierungsstelle und oft auch Mitfinanzierer der Maßnahmen.</p>
+      <div class="two-col">
+        <div>
+          <div style="background: var(--paper-warm); border: 0.5px solid var(--border-ink); padding: 36px; margin-bottom: 1px;" class="reveal">
+            <div style="font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px;">Option 1 · Hauskrankenkasse</div>
+            <h3 style="font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 12px;">Zusammenarbeit mit der bestehenden Kasse</h3>
+            <p style="font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.75; margin-bottom: 16px;">Der einfachste Weg: BGM wird gemeinsam mit der Krankenkasse entwickelt, die Ihre Mitarbeiter bereits versichert. Viele gesetzliche Kassen haben eigene BGM-Programme, fördern Präventionskurse anteilig und stellen zertifizierte Maßnahmen zur Verfügung.</p>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
+              <li style="display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.5;"><span style="color: var(--gold); flex-shrink: 0;">—</span>Keine Kassenmitgliedschaft nötig – Kooperation über Kooperationsvertrag</li>
+              <li style="display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.5;"><span style="color: var(--gold); flex-shrink: 0;">—</span>Kasse fördert zertifizierte Kurse mit bis zu 80 % der Kurskosten</li>
+              <li style="display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.5;"><span style="color: var(--gold); flex-shrink: 0;">—</span>Maßnahmen werden nach § 20 SGB V anerkannt und steuerlich förderbar</li>
+              <li style="display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.5;"><span style="color: var(--gold); flex-shrink: 0;">—</span>Ich koordiniere die Abstimmung mit der Kasse</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div style="background: var(--ink); padding: 36px;" class="reveal">
+            <div style="font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 12px;">Option 2 · Whitelabel-Lösung</div>
+            <h3 style="font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--paper); margin-bottom: 12px; line-height: 1.2;">Eigene Krankenkasse<br>für das Unternehmen</h3>
+            <p style="font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.6); line-height: 1.75; margin-bottom: 20px;">Für Unternehmen, die eine tiefere Integration wünschen, bieten wir eine Whitelabel-Krankenkassenlösung an. Das Unternehmen erhält eine eigene, gebrandete Krankenkasse – mit vollständigem BGM-Programm, direkter Kassenanbindung und maximaler Steueroptimierung.</p>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px;">
+              <li style="display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.8); line-height: 1.5;"><span style="color: var(--gold); flex-shrink: 0;">—</span>Eigene Krankenkasse unter dem Unternehmensbrand</li>
+              <li style="display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.8); line-height: 1.5;"><span style="color: var(--gold); flex-shrink: 0;">—</span>Vollständig integriertes BGM-Programm von Anfang an</li>
+              <li style="display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.8); line-height: 1.5;"><span style="color: var(--gold); flex-shrink: 0;">—</span>Maximale steuerliche Förderung durch direkte Kassenstruktur</li>
+              <li style="display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.8); line-height: 1.5;"><span style="color: var(--gold); flex-shrink: 0;">—</span>Geeignet für Unternehmen ab ca. 50 Mitarbeitern</li>
+              <li style="display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.8); line-height: 1.5;"><span style="color: var(--gold); flex-shrink: 0;">—</span>Details und Anbieter auf Anfrage</li>
+            </ul>
+            <div style="padding: 14px 16px; border-left: 2px solid var(--gold); font-size: 12px; font-weight: 300; color: var(--gold-light); line-height: 1.65;">Die Whitelabel-Lösung ist nicht für jedes Unternehmen sinnvoll – ich berate offen, ob der Aufwand im Verhältnis zum Nutzen steht.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KOMBINATION -->
+  <section class="section section-warm" id="kombination">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Kombination</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">BGM, BKV und Benefits –<br><em>aus einer Hand.</em></h2>
+      <p class="sect-intro reveal">BGM entfaltet seine volle Wirkung wenn es nicht isoliert steht, sondern Teil einer kohärenten Gesundheitsstrategie ist. Ich konzipiere alle drei Bausteine gemeinsam.</p>
+      <div class="kombi-grid">
+        <div class="kombi-card reveal">
+          <div class="kombi-num">Kombination 01</div>
+          <h3 class="kombi-title">BGM + BKV</h3>
+          <p class="kombi-desc">Die BKV deckt den kurativen Teil ab – Zahn, Sehhilfe, Krankenhaus. Das BGM deckt den präventiven Teil ab – Vorsorge, Kurse, Mental Health. Beide zusammen ergeben einen lückenlosen Gesundheitsschutz, der gleichzeitig steuerlich optimiert ist.</p>
+          <a href="bkv.html" class="kombi-link">Zur BKV-Seite →</a>
+        </div>
+        <div class="kombi-card reveal">
+          <div class="kombi-num">Kombination 02</div>
+          <h3 class="kombi-title">BGM + Company Benefits</h3>
+          <p class="kombi-desc">Gesundheitsbudgets aus Company Benefits-Plattformen (Probonio, Degura) können für BGM-Maßnahmen eingesetzt werden. Mitarbeiter wählen selbst aus einem Pool zertifizierter Angebote. Das Budget ist steuerlich abgestimmt und in der Plattform integriert.</p>
+          <a href="company-benefits.html" class="kombi-link">Zur Company Benefits-Seite →</a>
+        </div>
+        <div class="kombi-card reveal">
+          <div class="kombi-num">Kombination 03</div>
+          <h3 class="kombi-title">BGM + GF-Versorgung</h3>
+          <p class="kombi-desc">Für Geschäftsführer kann BGM Teil des Gesamtversorgungspakets sein – neben BAV, BKV und D&O. Präventionskurse, Coaching und Stressmanagement als Teil der Vergütungsstruktur des GF – steueroptimiert und als Betriebsausgabe abzugsfähig.</p>
+          <a href="ggf-versorgung.html" class="kombi-link">Zur GGF-Versorgung →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="sect-label reveal" style="justify-content: center;"><span>Jetzt starten</span></div>
+      <h2 class="cta-heading reveal">BGM –<br><em>strukturiert, steuerlich, sinnvoll.</em></h2>
+      <p class="cta-sub reveal">Im ersten Gespräch analysiere ich Ihre aktuelle Situation und zeige, welche BGM-Bausteine für Ihre Unternehmensgröße, Ihr Budget und Ihre Mitarbeiterstruktur sinnvoll sind – inklusive SYLO Digital.</p>
+      <a href="kontakt.html" class="btn-gold-lg reveal">Erstgespräch anfragen</a>
+      <span class="cta-note reveal">Erstes Gespräch kostenfrei · Danach transparentes Honorar</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Dennis <span>Klincov</span></div>
+        <p class="footer-tagline">BAV &amp; BKV Spezialist. Versicherungsmakler nach § 34d GewO. Honorarberatung für Geschäftsführer in Berlin.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Versorgung</h4>
+        <ul>
+          <li><a href="ggf-versorgung.html">GGF-Versorgung</a></li>
+          <li><a href="vorstandsversorgung.html">Vorstandsversorgung</a></li>
+          <li><a href="bav-mitarbeiter.html">BAV Mitarbeiter</a></li>
+          <li><a href="tantiemenmodell.html">Tantiemenmodell</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Absicherung &amp; Benefits</h4>
+        <ul>
+          <li><a href="bkv.html">BKV</a></li>
+          <li><a href="bgm.html">BGM</a></li>
+          <li><a href="company-benefits.html">Company Benefits</a></li>
+          <li><a href="dao.html">D&amp;O</a></li>
+          <li><a href="cyber.html">Cyber</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Versicherer</h4>
+        <ul>
+          <li><a href="#">Allianz</a></li>
+          <li><a href="#">Württembergische</a></li>
+          <li><a href="#">LV 1871</a></li>
+          <li><a href="#">Hallesche</a></li>
+          <li><a href="#">Alte Leipziger</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 60); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.07 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

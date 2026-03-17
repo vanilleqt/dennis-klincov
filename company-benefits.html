@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Benefits – Dennis Klincov</title>
+  <meta name="description" content="Steueroptimierte Mitarbeiterbenefits über Probonio, Degura und Benefits Manager AG. Von Sachbezügen bis Gesundheitsbudget – strukturiert, rechtssicher und aus einer Hand.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C8922A; --gold-light: #E8B96A; --gold-pale: #F7EDD8; --gold-dark: #8A6010;
+      --ink: #1A1814; --ink-soft: #3D3830; --ink-muted: #7A7268;
+      --paper: #FDFAF5; --paper-warm: #F5EFE2;
+      --border: rgba(200,146,42,0.18); --border-ink: rgba(26,24,20,0.10);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 64px; height: 68px; display: flex; align-items: center; justify-content: space-between; background: rgba(253,250,245,0.93); backdrop-filter: blur(14px); border-bottom: 0.5px solid var(--border-ink); }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(26,24,20,0.06); }
+    .nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 400; color: var(--ink-muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { font-size: 12px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 10px 22px; background: var(--gold); color: #fff; border: none; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--gold-dark); }
+
+    /* HERO */
+    .hero { padding: 148px 80px 100px; background: var(--ink); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: radial-gradient(ellipse at 80% 50%, rgba(200,146,42,0.07) 0%, transparent 60%); pointer-events: none; }
+    .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); display: block; }
+    .eyebrow span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .hero-title { font-family: var(--serif); font-size: clamp(40px, 4.5vw, 64px); font-weight: 500; line-height: 1.08; color: var(--paper); margin-bottom: 24px; }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-lead { font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.65); line-height: 1.8; margin-bottom: 36px; max-width: 460px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 32px; background: var(--gold); color: #fff; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .hero-cta:hover { background: var(--gold-dark); transform: translateY(-1px); }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(253,250,245,0.08); border: 0.5px solid rgba(253,250,245,0.1); }
+    .hero-stat { background: rgba(253,250,245,0.04); padding: 28px 24px; }
+    .hero-stat-num { font-family: var(--serif); font-size: 44px; font-weight: 500; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+    .hero-stat-label { font-size: 12px; font-weight: 300; color: rgba(253,250,245,0.5); line-height: 1.4; }
+
+    /* SECTIONS */
+    .section { padding: 112px 80px; }
+    .section-warm { background: var(--paper-warm); border-top: 0.5px solid var(--border-ink); border-bottom: 0.5px solid var(--border-ink); }
+    .section-dark { background: var(--ink); }
+    .inner { max-width: 1200px; margin: 0 auto; }
+    .sect-label { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .sect-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
+    .sect-label span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .sect-heading { font-family: var(--serif); font-size: clamp(30px, 3.5vw, 48px); font-weight: 500; line-height: 1.12; margin-bottom: 20px; }
+    .sect-heading em { font-style: italic; color: var(--gold); }
+    .sect-intro { font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; max-width: 620px; margin-bottom: 52px; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+    /* BENEFIT KATEGORIEN */
+    .benefits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); }
+    .benefit-card { background: var(--paper); padding: 32px 26px; transition: background 0.2s; position: relative; overflow: hidden; }
+    .benefit-card:hover { background: var(--paper-warm); }
+    .benefit-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); opacity: 0; transition: opacity 0.2s; }
+    .benefit-card:hover::after { opacity: 1; }
+    .benefit-icon { width: 36px; height: 36px; border: 0.5px solid var(--border); background: var(--gold-pale); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .benefit-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .benefit-title { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.2; }
+    .benefit-desc { font-size: 12px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; margin-bottom: 12px; }
+    .benefit-steuer { font-size: 11px; font-weight: 500; color: var(--gold-dark); background: var(--gold-pale); border: 0.5px solid var(--border); padding: 4px 9px; display: inline-block; letter-spacing: 0.04em; }
+
+    /* STEUER SEKTION */
+    .steuer-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .steuer-intro { font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; margin-bottom: 32px; }
+    .steuer-blocks { display: flex; flex-direction: column; gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); }
+    .steuer-block { background: var(--paper); padding: 24px 28px; }
+    .steuer-block:hover { background: var(--paper-warm); }
+    .steuer-para { font-size: 11px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .steuer-title { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+    .steuer-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; }
+    .steuer-betrag { font-family: var(--serif); font-size: 36px; font-weight: 500; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+    .steuer-rechner { background: var(--paper-warm); border: 0.5px solid var(--border-ink); padding: 36px; }
+    .rechner-title { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 20px; }
+    .rechner-row { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 0.5px solid var(--border-ink); font-size: 13px; }
+    .rechner-row:last-of-type { border-bottom: none; }
+    .rechner-label { font-weight: 300; color: var(--ink-muted); }
+    .rechner-value { font-weight: 500; color: var(--ink); font-family: var(--serif); font-size: 16px; }
+    .rechner-value.highlight { color: var(--gold); font-size: 20px; }
+    .rechner-note { margin-top: 20px; padding: 12px 14px; border-left: 2px solid var(--gold); font-size: 12px; font-weight: 300; color: var(--gold-dark); background: var(--gold-pale); line-height: 1.6; }
+
+    /* PLATTFORMEN */
+    .plattformen-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-bottom: 40px; }
+    .plattform-card { background: var(--paper); padding: 36px 32px; position: relative; overflow: hidden; transition: background 0.2s; }
+    .plattform-card:hover { background: var(--paper-warm); }
+    .plattform-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); }
+    .plattform-badge { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; padding: 4px 10px; background: var(--gold-pale); border: 0.5px solid var(--border); color: var(--gold-dark); margin-bottom: 14px; }
+    .plattform-name { font-family: var(--serif); font-size: 28px; font-weight: 500; color: var(--ink); margin-bottom: 12px; }
+    .plattform-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.75; margin-bottom: 20px; }
+    .plattform-features { display: flex; flex-direction: column; gap: 8px; }
+    .plattform-feature { display: flex; gap: 10px; font-size: 12px; font-weight: 300; color: var(--ink-soft); line-height: 1.5; }
+    .plattform-feature::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+    .plattform-note { padding: 10px 14px; background: var(--gold-pale); border-left: 2px solid var(--gold); font-size: 11px; font-weight: 400; color: var(--gold-dark); margin-top: 16px; line-height: 1.6; }
+
+    /* PROZESS */
+    .prozess-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-top: 48px; }
+    .prozess-step { background: var(--paper-warm); padding: 32px 26px; position: relative; }
+    .prozess-num { font-family: var(--serif); font-size: 52px; font-weight: 400; color: var(--gold-pale); line-height: 1; margin-bottom: 14px; }
+    .prozess-title { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+    .prozess-desc { font-size: 12px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; }
+
+    /* KOMBINATION */
+    .kombi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(253,250,245,0.08); border: 0.5px solid rgba(253,250,245,0.1); }
+    .kombi-card { background: rgba(253,250,245,0.04); padding: 32px 28px; }
+    .kombi-icon { width: 36px; height: 36px; border: 0.5px solid rgba(200,146,42,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .kombi-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .kombi-title { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--paper); margin-bottom: 8px; }
+    .kombi-desc { font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.55); line-height: 1.7; }
+
+    /* CTA */
+    .cta-section { padding: 112px 80px; background: var(--paper-warm); border-top: 0.5px solid var(--border-ink); text-align: center; }
+    .cta-inner { max-width: 600px; margin: 0 auto; }
+    .cta-heading { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 500; color: var(--ink); line-height: 1.1; margin-bottom: 18px; }
+    .cta-heading em { font-style: italic; color: var(--gold); }
+    .cta-sub { font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.75; margin-bottom: 40px; }
+    .btn-gold-lg { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 16px 44px; background: var(--gold); color: #fff; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s; }
+    .btn-gold-lg:hover { background: var(--gold-dark); }
+    .cta-note { display: block; margin-top: 14px; font-size: 12px; color: var(--ink-muted); }
+
+    /* FOOTER */
+    footer { background: var(--paper); border-top: 0.5px solid var(--border-ink); padding: 48px 80px 32px; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; max-width: 240px; }
+    .footer-col h4 { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 13px; font-weight: 300; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 20px; border-top: 0.5px solid var(--border-ink); display: flex; justify-content: flex-end; }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: var(--ink-muted); text-decoration: none; }
+    .footer-legal a:hover { color: var(--gold); }
+
+    /* ANIMATION */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.7s ease both; }
+    .delay-1 { animation-delay: 0.12s; }
+    .delay-2 { animation-delay: 0.24s; }
+    .delay-3 { animation-delay: 0.36s; }
+
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 120px 28px 72px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .section { padding: 72px 28px; }
+      .cta-section, footer { padding: 72px 28px; }
+      .two-col, .steuer-wrap { grid-template-columns: 1fr; gap: 48px; }
+      .benefits-grid { grid-template-columns: 1fr 1fr; }
+      .plattformen-grid, .prozess-steps, .kombi-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav">
+    <a href="index.html" class="nav-logo">Dennis <span>Klincov</span></a>
+        <ul class="nav-links">
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="ggf-versorgung.html">GGF-Versorgung</a></li>
+      <li><a href="company-benefits.html">Company Benefits</a></li>
+      <li><a href="ueber-mich.html">Über mich</a></li>
+    </ul>
+    <a href="kontakt.html" class="nav-cta">Termin anfragen</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow fade-up"><span>Company Benefits</span></div>
+        <h1 class="hero-title fade-up delay-1">Benefits, die<br>Mitarbeiter <em>wirklich</em><br>wollen.</h1>
+        <p class="hero-lead fade-up delay-2">Steueroptimierte Zusatzleistungen sind heute kein Nice-to-have mehr – sie sind ein entscheidender Faktor bei der Gewinnung und Bindung von Fachkräften. Ich strukturiere, berate und implementiere Company Benefits für Unternehmen jeder Größe.</p>
+        <a href="kontakt.html" class="hero-cta fade-up delay-3">
+          Beratungsgespräch anfragen
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <div class="fade-up delay-2">
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">50 €</div>
+            <div class="hero-stat-label">monatlich steuerfrei pro Mitarbeiter als Sachbezug</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">600 €</div>
+            <div class="hero-stat-label">jährlich steuerfrei für Gesundheitsmaßnahmen (§3 Nr. 34 EStG)</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">3</div>
+            <div class="hero-stat-label">spezialisierte Plattformanbieter zur Auswahl</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">2022</div>
+            <div class="hero-stat-label">Mitarbeit bei Probonio im Gründungsjahr</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFIT KATEGORIEN -->
+  <section class="section" id="kategorien">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Leistungskatalog</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">Alle Benefit-Kategorien<br><em>im Überblick.</em></h2>
+      <p class="sect-intro reveal">Von klassischen Sachbezügen bis zu modernen Gesundheitsbudgets – jede Kategorie hat eigene steuerliche Spielräume und Anforderungen. Ich helfe bei der richtigen Kombination für Ihr Unternehmen.</p>
+      <div class="benefits-grid">
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 16 16"><path d="M2 6h12v7a1 1 0 01-1 1H3a1 1 0 01-1-1V6z"/><path d="M2 6l6-4 6 4"/><path d="M6 14V9h4v5"/></svg>
+          </div>
+          <h3 class="benefit-title">Essensschecks &amp; Restaurantgutscheine</h3>
+          <p class="benefit-desc">Steuerfreie Mahlzeitenförderung für Mitarbeiter. Einsetzbar in Restaurants, Supermärkten und als digitale Essenschecks über die App.</p>
+          <span class="benefit-steuer">Bis 7,23 € / Arbeitstag steuerfrei</span>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 16 16"><circle cx="5" cy="12" r="1.5"/><circle cx="11" cy="12" r="1.5"/><path d="M1 2h2l1.5 7h7l1.5-5H5"/></svg>
+          </div>
+          <h3 class="benefit-title">Mobilität</h3>
+          <p class="benefit-desc">Jobticket für den ÖPNV oder Tankgutscheine für Fahrten mit dem PKW. Auch Kombinationen mit Fahrradleasing möglich.</p>
+          <span class="benefit-steuer">Teil des 50 € Sachbezugs</span>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 16 16"><rect x="2" y="4" width="12" height="9" rx="1.5"/><path d="M5 4V3a1 1 0 012 0v1M9 4V3a1 1 0 012 0v1"/></svg>
+          </div>
+          <h3 class="benefit-title">Einkaufsgutscheine &amp; Sachbezüge</h3>
+          <p class="benefit-desc">Gutscheine für Einzelhandel, Online-Shops oder als universelle Prepaidkarte. Flexibel einsetzbar und steuerlich klar geregelt.</p>
+          <span class="benefit-steuer">Bis 50 € / Monat steuerfrei</span>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 16 16"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z"/><path d="M5 8l1.5 1.5L11 6"/></svg>
+          </div>
+          <h3 class="benefit-title">Gesundheitsbudget</h3>
+          <p class="benefit-desc">Budget für Massagen, Fitnessstudio, Sehhilfen, Zahnreinigung und weitere Gesundheitsleistungen. Kombinierbar mit BKV.</p>
+          <span class="benefit-steuer">Bis 600 € / Jahr steuerfrei (§3 Nr. 34 EStG)</span>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M2 7h12M6 7v6M10 7v6"/></svg>
+          </div>
+          <h3 class="benefit-title">Internetpauschale</h3>
+          <p class="benefit-desc">Pauschalerstattung für Internetkosten im Homeoffice. Unkompliziert, monatlich auszahlbar und steuerlich begünstigt.</p>
+          <span class="benefit-steuer">Bis 50 € / Monat pauschalversteuert</span>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 16 16"><path d="M8 2C5 2 2 5 2 8s3 6 6 6 6-3 6-6-3-6-6-6z"/><path d="M8 5v3l2 2"/></svg>
+          </div>
+          <h3 class="benefit-title">Erholungsbeihilfe</h3>
+          <p class="benefit-desc">Einmalige jährliche Zahlung für Urlaub und Erholung. Für Arbeitnehmer, Ehepartner und Kinder – pauschal versteuert vom Arbeitgeber.</p>
+          <span class="benefit-steuer">Bis 156 € AN + 104 € Ehepartner + 52 € je Kind</span>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 16 16"><path d="M8 2l1.5 3 3.5.5-2.5 2.5.5 3.5L8 10l-3 1.5.5-3.5L3 5.5l3.5-.5z"/></svg>
+          </div>
+          <h3 class="benefit-title">Kinderbetreuungszuschuss</h3>
+          <p class="benefit-desc">Steuerfreier Zuschuss zu Kosten für Kinderbetreuung in Kita, Krippe oder Tagesmutter. Ohne Obergrenze, solange nicht pauschal versteuert.</p>
+          <span class="benefit-steuer">Steuerfrei ohne Betragslimit (§3 Nr. 33 EStG)</span>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 16 16"><path d="M2 13l4-4 3 3 5-8"/></svg>
+          </div>
+          <h3 class="benefit-title">Weiterbildungsbudget</h3>
+          <p class="benefit-desc">Zuschuss für berufliche Weiterbildung, Kurse, Zertifikate oder Sprachkurse. Steuerlich vorteilhaft bei betrieblicher Veranlassung.</p>
+          <span class="benefit-steuer">Steuerfrei bei betrieblicher Veranlassung</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEUERLICHE GRUNDLAGEN -->
+  <section class="section section-warm" id="steuer">
+    <div class="inner">
+      <div class="steuer-wrap">
+        <div>
+          <div class="sect-label reveal"><span>Steuerliche Grundlagen</span></div>
+          <h2 class="sect-heading reveal" style="color: var(--ink);">Was der Staat<br><em>erlaubt – und fördert.</em></h2>
+          <p class="steuer-intro reveal">Der Gesetzgeber hat mehrere steuerliche Förderinstrumente geschaffen, die Arbeitgebern erlauben, Mitarbeiter steueroptimiert zu vergüten. Die Kenntnis dieser Spielräume ist die Grundlage jeder guten Benefits-Strategie.</p>
+          <div class="steuer-blocks reveal">
+            <div class="steuer-block">
+              <div class="steuer-para">§ 8 Abs. 2 EStG</div>
+              <h3 class="steuer-title">Sachbezugsfreigrenze</h3>
+              <p class="steuer-desc">Sachleistungen bis 50 € monatlich sind lohnsteuer- und sozialversicherungsfrei. Gilt pro Mitarbeiter, nicht kumulierbar über mehrere Bagatellgrenzen.</p>
+            </div>
+            <div class="steuer-block">
+              <div class="steuer-para">§ 3 Nr. 34 EStG</div>
+              <h3 class="steuer-title">Gesundheitsförderung</h3>
+              <p class="steuer-desc">Arbeitgeberzuschüsse zur Gesundheitsförderung und Prävention bis 600 € jährlich steuerfrei. Maßnahmen müssen zertifiziert oder nach §20 SGB V anerkannt sein.</p>
+            </div>
+            <div class="steuer-block">
+              <div class="steuer-para">§ 3 Nr. 33 EStG</div>
+              <h3 class="steuer-title">Kinderbetreuung</h3>
+              <p class="steuer-desc">Zuschüsse zu Kinderbetreuungskosten sind ohne Betragslimit steuerfrei, sofern sie zusätzlich zum ohnehin geschuldeten Arbeitslohn geleistet werden.</p>
+            </div>
+            <div class="steuer-block">
+              <div class="steuer-para">§ 40 Abs. 2 EStG</div>
+              <h3 class="steuer-title">Erholungsbeihilfe</h3>
+              <p class="steuer-desc">Einmalige Urlaubsbeihilfe pauschal versteuert mit 25 % durch den Arbeitgeber. Betrag ist für den Arbeitnehmer damit brutto wie netto.</p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="steuer-rechner">
+            <h3 class="rechner-title">Beispielrechnung pro Mitarbeiter / Jahr</h3>
+            <div class="rechner-row">
+              <span class="rechner-label">Sachbezug (50 € × 12)</span>
+              <span class="rechner-value">600 €</span>
+            </div>
+            <div class="rechner-row">
+              <span class="rechner-label">Gesundheitsbudget (§3 Nr. 34)</span>
+              <span class="rechner-value">600 €</span>
+            </div>
+            <div class="rechner-row">
+              <span class="rechner-label">Essenszuschuss (ca. 220 AT × 3,10 €)</span>
+              <span class="rechner-value">682 €</span>
+            </div>
+            <div class="rechner-row">
+              <span class="rechner-label">Erholungsbeihilfe (Arbeitnehmer)</span>
+              <span class="rechner-value">156 €</span>
+            </div>
+            <div class="rechner-row" style="border-top: 1px solid var(--border-ink); margin-top: 8px; padding-top: 16px;">
+              <span class="rechner-label" style="font-weight: 500; color: var(--ink);">Steuerfreier Vorteil gesamt</span>
+              <span class="rechner-value highlight">2.038 €</span>
+            </div>
+            <div class="rechner-note">
+              Bei 10 Mitarbeitern ergibt das über 20.000 € jährlichen steuerfreien Mehrwert – ohne Sozialabgaben für Arbeitgeber oder Arbeitnehmer.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATTFORMEN -->
+  <section class="section" id="plattformen">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Plattformanbieter</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">Drei Plattformen –<br><em>ein Ansprechpartner.</em></h2>
+      <p class="sect-intro reveal">Ich arbeite mit drei spezialisierten Anbietern zusammen und helfe Ihnen, die richtige Plattform für Ihre Unternehmensgröße, Mitarbeiterstruktur und Benefit-Strategie zu finden.</p>
+      <div class="plattformen-grid">
+        <div class="plattform-card reveal">
+          <div class="plattform-badge">Empfohlen · Gründungspartner</div>
+          <div class="plattform-name">Probonio</div>
+          <p class="plattform-desc">Einer der größten deutschen Anbieter für Company Benefits. Ich habe 2022 im Gründungsjahr mitgewirkt und kenne die Plattform von innen – ihre Stärken und ihre Grenzen.</p>
+          <div class="plattform-features">
+            <div class="plattform-feature">Alle gängigen Benefit-Kategorien auf einer Plattform</div>
+            <div class="plattform-feature">Digitale Mitarbeiter-App für einfache Nutzung</div>
+            <div class="plattform-feature">Automatisierte Abrechnung und steuerliche Dokumentation</div>
+            <div class="plattform-feature">Auch BAV-Verwaltung über Probonio möglich</div>
+          </div>
+          <div class="plattform-note">Ich kenne diese Plattform aus dem Aufbau heraus – keine Standardberatung, sondern echtes Insiderwissen.</div>
+        </div>
+        <div class="plattform-card reveal">
+          <div class="plattform-badge">Spezialist · BAV & Benefits</div>
+          <div class="plattform-name">Degura</div>
+          <p class="plattform-desc">Spezialist für die Verbindung von betrieblicher Altersvorsorge und modernen Benefit-Lösungen. Besonders stark wenn BAV und Benefits gemeinsam verwaltet werden sollen.</p>
+          <div class="plattform-features">
+            <div class="plattform-feature">Integrierte BAV- und Benefits-Verwaltung</div>
+            <div class="plattform-feature">Digitale Mitarbeiterkommunikation inklusive</div>
+            <div class="plattform-feature">Geeignet für Unternehmen mit komplexerer Versorgungsstruktur</div>
+            <div class="plattform-feature">Schnittstellen zu gängigen HR-Systemen</div>
+          </div>
+        </div>
+        <div class="plattform-card reveal">
+          <div class="plattform-badge">Individuell · Flexible Lösungen</div>
+          <div class="plattform-name">Benefits Manager AG</div>
+          <p class="plattform-desc">Flexible Plattform für individuelle Benefit-Strukturen. Besonders geeignet für Unternehmen mit spezifischen Anforderungen jenseits der Standardpakete.</p>
+          <div class="plattform-features">
+            <div class="plattform-feature">Hohe Konfigurierbarkeit der Benefit-Kategorien</div>
+            <div class="plattform-feature">Skalierbar von kleinen Teams bis zum Konzern</div>
+            <div class="plattform-feature">Individuelle Reportings und Auswertungen</div>
+            <div class="plattform-feature">Starker Fokus auf Compliance und Dokumentation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROZESS -->
+  <section class="section section-warm">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Vorgehen</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">Von der Idee zur<br><em>laufenden Lösung.</em></h2>
+      <div class="prozess-steps">
+        <div class="prozess-step reveal">
+          <div class="prozess-num">1</div>
+          <h3 class="prozess-title">Analyse &amp; Zieldefinition</h3>
+          <p class="prozess-desc">Welche Mitarbeitergruppen sollen angesprochen werden? Welche Benefits sind schon vorhanden? Was ist das Budget? Wir klären den Rahmen bevor wir eine Plattform wählen.</p>
+        </div>
+        <div class="prozess-step reveal">
+          <div class="prozess-num">2</div>
+          <h3 class="prozess-title">Steuerliche Strukturierung</h3>
+          <p class="prozess-desc">Welche Bausteine sind in Ihrer Situation steuerlich optimal kombinierbar? Hier fließt das Fachwissen ein – nicht jede Kombination ist rechtssicher möglich.</p>
+        </div>
+        <div class="prozess-step reveal">
+          <div class="prozess-num">3</div>
+          <h3 class="prozess-title">Plattformauswahl &amp; Setup</h3>
+          <p class="prozess-desc">Auf Basis der Anforderungen wählen wir die passende Plattform. Ich begleite das Onboarding und stelle sicher, dass die Konfiguration mit der steuerlichen Struktur übereinstimmt.</p>
+        </div>
+        <div class="prozess-step reveal">
+          <div class="prozess-num">4</div>
+          <h3 class="prozess-title">Einführung &amp; Kommunikation</h3>
+          <p class="prozess-desc">Benefits bringen nur dann etwas, wenn Mitarbeiter sie auch nutzen. Ich helfe bei der internen Kommunikation und dem Rollout – damit die Investition sich rechnet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KOMBINATION -->
+  <section class="section section-dark" id="kombination">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Synergie</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--paper);">Company Benefits<br><em>kombiniert denken.</em></h2>
+      <p class="reveal" style="font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.6); line-height: 1.8; max-width: 600px; margin-bottom: 48px;">Company Benefits entfalten ihre volle Wirkung, wenn sie mit anderen Leistungen verzahnt werden. Ich konzipiere alle Bausteine gemeinsam – aus einer Hand.</p>
+      <div class="kombi-grid">
+        <div class="kombi-card reveal">
+          <div class="kombi-icon">
+            <svg viewBox="0 0 16 16"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z"/><path d="M5 8l2 2 4-4"/></svg>
+          </div>
+          <h3 class="kombi-title">Benefits + BKV</h3>
+          <p class="kombi-desc">Das Gesundheitsbudget aus Company Benefits lässt sich mit einer betrieblichen Krankenversicherung kombinieren. BKV übernimmt Zahn, Sehhilfe und Krankenhaus – das Benefit-Budget deckt Prävention und Wellness.</p>
+        </div>
+        <div class="kombi-card reveal">
+          <div class="kombi-icon">
+            <svg viewBox="0 0 16 16"><path d="M4 14V8a4 4 0 018 0v6"/><path d="M2 14h12"/></svg>
+          </div>
+          <h3 class="kombi-title">Benefits + BGM</h3>
+          <p class="kombi-desc">Das Betriebliche Gesundheitsmanagement liefert die Struktur, Benefits liefern das Budget. Präventionskurse, SYLO Digital und Gesundheitschecks werden über das Benefit-Budget der Mitarbeiter finanziert.</p>
+        </div>
+        <div class="kombi-card reveal">
+          <div class="kombi-icon">
+            <svg viewBox="0 0 16 16"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
+          </div>
+          <h3 class="kombi-title">Benefits + BAV</h3>
+          <p class="kombi-desc">Über Probonio und Degura lassen sich betriebliche Altersvorsorge und Benefits auf einer Plattform verwalten. Mitarbeiter sehen ihren gesamten Versorgungsumfang in einer App.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="sect-label reveal" style="justify-content: center;"><span>Jetzt starten</span></div>
+      <h2 class="cta-heading reveal">Benefits einführen –<br><em>richtig gemacht.</em></h2>
+      <p class="cta-sub reveal">Im ersten Gespräch schauen wir gemeinsam, welche Bausteine für Ihr Unternehmen sinnvoll sind und wie viel steuerfreier Mehrwert sich für Ihre Mitarbeiter heben lässt.</p>
+      <a href="kontakt.html" class="btn-gold-lg reveal">Erstgespräch anfragen</a>
+      <span class="cta-note reveal">Erstes Gespräch kostenfrei · Danach transparentes Honorar</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Dennis <span>Klincov</span></div>
+        <p class="footer-tagline">BAV &amp; BKV Spezialist. Versicherungsmakler nach § 34d GewO. Honorarberatung für Geschäftsführer in Berlin.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Versorgung</h4>
+        <ul>
+          <li><a href="#">Geschäftsführerversorgung</a></li>
+          <li><a href="#">GGF-Versorgung</a></li>
+          <li><a href="#">Direktzusage</a></li>
+          <li><a href="#">Unterstützungskasse</a></li>
+          <li><a href="#">Tantiemenmodell</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Absicherung &amp; Benefits</h4>
+        <ul>
+          <li><a href="#">BKV</a></li>
+          <li><a href="#">BGM</a></li>
+          <li><a href="#">BAV Mitarbeiter</a></li>
+          <li><a href="company-benefits.html">Company Benefits</a></li>
+          <li><a href="#">D&amp;O</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Versicherer</h4>
+        <ul>
+          <li><a href="#">Allianz</a></li>
+          <li><a href="#">Württembergische</a></li>
+          <li><a href="#">LV 1871</a></li>
+          <li><a href="#">Hallesche</a></li>
+          <li><a href="#">Alte Leipziger</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 60); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.07 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

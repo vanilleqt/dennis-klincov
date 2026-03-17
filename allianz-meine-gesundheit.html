@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Allianz meine:Gesundheit – Dennis Klincov</title>
+  <meta name="description" content="Allianz meine:Gesundheit – betriebliche Krankenversicherung als Baukastensystem. Budget, Sehhilfe, Zahn und Stationär frei kombinierbar. BKV-Beratung Berlin.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C8922A; --gold-light: #E8B96A; --gold-pale: #F7EDD8; --gold-dark: #8A6010;
+      --ink: #1A1814; --ink-soft: #3D3830; --ink-muted: #7A7268;
+      --paper: #FDFAF5; --paper-warm: #F5EFE2;
+      --border: rgba(200,146,42,0.18); --border-ink: rgba(26,24,20,0.10);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 64px; height: 68px; display: flex; align-items: center; justify-content: space-between; background: rgba(253,250,245,0.93); backdrop-filter: blur(14px); border-bottom: 0.5px solid var(--border-ink); }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(26,24,20,0.06); }
+    .nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 400; color: var(--ink-muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { font-size: 12px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 10px 22px; background: var(--gold); color: #fff; border: none; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--gold-dark); }
+
+    /* HERO */
+    .hero { padding: 148px 80px 100px; background: var(--ink); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 55%; height: 100%; background: radial-gradient(ellipse at 75% 50%, rgba(200,146,42,0.08) 0%, transparent 65%); pointer-events: none; }
+    .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); display: block; }
+    .eyebrow span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .hero-title { font-family: var(--serif); font-size: clamp(40px, 4.5vw, 64px); font-weight: 500; line-height: 1.08; color: var(--paper); margin-bottom: 24px; }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-lead { font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.65); line-height: 1.8; margin-bottom: 36px; max-width: 460px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 32px; background: var(--gold); color: #fff; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .hero-cta:hover { background: var(--gold-dark); transform: translateY(-1px); }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(253,250,245,0.08); border: 0.5px solid rgba(253,250,245,0.1); }
+    .hero-stat { background: rgba(253,250,245,0.04); padding: 28px 24px; }
+    .hero-stat-num { font-family: var(--serif); font-size: 40px; font-weight: 500; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+    .hero-stat-label { font-size: 12px; font-weight: 300; color: rgba(253,250,245,0.5); line-height: 1.4; }
+
+    /* SECTIONS */
+    .section { padding: 112px 80px; }
+    .section-warm { background: var(--paper-warm); border-top: 0.5px solid var(--border-ink); border-bottom: 0.5px solid var(--border-ink); }
+    .section-dark { background: var(--ink); }
+    .inner { max-width: 1200px; margin: 0 auto; }
+    .sect-label { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .sect-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
+    .sect-label span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .sect-heading { font-family: var(--serif); font-size: clamp(30px, 3.5vw, 48px); font-weight: 500; line-height: 1.12; margin-bottom: 20px; }
+    .sect-heading em { font-style: italic; color: var(--gold); }
+    .sect-intro { font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; max-width: 620px; margin-bottom: 52px; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+    /* BAUKASTEN */
+    .baukasten { display: flex; flex-direction: column; gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-top: 48px; }
+    .bk-row { background: var(--paper); display: grid; grid-template-columns: 200px 1fr; gap: 0; }
+    .bk-label-cell { background: var(--ink); padding: 28px 24px; display: flex; flex-direction: column; justify-content: center; }
+    .bk-step { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 6px; }
+    .bk-name { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--paper); line-height: 1.2; }
+    .bk-options { display: flex; flex-wrap: wrap; gap: 1px; background: var(--border-ink); }
+    .bk-option { background: var(--paper); padding: 20px 22px; flex: 1; min-width: 160px; }
+    .bk-option.highlight { background: var(--paper-warm); }
+    .bk-option-label { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .bk-option-value { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); line-height: 1; margin-bottom: 6px; }
+    .bk-option-desc { font-size: 12px; font-weight: 300; color: var(--ink-muted); line-height: 1.5; }
+    .bk-option-tag { display: inline-block; margin-top: 8px; font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border: 0.5px solid var(--border); color: var(--gold-dark); background: var(--gold-pale); }
+    .bk-addon { background: var(--paper-warm); padding: 20px 22px; flex: 1; min-width: 160px; border-left: 2px solid var(--gold); }
+    .bk-addon-label { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .bk-addon-value { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--ink); line-height: 1; margin-bottom: 6px; }
+    .bk-addon-desc { font-size: 12px; font-weight: 300; color: var(--ink-muted); line-height: 1.5; }
+
+    /* BUDGET */
+    .budget-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-top: 48px; }
+    .budget-card { background: var(--paper); padding: 28px 22px; position: relative; overflow: hidden; transition: background 0.2s; }
+    .budget-card:hover { background: var(--paper-warm); }
+    .budget-card.highlight { background: var(--paper-warm); border-top: 2px solid var(--gold); }
+    .budget-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); opacity: 0; transition: opacity 0.2s; }
+    .budget-card:hover::after { opacity: 1; }
+    .budget-card.highlight::after { opacity: 1; }
+    .budget-amount { font-family: var(--serif); font-size: 40px; font-weight: 500; color: var(--gold); line-height: 1; margin-bottom: 4px; }
+    .budget-unit { font-size: 11px; font-weight: 300; color: var(--ink-muted); margin-bottom: 14px; }
+    .budget-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .budget-item { display: flex; gap: 8px; font-size: 12px; font-weight: 300; color: var(--ink-soft); line-height: 1.5; }
+    .budget-item::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+    .budget-note { margin-top: 12px; font-size: 11px; font-weight: 300; color: var(--ink-muted); font-style: italic; }
+
+    /* SEHHILFE */
+    .seh-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(253,250,245,0.08); border: 0.5px solid rgba(253,250,245,0.1); margin-top: 48px; }
+    .seh-card { background: rgba(253,250,245,0.04); padding: 32px 28px; }
+    .seh-card.highlight { background: rgba(200,146,42,0.08); border-top: 2px solid var(--gold); }
+    .seh-num { font-family: var(--serif); font-size: 48px; font-weight: 400; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+    .seh-title { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--paper); margin-bottom: 10px; }
+    .seh-desc { font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.55); line-height: 1.7; }
+    .seh-note { margin-top: 14px; padding: 10px 12px; border-left: 2px solid var(--gold); font-size: 12px; font-weight: 400; color: var(--gold-light); line-height: 1.6; }
+
+    /* ZAHN */
+    .zahn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-top: 48px; }
+    .zahn-struktur { background: var(--paper-warm); padding: 32px; border: 0.5px solid var(--border-ink); }
+    .zahn-struktur-label { font-size: 11px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .zahn-struktur-title { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+    .zahn-struktur-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; }
+    .zahn-stufen { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); }
+    .zahn-stufe { background: var(--paper); padding: 24px 20px; }
+    .zahn-stufe.best { background: var(--paper-warm); border-top: 2px solid var(--gold); }
+    .zahn-prozent { font-family: var(--serif); font-size: 36px; font-weight: 500; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+    .zahn-name { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 10px; }
+    .zahn-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .zahn-item { display: flex; gap: 8px; font-size: 11px; font-weight: 300; color: var(--ink-soft); line-height: 1.4; }
+    .zahn-item::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+
+    /* STATIONÄR */
+    .stat-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .stat-box { background: var(--ink); padding: 40px; }
+    .stat-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 14px; }
+    .stat-title { font-family: var(--serif); font-size: 26px; font-weight: 500; color: var(--paper); margin-bottom: 14px; line-height: 1.2; }
+    .stat-desc { font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.6); line-height: 1.75; margin-bottom: 24px; }
+    .stat-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .stat-item { display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.8); line-height: 1.5; }
+    .stat-item::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+    .stat-note { margin-top: 20px; padding: 14px 16px; border-left: 2px solid var(--gold); font-size: 12px; font-weight: 300; color: var(--gold-light); line-height: 1.65; }
+
+    /* LEISTUNGSÜBERSICHT */
+    .leistung-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-top: 48px; }
+    .leistung-card { background: var(--paper-warm); padding: 28px 24px; }
+    .leistung-icon { width: 34px; height: 34px; border: 0.5px solid var(--border); background: var(--paper); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .leistung-icon svg { width: 15px; height: 15px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .leistung-title { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+    .leistung-desc { font-size: 12px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; }
+
+    /* VERDOPPELUNG */
+    .verdoppelung { background: var(--paper); border: 0.5px solid var(--border-ink); padding: 36px; margin-top: 48px; border-left: 3px solid var(--gold); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .verd-label { font-size: 11px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .verd-title { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+    .verd-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.75; }
+    .verd-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .verd-item { display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.55; }
+    .verd-item.pro::before { content: '+'; color: var(--gold); font-weight: 500; flex-shrink: 0; width: 12px; }
+    .verd-item.con::before { content: '!'; color: var(--ink-muted); font-weight: 500; flex-shrink: 0; width: 12px; }
+
+    /* CTA */
+    .cta-section { padding: 112px 80px; background: var(--ink); text-align: center; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(200,146,42,0.11) 0%, transparent 70%); pointer-events: none; }
+    .cta-inner { position: relative; max-width: 600px; margin: 0 auto; }
+    .cta-heading { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 500; color: var(--paper); line-height: 1.1; margin-bottom: 18px; }
+    .cta-heading em { font-style: italic; color: var(--gold); }
+    .cta-sub { font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.55); line-height: 1.75; margin-bottom: 44px; }
+    .btn-gold-lg { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 16px 44px; background: var(--gold); color: #fff; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s; }
+    .btn-gold-lg:hover { background: var(--gold-light); }
+    .cta-note { display: block; margin-top: 14px; font-size: 12px; color: rgba(253,250,245,0.3); }
+
+    footer { background: var(--paper); border-top: 0.5px solid var(--border-ink); padding: 48px 80px 32px; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; max-width: 240px; }
+    .footer-col h4 { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 13px; font-weight: 300; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 20px; border-top: 0.5px solid var(--border-ink); display: flex; justify-content: flex-end; }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: var(--ink-muted); text-decoration: none; }
+    .footer-legal a:hover { color: var(--gold); }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.7s ease both; }
+    .delay-1 { animation-delay: 0.12s; }
+    .delay-2 { animation-delay: 0.24s; }
+    .delay-3 { animation-delay: 0.36s; }
+
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 120px 28px 72px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .section { padding: 72px 28px; }
+      .cta-section, footer { padding: 72px 28px; }
+      .two-col, .stat-wrap, .zahn-grid, .verdoppelung { grid-template-columns: 1fr; gap: 32px; }
+      .budget-grid { grid-template-columns: 1fr 1fr; }
+      .seh-grid, .leistung-grid { grid-template-columns: 1fr; }
+      .zahn-stufen { grid-template-columns: 1fr 1fr; }
+      .bk-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav">
+    <a href="index.html" class="nav-logo">Dennis <span>Klincov</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="ggf-versorgung.html">GGF-Versorgung</a></li>
+      <li><a href="bkv.html">BKV</a></li>
+      <li><a href="ueber-mich.html">Über mich</a></li>
+    </ul>
+    <a href="kontakt.html" class="nav-cta">Termin anfragen</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow fade-up"><span>Allianz meine:Gesundheit</span></div>
+        <h1 class="hero-title fade-up delay-1">BKV als<br><em>Baukastensystem.</em></h1>
+        <p class="hero-lead fade-up delay-2">Allianz meine:Gesundheit ist die betriebliche Krankenversicherung, die ich am häufigsten empfehle. Nicht weil sie in jedem Fall die Beste ist – sondern weil sie die flexibelste ist. Budget, Sehhilfe, Zahn und Stationär werden frei kombiniert. Jedes Unternehmen bekommt genau das, was passt.</p>
+        <a href="kontakt.html" class="hero-cta fade-up delay-3">
+          BKV-Beratung anfragen
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <div class="fade-up delay-2">
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">5</div>
+            <div class="hero-stat-label">Budgetstufen: 300 / 600 / 900 / 1200 / 1500 € jährlich</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">3</div>
+            <div class="hero-stat-label">Sehhilfe-Varianten: im Budget, Extrabudget oder 100 %</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">4</div>
+            <div class="hero-stat-label">Zahnstufen: RundumZahn 70 / 80 / 90 / 100</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">+</div>
+            <div class="hero-stat-label">Stationär jederzeit als Baustein dazubuchbar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAUKASTEN ÜBERSICHT -->
+  <section class="section" id="baukasten">
+    <div class="inner">
+      <div class="two-col">
+        <div>
+          <div class="sect-label reveal"><span>Das Prinzip</span></div>
+          <h2 class="sect-heading reveal" style="color: var(--ink);">Vier Bausteine –<br><em>frei kombiniert.</em></h2>
+          <p class="reveal" style="font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8;">meine:Gesundheit funktioniert nicht wie ein starres Paket. Jeder Baustein wird separat gewählt. Das erlaubt es, für verschiedene Mitarbeitergruppen im selben Unternehmen unterschiedliche Kombinationen einzurichten.</p>
+        </div>
+        <div class="reveal" style="padding-top: 8px;">
+          <p style="font-size: 14px; font-weight: 300; color: var(--ink-muted); line-height: 1.8;">Beispiel: Mitarbeiter erhalten das Budget 600 mit Sehhilfe-Extrabudget und RundumZahn 70 – Führungskräfte erhalten Budget 1500, Sehhilfe 100 %, RundumZahn 100 und Stationär. Beide Gruppen sind über denselben Gruppenvertrag versichert.</p>
+          <p style="font-size: 14px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; margin-top: 16px;">Ich berate welche Kombination für welche Zielgruppe steuerlich, budgetär und leistungsseitig optimal ist.</p>
+        </div>
+      </div>
+      <!-- BAUKASTEN SCHEMA -->
+      <div class="baukasten reveal">
+        <div class="bk-row">
+          <div class="bk-label-cell">
+            <div class="bk-step">Baustein 1</div>
+            <div class="bk-name">Jahres&shy;budget</div>
+          </div>
+          <div class="bk-options">
+            <div class="bk-option">
+              <div class="bk-option-label">Einstieg</div>
+              <div class="bk-option-value">300 €</div>
+              <div class="bk-option-desc">Basis-Gesundheitsschutz</div>
+            </div>
+            <div class="bk-option">
+              <div class="bk-option-label">Standard</div>
+              <div class="bk-option-value">600 €</div>
+              <div class="bk-option-desc">Steuerfreier Sachbezug ausgeschöpft</div>
+              <span class="bk-option-tag">Empfohlen MA</span>
+            </div>
+            <div class="bk-option highlight">
+              <div class="bk-option-label">Plus</div>
+              <div class="bk-option-value">900 €</div>
+              <div class="bk-option-desc">Für langjährige MA oder Fachkräfte</div>
+            </div>
+            <div class="bk-option">
+              <div class="bk-option-label">Premium</div>
+              <div class="bk-option-value">1.200 €</div>
+              <div class="bk-option-desc">Führungskräfte und leitende Angestellte</div>
+            </div>
+            <div class="bk-option">
+              <div class="bk-option-label">Exklusiv</div>
+              <div class="bk-option-value">1.500 €</div>
+              <div class="bk-option-desc">GF und Vorstände</div>
+              <span class="bk-option-tag">Empfohlen GF</span>
+            </div>
+          </div>
+        </div>
+        <div class="bk-row">
+          <div class="bk-label-cell">
+            <div class="bk-step">Baustein 2</div>
+            <div class="bk-name">Sehhilfe</div>
+          </div>
+          <div class="bk-options">
+            <div class="bk-option">
+              <div class="bk-option-label">Im Budget · 75 %</div>
+              <div class="bk-option-value">75 %</div>
+              <div class="bk-option-desc">Erstattung aus dem allgemeinen Jahresbudget</div>
+            </div>
+            <div class="bk-option highlight">
+              <div class="bk-option-label">Extrabudget · 75 %</div>
+              <div class="bk-option-value">75 %</div>
+              <div class="bk-option-desc">Eigenes Sehhilfe-Budget in gleicher Höhe wie das allgemeine Budget – verbraucht das allgemeine Budget nicht</div>
+              <span class="bk-option-tag">Empfohlen</span>
+            </div>
+            <div class="bk-option">
+              <div class="bk-option-label">Im Budget · 100 %</div>
+              <div class="bk-option-value">100 %</div>
+              <div class="bk-option-desc">Volle Erstattung aus dem allgemeinen Jahresbudget. LASIK / LASEK ebenfalls 100 %</div>
+            </div>
+          </div>
+        </div>
+        <div class="bk-row">
+          <div class="bk-label-cell">
+            <div class="bk-step">Baustein 3</div>
+            <div class="bk-name">Zahn</div>
+          </div>
+          <div class="bk-options">
+            <div class="bk-option">
+              <div class="bk-option-label">Im Budget</div>
+              <div class="bk-option-value">—</div>
+              <div class="bk-option-desc">Zahnleistungen laufen gegen das allgemeine Jahresbudget ohne gesondertes Zahntarif-Budget</div>
+            </div>
+            <div class="bk-option">
+              <div class="bk-option-label">RundumZahn 70</div>
+              <div class="bk-option-value">70 %</div>
+              <div class="bk-option-desc">Gesondertes Zahntarif-Budget. Implantate, Zahnersatz außerhalb Regelversorgung, Schienen: 70 %</div>
+            </div>
+            <div class="bk-option">
+              <div class="bk-option-label">RundumZahn 80</div>
+              <div class="bk-option-value">80 %</div>
+              <div class="bk-option-desc">Gesondertes Zahntarif-Budget. Implantate, Zahnersatz außerhalb Regelversorgung, Schienen: 80 %</div>
+            </div>
+            <div class="bk-option">
+              <div class="bk-option-label">RundumZahn 90</div>
+              <div class="bk-option-value">90 %</div>
+              <div class="bk-option-desc">Gesondertes Zahntarif-Budget. Implantate, Zahnersatz außerhalb Regelversorgung, Schienen: 90 %</div>
+            </div>
+            <div class="bk-option highlight">
+              <div class="bk-option-label">RundumZahn 100</div>
+              <div class="bk-option-value">100 %</div>
+              <div class="bk-option-desc">Gesondertes Zahntarif-Budget. Volle Erstattung auf alle Zahnleistungen inkl. Implantate</div>
+              <span class="bk-option-tag">Empfohlen</span>
+            </div>
+          </div>
+        </div>
+        <div class="bk-row">
+          <div class="bk-label-cell">
+            <div class="bk-step">Baustein 4</div>
+            <div class="bk-name">Stationär</div>
+          </div>
+          <div class="bk-options">
+            <div class="bk-option">
+              <div class="bk-option-label">Ohne</div>
+              <div class="bk-option-value">—</div>
+              <div class="bk-option-desc">Kein stationärer Schutz – GKV-Standard gilt</div>
+            </div>
+            <div class="bk-addon">
+              <div class="bk-addon-label">Zubuchbar für jeden</div>
+              <div class="bk-addon-value">Stationär +</div>
+              <div class="bk-addon-desc">Tarif FKH02B. Chefarztbehandlung, 2-Bett-Zimmer, Privatklinik. Jederzeit dazubuchbar – unabhängig von Budget-Höhe und Zielgruppe.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN IM BUDGET -->
+  <section class="section section-warm" id="leistungen">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Was im allgemeinen Budget steckt</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">Was das Budget<br><em>konkret abdeckt.</em></h2>
+      <p class="sect-intro reveal">Das allgemeine Jahresbudget gilt für alle versicherten Leistungen außer Sehhilfe (wenn Extrabudget gewählt) und Zahn (wenn gesonderter Zahntarif gewählt). Die Erstattung erfolgt zu 100 % der jeweiligen Kosten – bis das Budget ausgeschöpft ist.</p>
+      <div class="leistung-grid">
+        <div class="leistung-card reveal">
+          <div class="leistung-icon"><svg viewBox="0 0 16 16"><path d="M8 2C5 2 2 5 2 8s3 6 6 6 6-3 6-6-3-6-6-6z"/><path d="M8 5v3l2 2"/></svg></div>
+          <h3 class="leistung-title">Vorsorgeuntersuchungen</h3>
+          <p class="leistung-desc">Ärztliche Vorsorgeuntersuchungen über das GKV-Programm hinaus. Internistische Check-ups, Krebsfrüherkennungen, Sportlervorsorge. Erstattung 100 %.</p>
+        </div>
+        <div class="leistung-card reveal">
+          <div class="leistung-icon"><svg viewBox="0 0 16 16"><path d="M4 8h8M8 4l4 4-4 4"/></svg></div>
+          <h3 class="leistung-title">Ärztliche Behandlung</h3>
+          <p class="leistung-desc">Ärztliche Leistungen bis zum GOÄ-Höchstsatz. Auch Naturheilverfahren nach Hufeland-Verzeichnis. Freie Arztwahl. Erstattung 100 %.</p>
+        </div>
+        <div class="leistung-card reveal">
+          <div class="leistung-icon"><svg viewBox="0 0 16 16"><path d="M8 2l1.5 3 3.5.5-2.5 2.5.5 3.5L8 10l-3 1.5.5-3.5L3 5.5l3.5-.5z"/></svg></div>
+          <h3 class="leistung-title">Heilpraktiker</h3>
+          <p class="leistung-desc">Heilpraktikerleistungen nach GebüH. Osteopathie, Chirotherapie, Chiropraktik. Freie Wahl unter allen zugelassenen Heilpraktikern. Erstattung 100 %.</p>
+        </div>
+        <div class="leistung-card reveal">
+          <div class="leistung-icon"><svg viewBox="0 0 16 16"><path d="M2 12l4-4 3 3 5-7"/></svg></div>
+          <h3 class="leistung-title">Heilmittel</h3>
+          <p class="leistung-desc">Physiotherapie, Massagen, Ergotherapie, Logopädie, Podologie, Kinesio-Taping, Rehabilitationssport. Erstattung 100 %.</p>
+        </div>
+        <div class="leistung-card reveal">
+          <div class="leistung-icon"><svg viewBox="0 0 16 16"><rect x="3" y="2" width="10" height="13" rx="1.5"/><path d="M6 6h4M6 9h4"/></svg></div>
+          <h3 class="leistung-title">Hilfsmittel &amp; Arzneimittel</h3>
+          <p class="leistung-desc">Hilfsmittel nach HilfsmittelVerzeichnis. Zugelassene Arzneimittel aus der Apotheke inkl. nicht verschreibungspflichtiger Präparate bei ärztlicher Empfehlung. Erstattung 100 %.</p>
+        </div>
+        <div class="leistung-card reveal">
+          <div class="leistung-icon"><svg viewBox="0 0 16 16"><path d="M8 2C5 2 2 5 2 8s3 6 6 6 6-3 6-6-3-6-6-6z"/><path d="M5 8l2 2 4-4"/></svg></div>
+          <h3 class="leistung-title">Impfungen &amp; Gesundheitskurse</h3>
+          <p class="leistung-desc">Schutz- und Reiseimpfungen, Malaria-Prophylaxe. Zertifizierte Gesundheitskurse nach § 20 SGB V (Stressbewältigung, Suchtprävention, Bewegung). Erstattung 100 %.</p>
+        </div>
+        <div class="leistung-card reveal">
+          <div class="leistung-icon"><svg viewBox="0 0 16 16"><path d="M2 6h12v7a1 1 0 01-1 1H3a1 1 0 01-1-1V6z"/><path d="M2 6l6-3.5L14 6"/></svg></div>
+          <h3 class="leistung-title">GKV-Zuzahlungen</h3>
+          <p class="leistung-desc">Erstattung der gesetzlichen Zuzahlungen nach § 61 SGB V zu Arznei-, Verband-, Heil- und Hilfsmitteln. Erstattung 100 %.</p>
+        </div>
+        <div class="leistung-card reveal">
+          <div class="leistung-icon"><svg viewBox="0 0 16 16"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z"/><path d="M8 5v3l2.5 2.5"/></svg></div>
+          <h3 class="leistung-title">Auslandsleistungen</h3>
+          <p class="leistung-desc">Europa: volle Leistungen. Außereuropäische Länder bei vorübergehendem Aufenthalt bis 6 Monate. Erstattung ortsüblicher Kosten.</p>
+        </div>
+        <div class="leistung-card reveal">
+          <div class="leistung-icon"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="4"/><path d="M1 8h2M13 8h2M8 1v2M8 13v2"/></svg></div>
+          <h3 class="leistung-title">Innovationsgarantie</h3>
+          <p class="leistung-desc">Neue Untersuchungs- und Behandlungsmethoden, die künftig von der Schulmedizin anerkannt werden, sind automatisch mitversichert – ohne Vertragsänderung.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZAHN DETAIL -->
+  <section class="section" id="zahn">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Zahn im Detail</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">RundumZahn –<br><em>vier Stufen, ein Prinzip.</em></h2>
+      <p class="sect-intro reveal">Zahn kann im allgemeinen Budget laufen oder als gesonderter Zahntarif eingerichtet werden. Der gesonderte Zahntarif hat ein eigenes Budget – das allgemeine Budget wird durch Zahnleistungen nicht belastet. Prophylaxe ist in allen Zahntarifen immer 100 %.</p>
+      <div class="zahn-grid">
+        <div>
+          <div style="background: var(--paper-warm); border: 0.5px solid var(--border-ink); padding: 28px; margin-bottom: 16px;" class="reveal">
+            <div class="zahn-struktur-label">Immer 100 % – in allen Zahntarifen</div>
+            <h3 class="zahn-struktur-title">Regelversorgung &amp; Prophylaxe</h3>
+            <p class="zahn-struktur-desc">Zahnbehandlung nach Regelversorgung (§ 55 SGB V): 100 % abzüglich GKV-Vorleistung. Prophylaxe inkl. professioneller Zahnreinigung, Fissurenversiegelung, Fluoridierung: immer 100 %. Bleaching: 100 % bis 150 € in zwei aufeinanderfolgenden Kalenderjahren.</p>
+          </div>
+          <div style="background: var(--paper); border: 0.5px solid var(--border-ink); padding: 28px;" class="reveal">
+            <div class="zahn-struktur-label">Variabel je Stufe</div>
+            <h3 class="zahn-struktur-title">Was sich zwischen 70 und 100 unterscheidet</h3>
+            <p class="zahn-struktur-desc">Der Prozentsatz gilt für: Zahnersatz außerhalb Regelversorgung (Kronen, Brücken, Veneers, Inlays), Implantate inkl. Augmentation, Aufbissbehelfe und Schienen (Knirscherschienen), Kieferorthopädie bei Unfall oder schwerer Erkrankung. Bei Zahnersatz in Regelversorgung gilt immer 100 %.</p>
+          </div>
+        </div>
+        <div>
+          <div class="zahn-stufen reveal">
+            <div class="zahn-stufe">
+              <div class="zahn-prozent">70 %</div>
+              <div class="zahn-name">RundumZahn 70</div>
+              <ul class="zahn-list">
+                <li class="zahn-item">Implantate: 70 %</li>
+                <li class="zahn-item">Zahnersatz außerhalb Regelversorgung: 70 %</li>
+                <li class="zahn-item">Schienen: 70 %</li>
+                <li class="zahn-item">Prophylaxe: 100 %</li>
+              </ul>
+            </div>
+            <div class="zahn-stufe">
+              <div class="zahn-prozent">80 %</div>
+              <div class="zahn-name">RundumZahn 80</div>
+              <ul class="zahn-list">
+                <li class="zahn-item">Implantate: 80 %</li>
+                <li class="zahn-item">Zahnersatz außerhalb Regelversorgung: 80 %</li>
+                <li class="zahn-item">Schienen: 80 %</li>
+                <li class="zahn-item">Prophylaxe: 100 %</li>
+              </ul>
+            </div>
+            <div class="zahn-stufe best">
+              <div class="zahn-prozent">90 %</div>
+              <div class="zahn-name">RundumZahn 90</div>
+              <ul class="zahn-list">
+                <li class="zahn-item">Implantate: 90 %</li>
+                <li class="zahn-item">Zahnersatz außerhalb Regelversorgung: 90 %</li>
+                <li class="zahn-item">Schienen: 90 %</li>
+                <li class="zahn-item">Prophylaxe: 100 %</li>
+              </ul>
+            </div>
+            <div class="zahn-stufe">
+              <div class="zahn-prozent">100 %</div>
+              <div class="zahn-name">RundumZahn 100</div>
+              <ul class="zahn-list">
+                <li class="zahn-item">Implantate: 100 %</li>
+                <li class="zahn-item">Zahnersatz: 100 %</li>
+                <li class="zahn-item">Schienen: 100 %</li>
+                <li class="zahn-item">Prophylaxe: 100 %</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATIONÄR -->
+  <section class="section section-dark" id="stationaer">
+    <div class="inner">
+      <div class="stat-wrap">
+        <div>
+          <div class="sect-label reveal"><span>Optionaler Baustein</span></div>
+          <h2 class="sect-heading reveal" style="color: var(--paper);">Stationär –<br><em>jederzeit dazubuchbar.</em></h2>
+          <p class="reveal" style="font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.6); line-height: 1.8; margin-bottom: 32px;">Der stationäre Baustein (Tarif FKH02B) ist unabhängig von der Budget-Höhe und der Zielgruppe buchbar. Jeder Mitarbeiter – egal ob mit Budget 300 oder 1500 – kann den stationären Schutz dazubekommen.</p>
+          <div class="stat-box reveal">
+            <div class="stat-label">Tarif FKH02B · Allianz</div>
+            <h3 class="stat-title">Was der stationäre Baustein leistet</h3>
+            <p class="stat-desc">Im Krankenhaus als GKV-Versicherter wie ein Privatpatient behandelt werden. Chefarzt, Zweibettzimmer, Privatklinik – ohne aus der GKV austreten zu müssen.</p>
+            <ul class="stat-list">
+              <li class="stat-item">Chefarztbehandlung in Krankenhäusern mit staatlicher Förderung</li>
+              <li class="stat-item">Gesondert berechnungsfähiges Zweibettzimmer</li>
+              <li class="stat-item">Privatkliniken: 100 % bei Zweibettzimmer, 60 % bei Einbettzimmer</li>
+              <li class="stat-item">Telefonanschluss, Radio/TV-Miete, besondere Verpflegung</li>
+              <li class="stat-item">Ambulante Operationen inkl. Vor- und Nachuntersuchungen</li>
+              <li class="stat-item">Wunschverlegung in ein anderes Krankenhaus möglich</li>
+              <li class="stat-item">Auslandsschutz: Europa vollständig, außereuropäisch bis 6 Monate</li>
+            </ul>
+            <div class="stat-note">Alternativ zum Kostenersatz: Krankenhaus-Tagegeld bis 50 € täglich wählbar.</div>
+          </div>
+        </div>
+        <div class="reveal" style="padding-top: 8px;">
+          <p style="font-size: 14px; font-weight: 300; color: rgba(253,250,245,0.6); line-height: 1.8;">Der stationäre Baustein ist besonders für Mitarbeiter und Führungskräfte relevant, die im Ernstfall nicht auf die GKV-Standardversorgung angewiesen sein wollen. Chefarztbehandlung und Zweibettzimmer sind leistungsseitig der größte Unterschied zur gesetzlichen Krankenversicherung.</p>
+          <p style="font-size: 14px; font-weight: 300; color: rgba(253,250,245,0.6); line-height: 1.8; margin-top: 16px;">Ich empfehle den stationären Baustein vor allem für Führungskräfte, Geschäftsführer und Mitarbeiter in körperlich anspruchsvollen Berufen. Für Büromitarbeiter ist er sinnvoll aber nicht zwingend.</p>
+          <div style="margin-top: 24px; padding: 16px 18px; border-left: 2px solid var(--gold); background: rgba(200,146,42,0.1); font-size: 12px; font-weight: 300; color: var(--gold-light); line-height: 1.7;">
+            <strong style="font-weight: 500;">Hinweis:</strong> Stationäre Leistungen sind in der Regel eigene Leistungen des Versicherungsnehmers – nicht aus dem allgemeinen Budget.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUDGET-VERDOPPELUNG -->
+  <section class="section section-warm" id="verdoppelung">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Bonusmechanismus</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">Budget-Verdoppelung –<br><em>wer nicht abruft, bekommt mehr.</em></h2>
+      <p class="reveal" style="font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; max-width: 620px; margin-bottom: 32px;">Wer in einem Kalenderjahr keine Leistungen beantragt, bekommt im Folgejahr sein Budget verdoppelt. Das gilt für das allgemeine Budget und das Sehhilfe-Extrabudget gemeinsam.</p>
+      <div class="verdoppelung reveal">
+        <div>
+          <div class="verd-label">So funktioniert es</div>
+          <h3 class="verd-title">Voraussetzungen für die Verdoppelung</h3>
+          <p class="verd-desc">Mindestens ein volles Kalenderjahr in der Tarifserie meine:Gesundheit versichert und für das vorangegangene Kalenderjahr keine Versicherungsleistungen beantragt. Die Verdoppelung gilt einmalig für das direkte Folgejahr – nicht dauerhaft für alle weiteren Jahre.</p>
+        </div>
+        <div>
+          <div class="verd-label">Was zu beachten ist</div>
+          <ul class="verd-list">
+            <li class="verd-item pro">Budget 600 € wird nach Nicht-Nutzung zu 1.200 € im Folgejahr</li>
+            <li class="verd-item pro">Gilt für allgemeines Budget und Sehhilfe-Extrabudget zusammen</li>
+            <li class="verd-item pro">Sinnvoll für gesunde Mitarbeiter die selten Leistungen abrufen</li>
+            <li class="verd-item con">Werden nach Verdoppelung Leistungen beantragt, fällt die Verdoppelung zurück – rückwirkend zum Beginn der Verdoppelung</li>
+            <li class="verd-item con">Für Mitarbeiter mit regelmäßigem Leistungsabruf greift dieser Mechanismus nicht</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="sect-label reveal" style="justify-content: center;"><span>Jetzt konfigurieren</span></div>
+      <h2 class="cta-heading reveal">Die richtige Kombination<br><em>für Ihr Unternehmen.</em></h2>
+      <p class="cta-sub reveal">Im ersten Gespräch analysiere ich Ihre Mitarbeiterstruktur und empfehle die Kombination aus Budget, Sehhilfe, Zahn und Stationär, die steuerlich optimal und leistungsseitig passend ist.</p>
+      <a href="kontakt.html" class="btn-gold-lg reveal">Beratungsgespräch anfragen</a>
+      <span class="cta-note reveal">Erstes Gespräch kostenfrei · Danach transparentes Honorar</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Dennis <span>Klincov</span></div>
+        <p class="footer-tagline">BAV &amp; BKV Spezialist. Versicherungsmakler nach § 34d GewO. Honorarberatung für Geschäftsführer in Berlin.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Versorgung</h4>
+        <ul>
+          <li><a href="ggf-versorgung.html">GGF-Versorgung</a></li>
+          <li><a href="vorstandsversorgung.html">Vorstandsversorgung</a></li>
+          <li><a href="bav-mitarbeiter.html">BAV Mitarbeiter</a></li>
+          <li><a href="tantiemenmodell.html">Tantiemenmodell</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Absicherung &amp; Benefits</h4>
+        <ul>
+          <li><a href="bkv.html">BKV Übersicht</a></li>
+          <li><a href="allianz-meine-gesundheit.html">Allianz meine:Gesundheit</a></li>
+          <li><a href="bgm.html">BGM</a></li>
+          <li><a href="company-benefits.html">Company Benefits</a></li>
+          <li><a href="dao.html">D&amp;O</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Versicherer</h4>
+        <ul>
+          <li><a href="#">Allianz</a></li>
+          <li><a href="#">Württembergische</a></li>
+          <li><a href="#">LV 1871</a></li>
+          <li><a href="#">Hallesche</a></li>
+          <li><a href="#">Alte Leipziger</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 60); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.07 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

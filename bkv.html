@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Betriebliche Krankenversicherung – Dennis Klincov</title>
+  <meta name="description" content="Betriebliche Krankenversicherung für Geschäftsführer und Mitarbeiter. Steuerfreier Sachbezug, AG- und AN-finanziert, Leistungsbausteine und BKV vs. PKV. Honorarberatung Berlin.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C8922A; --gold-light: #E8B96A; --gold-pale: #F7EDD8; --gold-dark: #8A6010;
+      --ink: #1A1814; --ink-soft: #3D3830; --ink-muted: #7A7268;
+      --paper: #FDFAF5; --paper-warm: #F5EFE2;
+      --border: rgba(200,146,42,0.18); --border-ink: rgba(26,24,20,0.10);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 64px; height: 68px; display: flex; align-items: center; justify-content: space-between; background: rgba(253,250,245,0.93); backdrop-filter: blur(14px); border-bottom: 0.5px solid var(--border-ink); }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(26,24,20,0.06); }
+    .nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 400; color: var(--ink-muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { font-size: 12px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 10px 22px; background: var(--gold); color: #fff; border: none; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--gold-dark); }
+
+    /* HERO */
+    .hero { padding: 148px 80px 100px; background: var(--ink); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 55%; height: 100%; background: radial-gradient(ellipse at 75% 50%, rgba(200,146,42,0.08) 0%, transparent 65%); pointer-events: none; }
+    .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); display: block; }
+    .eyebrow span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .hero-title { font-family: var(--serif); font-size: clamp(40px, 4.5vw, 64px); font-weight: 500; line-height: 1.08; color: var(--paper); margin-bottom: 24px; }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-lead { font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.65); line-height: 1.8; margin-bottom: 36px; max-width: 460px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 32px; background: var(--gold); color: #fff; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .hero-cta:hover { background: var(--gold-dark); transform: translateY(-1px); }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(253,250,245,0.08); border: 0.5px solid rgba(253,250,245,0.1); }
+    .hero-stat { background: rgba(253,250,245,0.04); padding: 28px 24px; }
+    .hero-stat-num { font-family: var(--serif); font-size: 40px; font-weight: 500; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+    .hero-stat-label { font-size: 12px; font-weight: 300; color: rgba(253,250,245,0.5); line-height: 1.4; }
+
+    /* SECTIONS */
+    .section { padding: 112px 80px; }
+    .section-warm { background: var(--paper-warm); border-top: 0.5px solid var(--border-ink); border-bottom: 0.5px solid var(--border-ink); }
+    .section-dark { background: var(--ink); }
+    .inner { max-width: 1200px; margin: 0 auto; }
+    .sect-label { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .sect-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
+    .sect-label span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .sect-heading { font-family: var(--serif); font-size: clamp(30px, 3.5vw, 48px); font-weight: 500; line-height: 1.12; margin-bottom: 20px; }
+    .sect-heading em { font-style: italic; color: var(--gold); }
+    .sect-intro { font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; max-width: 620px; margin-bottom: 52px; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+    /* VORTEILE / NACHTEILE */
+    .vn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-top: 48px; }
+    .vn-card { background: var(--paper); padding: 36px 32px; }
+    .vn-card.v { border-top: 2px solid var(--gold); }
+    .vn-card.n { border-top: 2px solid var(--ink-muted); }
+    .vn-title { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 20px; }
+    .vn-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .vn-item { display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.55; }
+    .vn-item.pro::before { content: '+'; color: var(--gold); font-weight: 500; flex-shrink: 0; width: 12px; }
+    .vn-item.con::before { content: '!'; color: var(--ink-muted); font-weight: 500; flex-shrink: 0; width: 12px; }
+
+    /* AG / AN FINANZIERT */
+    .fin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); }
+    .fin-card { background: var(--paper); padding: 36px 32px; }
+    .fin-card.highlight { background: var(--paper-warm); border-top: 2px solid var(--gold); }
+    .fin-badge { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; padding: 4px 10px; margin-bottom: 14px; border: 0.5px solid var(--border); }
+    .fin-badge.ag { background: var(--gold-pale); color: var(--gold-dark); }
+    .fin-badge.an { background: var(--paper-warm); color: var(--ink-muted); }
+    .fin-title { font-family: var(--serif); font-size: 24px; font-weight: 500; color: var(--ink); margin-bottom: 16px; }
+    .fin-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .fin-item { display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.55; }
+    .fin-item::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+    .fin-note { margin-top: 18px; padding: 12px 14px; border-left: 2px solid var(--gold); background: var(--gold-pale); font-size: 12px; font-weight: 300; color: var(--gold-dark); line-height: 1.6; }
+
+    /* STEUER */
+    .steuer-blocks { display: flex; flex-direction: column; gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); }
+    .steuer-block { background: var(--paper); padding: 26px 30px; transition: background 0.2s; }
+    .steuer-block:hover { background: var(--paper-warm); }
+    .steuer-para { font-size: 11px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .steuer-title { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+    .steuer-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; }
+    .steuer-betrag { font-family: var(--serif); font-size: 32px; font-weight: 500; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+
+    /* BUDGET STUFEN */
+    .budget-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-top: 48px; }
+    .budget-card { background: var(--paper); padding: 28px 22px; }
+    .budget-card.highlight { background: var(--paper-warm); border-top: 2px solid var(--gold); }
+    .budget-amount { font-family: var(--serif); font-size: 36px; font-weight: 500; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+    .budget-label { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 14px; }
+    .budget-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .budget-item { display: flex; gap: 8px; font-size: 12px; font-weight: 300; color: var(--ink-soft); line-height: 1.5; }
+    .budget-item::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+
+    /* LEISTUNGSBAUSTEINE */
+    .leistungen-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(253,250,245,0.08); border: 0.5px solid rgba(253,250,245,0.1); }
+    .leistung-card { background: rgba(253,250,245,0.04); padding: 30px 26px; }
+    .leistung-icon { width: 36px; height: 36px; border: 0.5px solid rgba(200,146,42,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .leistung-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .leistung-title { font-family: var(--serif); font-size: 19px; font-weight: 500; color: var(--paper); margin-bottom: 8px; }
+    .leistung-desc { font-size: 12px; font-weight: 300; color: rgba(253,250,245,0.55); line-height: 1.7; }
+
+    /* BKV VS PKV */
+    .pkv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-top: 48px; }
+    .pkv-card { background: var(--paper-warm); padding: 32px 28px; }
+    .pkv-card.highlight { background: var(--paper); border-top: 2px solid var(--gold); }
+    .pkv-icon { width: 36px; height: 36px; border: 0.5px solid var(--border); background: var(--paper); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .pkv-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .pkv-title { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+    .pkv-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; }
+    .pkv-note { margin-top: 14px; padding: 10px 12px; border-left: 2px solid var(--gold); font-size: 12px; font-weight: 400; color: var(--gold-dark); background: var(--paper); line-height: 1.6; }
+
+    /* DISCLAIMER */
+    .disclaimer { padding: 16px 18px; border-left: 2px solid var(--gold); background: var(--gold-pale); font-size: 12px; font-weight: 300; color: var(--gold-dark); line-height: 1.7; margin-top: 40px; }
+    .disclaimer strong { font-weight: 500; }
+
+    /* CTA */
+    .cta-section { padding: 112px 80px; background: var(--ink); text-align: center; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(200,146,42,0.11) 0%, transparent 70%); pointer-events: none; }
+    .cta-inner { position: relative; max-width: 600px; margin: 0 auto; }
+    .cta-heading { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 500; color: var(--paper); line-height: 1.1; margin-bottom: 18px; }
+    .cta-heading em { font-style: italic; color: var(--gold); }
+    .cta-sub { font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.55); line-height: 1.75; margin-bottom: 44px; }
+    .btn-gold-lg { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 16px 44px; background: var(--gold); color: #fff; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s; }
+    .btn-gold-lg:hover { background: var(--gold-light); }
+    .cta-note { display: block; margin-top: 14px; font-size: 12px; color: rgba(253,250,245,0.3); }
+
+    /* FOOTER */
+    footer { background: var(--paper); border-top: 0.5px solid var(--border-ink); padding: 48px 80px 32px; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; max-width: 240px; }
+    .footer-col h4 { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 13px; font-weight: 300; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 20px; border-top: 0.5px solid var(--border-ink); display: flex; justify-content: flex-end; }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: var(--ink-muted); text-decoration: none; }
+    .footer-legal a:hover { color: var(--gold); }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.7s ease both; }
+    .delay-1 { animation-delay: 0.12s; }
+    .delay-2 { animation-delay: 0.24s; }
+    .delay-3 { animation-delay: 0.36s; }
+
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 120px 28px 72px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .section { padding: 72px 28px; }
+      .cta-section, footer { padding: 72px 28px; }
+      .two-col { grid-template-columns: 1fr; gap: 48px; }
+      .vn-grid, .fin-grid, .pkv-grid { grid-template-columns: 1fr; }
+      .budget-grid, .leistungen-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav">
+    <a href="index.html" class="nav-logo">Dennis <span>Klincov</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="ggf-versorgung.html">GGF-Versorgung</a></li>
+      <li><a href="company-benefits.html">Company Benefits</a></li>
+      <li><a href="ueber-mich.html">Über mich</a></li>
+    </ul>
+    <a href="kontakt.html" class="nav-cta">Termin anfragen</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow fade-up"><span>Betriebliche Krankenversicherung</span></div>
+        <h1 class="hero-title fade-up delay-1">Gesundheit als<br><em>steuerfreier</em><br>Mitarbeitervorteil.</h1>
+        <p class="hero-lead fade-up delay-2">Die betriebliche Krankenversicherung ist einer der attraktivsten Zusatzleistungen für Geschäftsführer und Mitarbeiter – steuerlich gefördert, einfach einzurichten und ein starkes Signal in der Mitarbeitergewinnung. Ich berate zur BKV für alle Unternehmensgrößen und Zielgruppen.</p>
+        <a href="kontakt.html" class="hero-cta fade-up delay-3">
+          BKV-Beratung anfragen
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <div class="fade-up delay-2">
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">50 €</div>
+            <div class="hero-stat-label">monatlich steuerfrei pro Mitarbeiter als Sachbezug (§ 8 Abs. 2 EStG)</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">600 €</div>
+            <div class="hero-stat-label">jährlich steuerfrei für Gesundheitsförderung (§ 3 Nr. 34 EStG)</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">§ 37b</div>
+            <div class="hero-stat-label">EStG – pauschale Versteuerung durch AG wenn Freigrenze ausgeschöpft</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">GKV+</div>
+            <div class="hero-stat-label">BKV ergänzt gesetzliche Krankenversicherung ohne PKV-Wechsel</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAS IST BKV -->
+  <section class="section" id="grundlagen">
+    <div class="inner">
+      <div class="two-col">
+        <div>
+          <div class="sect-label reveal"><span>Grundlagen</span></div>
+          <h2 class="sect-heading reveal" style="color: var(--ink);">Was ist die betriebliche<br><em>Krankenversicherung?</em></h2>
+          <p class="reveal" style="font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8;">Die betriebliche Krankenversicherung ist eine vom Arbeitgeber finanzierte oder mitfinanzierte Zusatzkrankenversicherung für Mitarbeiter. Sie ergänzt die gesetzliche Krankenversicherung und kann je nach Tarif Leistungen wie Zahnersatz, Sehhilfen, Chefarztbehandlung oder Heilpraktiker abdecken.</p>
+          <p class="reveal" style="font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; margin-top: 16px;">Im Gegensatz zur privaten Krankenversicherung ist kein Wechsel aus der GKV erforderlich – die BKV ergänzt den bestehenden Versicherungsschutz. Das macht sie für GKV-versicherte Arbeitnehmer besonders attraktiv.</p>
+        </div>
+        <div class="reveal" style="padding-top: 8px;">
+          <p style="font-size: 14px; font-weight: 300; color: var(--ink-muted); line-height: 1.8;">Der entscheidende Vorteil: Bis zu 50 € monatlich pro Mitarbeiter kann der Arbeitgeber steuer- und sozialabgabenfrei als Sachbezug leisten. Bei 10 Mitarbeitern sind das 6.000 € jährliche Netto-Leistung ohne einen Euro Lohnsteuer.</p>
+          <p style="font-size: 14px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; margin-top: 16px;">Für Geschäftsführer können deutlich höhere Budgets sinnvoll sein – dann kommen zusätzliche steuerliche Instrumente wie § 37b oder § 40 EStG zum Einsatz, die ich auf der Seite weiter unten erkläre.</p>
+        </div>
+      </div>
+      <div class="vn-grid">
+        <div class="vn-card v reveal">
+          <h3 class="vn-title">Vorteile der BKV</h3>
+          <ul class="vn-list">
+            <li class="vn-item pro">Steuer- und sozialabgabenfrei bis 50 € / Monat je Mitarbeiter</li>
+            <li class="vn-item pro">Kein PKV-Wechsel erforderlich – ergänzt die GKV</li>
+            <li class="vn-item pro">Kein Gesundheits-Check bei Gruppenverträgen ab 3 Personen</li>
+            <li class="vn-item pro">Starkes Recruiting- und Bindungsinstrument</li>
+            <li class="vn-item pro">Auch für GF als Einzelperson abschließbar</li>
+            <li class="vn-item pro">Kombinierbar mit BGM und Company Benefits</li>
+            <li class="vn-item pro">Beiträge als Betriebsausgabe abzugsfähig</li>
+          </ul>
+        </div>
+        <div class="vn-card n reveal">
+          <h3 class="vn-title">Was man wissen sollte</h3>
+          <ul class="vn-list">
+            <li class="vn-item con">Sachbezugsfreigrenze von 50 € / Monat ist eine Gesamtgrenze – alle Sachbezüge zusammen dürfen 50 € nicht überschreiten</li>
+            <li class="vn-item con">Wird die Freigrenze überschritten, ist der gesamte Betrag steuerpflichtig – nicht nur der Mehrbetrag</li>
+            <li class="vn-item con">Bei AN-finanzierter BKV keine steuerliche Förderung ohne weiteres</li>
+            <li class="vn-item con">Leistungsumfang abhängig von Tarif – nicht alle Leistungen sind in allen Tarifen enthalten</li>
+            <li class="vn-item con">Beim Ausscheiden des Mitarbeiters endet der Gruppenvertrag – Übernahme in Einzelvertrag meist möglich</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AG / AN FINANZIERT -->
+  <section class="section section-warm" id="finanzierung">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Finanzierungsmodelle</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">AG-finanziert oder<br><em>AN-finanziert?</em></h2>
+      <p class="sect-intro reveal">Beide Modelle sind möglich – mit unterschiedlichen steuerlichen Wirkungen. In der Praxis ist die AG-finanzierte BKV deutlich attraktiver, weil hier die Steuerfreiheit greift.</p>
+      <div class="fin-grid">
+        <div class="fin-card highlight reveal">
+          <div class="fin-badge ag">Empfohlen · AG-finanziert</div>
+          <h3 class="fin-title">Arbeitgeber zahlt den Beitrag</h3>
+          <ul class="fin-list">
+            <li class="fin-item">AG zahlt Prämie direkt an den Versicherer</li>
+            <li class="fin-item">Gilt als Sachbezug – bis 50 € / Monat steuer- und SV-frei</li>
+            <li class="fin-item">Beitrag ist Betriebsausgabe – AG spart Körperschaftsteuer</li>
+            <li class="fin-item">Für GKV-versicherte Mitarbeiter ohne Aufpreis oder Gesundheitsfragen (Gruppen)</li>
+            <li class="fin-item">Für GF auch als Einzelperson mit individuellem Budget möglich</li>
+            <li class="fin-item">Klares Signal an Mitarbeiter: AG investiert in Gesundheit</li>
+          </ul>
+          <div class="fin-note">Das ist das Standardmodell in der BKV-Beratung. Die steuerliche Förderung macht die AG-finanzierte BKV zum effizientesten Weg.</div>
+        </div>
+        <div class="fin-card reveal">
+          <div class="fin-badge an">AN-finanziert · Entgeltumwandlung</div>
+          <h3 class="fin-title">Arbeitnehmer zahlt den Beitrag</h3>
+          <ul class="fin-list">
+            <li class="fin-item">AN zahlt Prämie aus dem Nettolohn – keine steuerliche Förderung</li>
+            <li class="fin-item">Vorteil: AN genießt Gruppenkonditionen (kein Gesundheits-Check)</li>
+            <li class="fin-item">Günstigere Prämien als im Individualmarkt möglich</li>
+            <li class="fin-item">Sinnvoll wenn AG-Budget ausgeschöpft ist und AN mehr Leistung möchte</li>
+            <li class="fin-item">Kombination AG + AN möglich – AG zahlt Grundschutz, AN stockt auf</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEUERLICHE GRUNDLAGEN -->
+  <section class="section" id="steuer">
+    <div class="inner">
+      <div class="two-col">
+        <div>
+          <div class="sect-label reveal"><span>Steuerliche Grundlagen</span></div>
+          <h2 class="sect-heading reveal" style="color: var(--ink);">Was der Gesetzgeber<br><em>erlaubt – und wie.</em></h2>
+          <p class="reveal" style="font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; margin-bottom: 32px;">Die BKV hat mehrere steuerliche Grundlagen – je nach Budget und Zielgruppe kommt eine andere Regelung zum Einsatz. Wenn die klassische Sachbezugsfreigrenze ausgeschöpft ist, gibt es weitere legale Wege.</p>
+          <div class="disclaimer reveal">
+            <strong>Hinweis:</strong> Ich bin Versicherungsmakler, kein Steuerberater. Alle steuerlichen Angaben dienen der Orientierung. Die konkrete Ausgestaltung erfolgt immer in Abstimmung mit Ihrem Steuerberater.
+          </div>
+        </div>
+        <div class="steuer-blocks reveal">
+          <div class="steuer-block">
+            <div class="steuer-para">§ 8 Abs. 2 EStG</div>
+            <div class="steuer-betrag">50 €</div>
+            <h3 class="steuer-title">Sachbezugsfreigrenze</h3>
+            <p class="steuer-desc">Der Klassiker. Bis 50 € monatlich pro Mitarbeiter sind Sachleistungen steuer- und sozialversicherungsfrei. Wichtig: Die 50 € sind eine Gesamtgrenze für alle Sachbezüge – Tankgutschein, Essenszuschuss und BKV-Prämie zusammen dürfen 50 € nicht übersteigen.</p>
+          </div>
+          <div class="steuer-block">
+            <div class="steuer-para">§ 3 Nr. 34 EStG</div>
+            <div class="steuer-betrag">600 €</div>
+            <h3 class="steuer-title">Gesundheitsförderung</h3>
+            <p class="steuer-desc">Zusätzlich zur Sachbezugsfreigrenze können bis zu 600 € jährlich für zertifizierte Gesundheitsmaßnahmen steuerfrei geleistet werden. Bestimmte BKV-Tarife oder einzelne Gesundheitsleistungen können hierunter fallen – vorausgesetzt sie erfüllen die Anforderungen des §20 SGB V.</p>
+          </div>
+          <div class="steuer-block">
+            <div class="steuer-para">§ 37b EStG</div>
+            <div class="steuer-betrag">25 %</div>
+            <h3 class="steuer-title">Pauschalversteuerung durch den AG</h3>
+            <p class="steuer-desc">Wenn die Sachbezugsfreigrenze ausgeschöpft ist, kann der Arbeitgeber die BKV-Prämie pauschal mit 25 % Lohnsteuer versteuern – ohne Anrechnung auf den persönlichen Steuersatz des Arbeitnehmers. Der AN bekommt die Leistung netto, der AG trägt die Steuer. Gilt pro Empfänger bis 10.000 € jährlich.</p>
+          </div>
+          <div class="steuer-block">
+            <div class="steuer-para">§ 40 Abs. 2 EStG</div>
+            <div class="steuer-betrag">15 – 25 %</div>
+            <h3 class="steuer-title">Weitere Pauschalierungsmöglichkeiten</h3>
+            <p class="steuer-desc">§ 40 EStG bietet weitere Möglichkeiten zur Pauschalversteuerung bestimmter Arbeitgeberleistungen – etwa für Erholungsbeihilfen oder Fahrtkostenzuschüsse. In Kombination mit der BKV kann so ein umfassendes Leistungspaket steuerlich optimiert werden. Die konkrete Anwendung erfordert steuerliche Beratung.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUDGET STUFEN -->
+  <section class="section section-warm" id="budget">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Budgetstufen</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">Was welches Budget<br><em>konkret leistet.</em></h2>
+      <p class="sect-intro reveal">Je nach Zielgruppe und Unternehmensbudget empfehle ich unterschiedliche Budgetstufen. Die Leistungen steigen mit dem Budget – der steuerfreie Grundbaustein bleibt aber immer gleich.</p>
+      <div class="budget-grid">
+        <div class="budget-card reveal">
+          <div class="budget-amount">300 €</div>
+          <div class="budget-label">/ Monat · Einstieg</div>
+          <ul class="budget-list">
+            <li class="budget-item">Zahnzusatz Basis (50–70 % Erstattung)</li>
+            <li class="budget-item">Sehhilfe bis ca. 150 € / Jahr</li>
+            <li class="budget-item">Vorsorgeuntersuchungen</li>
+            <li class="budget-item">Geeignet für Gruppenverträge Mitarbeiter</li>
+          </ul>
+        </div>
+        <div class="budget-card highlight reveal">
+          <div class="budget-amount">600 €</div>
+          <div class="budget-label">/ Monat · Standard</div>
+          <ul class="budget-list">
+            <li class="budget-item">Zahnzusatz bis 80 % Erstattung</li>
+            <li class="budget-item">Sehhilfe bis 300 € / Jahr</li>
+            <li class="budget-item">Stationäre Zusatzleistungen (2-Bett-Zimmer, meist eigene Leistung)</li>
+            <li class="budget-item">Heilpraktiker und alternative Medizin</li>
+            <li class="budget-item">Empfohlen für Führungskräfte</li>
+          </ul>
+        </div>
+        <div class="budget-card highlight reveal">
+          <div class="budget-amount">1.000 €</div>
+          <div class="budget-label">/ Monat · Premium</div>
+          <ul class="budget-list">
+            <li class="budget-item">Zahnzusatz bis 90 % Erstattung inkl. Implantate</li>
+            <li class="budget-item">Sehhilfe bis 500 € / Jahr</li>
+            <li class="budget-item">Chefarztbehandlung stationär (eigene Leistung)</li>
+            <li class="budget-item">Auslandsreisekrankenversicherung</li>
+            <li class="budget-item">Empfohlen für GF und GGF</li>
+          </ul>
+        </div>
+        <div class="budget-card reveal">
+          <div class="budget-amount">1.500 €</div>
+          <div class="budget-label">/ Monat · Exklusiv</div>
+          <ul class="budget-list">
+            <li class="budget-item">Volle Zahnleistungen inkl. Kieferorthopädie</li>
+            <li class="budget-item">Sehhilfe ohne Limit</li>
+            <li class="budget-item">Einbettzimmer und Privatarzt stationär (eigene Leistung)</li>
+            <li class="budget-item">Kurleistungen und Rehabilitation</li>
+            <li class="budget-item">Für Vorstände und Geschäftsführer mit Premium-Anforderungen</li>
+          </ul>
+        </div>
+      </div>
+      <div class="disclaimer reveal">
+        <strong>Hinweis:</strong> Budgets ab 50 € / Monat, die die Sachbezugsfreigrenze übersteigen, können über § 37b EStG pauschal versteuert werden. Die konkrete steuerliche Einbettung wird mit Ihrem Steuerberater abgestimmt.
+      </div>
+    </div>
+  </section>
+
+  <!-- LEISTUNGSBAUSTEINE -->
+  <section class="section section-dark" id="leistungen">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Leistungsbausteine</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--paper);">Was eine BKV<br><em>abdecken kann.</em></h2>
+      <p class="reveal" style="font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.6); line-height: 1.8; max-width: 620px; margin-bottom: 52px;">Nicht jede BKV leistet das Gleiche. Die Bausteine variieren je nach Tarif und Anbieter. Ich empfehle die Allianz meine:Gesundheit als Haupttarif – ergänzt durch Hallesche und Alte Leipziger je nach Anforderung.</p>
+      <div class="leistungen-grid">
+        <div class="leistung-card reveal">
+          <div class="leistung-icon"><svg viewBox="0 0 16 16"><path d="M8 2C5 2 2 5 2 8s3 6 6 6 6-3 6-6-3-6-6-6z"/><path d="M5.5 8l1.5 1.5L10.5 6"/></svg></div>
+          <h3 class="leistung-title">Zahnzusatz</h3>
+          <p class="leistung-desc">Erstattung von Zahnersatz, Füllungen und Implantaten über den gesetzlichen Festzuschuss hinaus. Je nach Tarif 50–100 % Erstattung. Eines der meistgenutzten Leistungsmerkmale.</p>
+        </div>
+        <div class="leistung-card reveal">
+          <div class="leistung-icon"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="4"/><path d="M1 8h2M13 8h2M8 1v2M8 13v2"/></svg></div>
+          <h3 class="leistung-title">Sehhilfe</h3>
+          <p class="leistung-desc">Zuschuss zu Brillen und Kontaktlinsen. Gesetzliche Kassen erstatten meist nichts – die BKV schließt diese Lücke. Budgets von 150 bis unbegrenzt je nach Tarif.</p>
+        </div>
+        <div class="leistung-card reveal">
+          <div class="leistung-icon"><svg viewBox="0 0 16 16"><rect x="2" y="4" width="12" height="10" rx="1.5"/><path d="M5 4V3a1 1 0 012 0v1M9 4V3a1 1 0 012 0v1"/></svg></div>
+          <h3 class="leistung-title">Stationäre Zusatzleistungen</h3>
+          <p class="leistung-desc">Chefarztbehandlung, Ein- oder Zweibettzimmer im Krankenhaus (in der Regel eigene Leistung des Versicherungsnehmers). Besonders relevant für Führungskräfte – schnellere Behandlung, bessere Unterbringung.</p>
+        </div>
+        <div class="leistung-card reveal">
+          <div class="leistung-icon"><svg viewBox="0 0 16 16"><path d="M8 2l1.5 3 3.5.5-2.5 2.5.5 3.5L8 10l-3 1.5.5-3.5L3 5.5l3.5-.5z"/></svg></div>
+          <h3 class="leistung-title">Heilpraktiker &amp; alternative Medizin</h3>
+          <p class="leistung-desc">Erstattung von Heilpraktikerleistungen, Osteopathie, Akupunktur und anderen alternativen Behandlungen. Von der GKV grundsätzlich nicht abgedeckt.</p>
+        </div>
+        <div class="leistung-card reveal">
+          <div class="leistung-icon"><svg viewBox="0 0 16 16"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z"/><path d="M8 5v3l2 2"/></svg></div>
+          <h3 class="leistung-title">Vorsorgeuntersuchungen</h3>
+          <p class="leistung-desc">Erweiterte Gesundheitschecks und Präventionsuntersuchungen über das GKV-Programm hinaus. Kombinierbar mit BGM-Maßnahmen nach § 3 Nr. 34 EStG.</p>
+        </div>
+        <div class="leistung-card reveal">
+          <div class="leistung-icon"><svg viewBox="0 0 16 16"><path d="M2 8C2 4.7 4.7 2 8 2s6 2.7 6 6-2.7 6-6 6-6-2.7-6-6z"/><path d="M5 8l2 2 4-4"/></svg></div>
+          <h3 class="leistung-title">Auslands-Krankenschutz</h3>
+          <p class="leistung-desc">Weltweiter Krankenversicherungsschutz auf Privatpatienten-Niveau. Besonders relevant für Geschäftsführer mit regelmäßigen Auslandsreisen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- WAHLTARIF VS BUDGETTARIF -->
+  <section class="section section-warm" id="wahltarif">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Tarifmodelle</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">Budget-BKV oder<br><em>Wahltarif – was passt?</em></h2>
+      <p class="sect-intro reveal">Es gibt zwei grundlegende Tarifmodelle in der BKV. Beide sind zulässig – aber in Transparenz, Planbarkeit und Eignung für Arbeitgeber und Arbeitnehmer unterscheiden sie sich erheblich.</p>
+      <div class="fin-grid">
+        <div class="fin-card highlight reveal">
+          <div class="fin-badge ag">Empfohlen · Budget-BKV</div>
+          <h3 class="fin-title">Budget-Tarif</h3>
+          <p style="font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; margin-bottom: 16px;">Der Arbeitgeber stellt dem Mitarbeiter ein festes monatliches Budget zur Verfügung – z.B. 50 €. Der Mitarbeiter entscheidet selbst, welche Leistungen er aus diesem Budget abruft: Zahn, Sehhilfe, Heilpraktiker oder anderes. Das Budget ist flexibel einsetzbar, leicht verständlich und klar kalkulierbar.</p>
+          <ul class="fin-list">
+            <li class="fin-item">Festes monatliches Budget – volle Kostenkontrolle für den AG</li>
+            <li class="fin-item">Mitarbeiter entscheidet selbst über Leistungsabruf</li>
+            <li class="fin-item">Transparent und einfach zu kommunizieren</li>
+            <li class="fin-item">Kaum Überraschungen in der Abrechnung</li>
+            <li class="fin-item">Verständlicher für Arbeitnehmer – "Du hast 50 € im Monat"</li>
+            <li class="fin-item">Steuerlich klar als Sachbezug einzuordnen</li>
+          </ul>
+          <div class="fin-note">Empfehlung für die meisten Unternehmen. Einfach, fair, planbar – und der Arbeitnehmer versteht sofort, was er hat.</div>
+        </div>
+        <div class="fin-card reveal">
+          <div class="fin-badge an">Alternativ · Wahltarif</div>
+          <h3 class="fin-title">Wahltarif</h3>
+          <p style="font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; margin-bottom: 16px;">Der Wahltarif ähnelt einer klassischen Zusatzkrankenversicherung: Für definierten Leistungsumfang wird eine feste Prämie vereinbart. Der Mitarbeiter hat im Leistungsfall Anspruch auf die versicherten Leistungen – ohne Budgetdenken, aber auch ohne Flexibilität beim Abruf.</p>
+          <ul class="fin-list">
+            <li class="fin-item">Definierter Leistungskatalog statt flexiblem Budget</li>
+            <li class="fin-item">Ähnelt der PKV – feste Leistungsversprechen je Tarif</li>
+            <li class="fin-item">Prämie kann je nach Inanspruchnahme schwanken</li>
+            <li class="fin-item">Für den Arbeitgeber schwerer kalkulierbar</li>
+            <li class="fin-item">Für den Arbeitnehmer schwerer verständlich – komplexer Leistungskatalog</li>
+            <li class="fin-item">Kann bei spezifischen Anforderungen sinnvoll sein</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BKV VS PKV -->
+  <section class="section" id="bkv-pkv">
+    <div class="inner">
+      <div class="sect-label reveal"><span>BKV vs. PKV</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">BKV und PKV –<br><em>kein Entweder-oder.</em></h2>
+      <p class="sect-intro reveal">Die BKV ist keine Konkurrenz zur PKV – sie ergänzt sie. Für GKV-Versicherte schließt sie Lücken ohne PKV-Wechsel. Für PKV-Versicherte kann sie sinnlos sein – oder einen gezielten Mehrwert bieten. Das hängt vom individuellen Tarif ab.</p>
+      <div class="pkv-grid">
+        <div class="pkv-card highlight reveal">
+          <div class="pkv-icon"><svg viewBox="0 0 16 16"><path d="M8 2C5 2 2 5 2 8s3 6 6 6 6-3 6-6-3-6-6-6z"/><path d="M5 8l2 2 4-4"/></svg></div>
+          <h3 class="pkv-title">GKV-Versicherte + BKV</h3>
+          <p class="pkv-desc">Der häufigste und sinnvollste Fall. Die BKV ergänzt die GKV gezielt in den Bereichen, die gesetzlich nicht oder nur rudimentär abgedeckt sind – Zahn, Sehhilfe, Chefarzt. Kein PKV-Wechsel, keine Gesundheitsfragen beim Gruppenvertrag.</p>
+          <div class="pkv-note">Empfehlung: AG-finanzierte BKV als Paketlösung für alle GKV-versicherten Mitarbeiter – einheitlich, einfach, steuerlich optimiert.</div>
+        </div>
+        <div class="pkv-card reveal">
+          <div class="pkv-icon"><svg viewBox="0 0 16 16"><path d="M8 2C5 2 2 5 2 8s3 6 6 6 6-3 6-6-3-6-6-6z"/><path d="M8 5v4M8 11v1"/></svg></div>
+          <h3 class="pkv-title">PKV-Versicherte + BKV</h3>
+          <p class="pkv-desc">PKV-Versicherte haben oft bereits umfangreichen Schutz. Eine BKV ist hier nur sinnvoll, wenn sie Leistungen abdeckt, die der individuelle PKV-Tarif nicht enthält. Ein häufig übersehener Anwendungsfall: PKV-Tarife mit hohem Selbstbehalt. Wer z.B. 2.000 € jährlichen Selbstbehalt vereinbart hat, profitiert erheblich von einer BKV – er nutzt das BKV-Budget für laufende Kosten und schont seinen PKV-Selbstbehalt für den wirklichen Leistungsfall. Dadurch schlägt die BKV doppelt an: mehr Leistung, weniger SB-Verbrauch.</p>
+          <div class="pkv-note">Ich empfehle PKV nur auf ausdrücklichen Wunsch – und prüfe vorher ob eine BKV im konkreten PKV-Tarif einen Mehrwert bringt. Bei hohem Selbstbehalt fast immer der Fall.</div>
+        </div>
+        <div class="pkv-card reveal">
+          <div class="pkv-icon"><svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></div>
+          <h3 class="pkv-title">BKV + BGM als Gesamtpaket</h3>
+          <p class="pkv-desc">BKV und Betriebliches Gesundheitsmanagement greifen ineinander. Die BKV deckt den Versicherungsschutz ab – das BGM die präventiven Maßnahmen. Beide zusammen ergeben eine kohärente Gesundheitsstrategie für das Unternehmen.</p>
+          <div class="pkv-note">Ich konzipiere BKV und BGM gemeinsam – aus einer Hand, steuerlich abgestimmt und ohne Doppelstrukturen. <a href="bgm.html" style="color: var(--gold-dark); text-decoration: underline;">Zur BGM-Seite →</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="sect-label reveal" style="justify-content: center;"><span>Jetzt starten</span></div>
+      <h2 class="cta-heading reveal">BKV –<br><em>für wen, wie viel, wie.</em></h2>
+      <p class="cta-sub reveal">Im ersten Gespräch analysiere ich Ihre Mitarbeiterstruktur, das vorhandene Budget und die steuerliche Situation – und empfehle die BKV-Lösung, die wirklich passt.</p>
+      <a href="kontakt.html" class="btn-gold-lg reveal">Erstgespräch anfragen</a>
+      <span class="cta-note reveal">Erstes Gespräch kostenfrei · Danach transparentes Honorar</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Dennis <span>Klincov</span></div>
+        <p class="footer-tagline">BAV &amp; BKV Spezialist. Versicherungsmakler nach § 34d GewO. Honorarberatung für Geschäftsführer in Berlin.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Versorgung</h4>
+        <ul>
+          <li><a href="ggf-versorgung.html">GGF-Versorgung</a></li>
+          <li><a href="vorstandsversorgung.html">Vorstandsversorgung</a></li>
+          <li><a href="bav-mitarbeiter.html">BAV Mitarbeiter</a></li>
+          <li><a href="tantiemenmodell.html">Tantiemenmodell</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Absicherung &amp; Benefits</h4>
+        <ul>
+          <li><a href="bkv.html">BKV</a></li>
+          <li><a href="#">BGM</a></li>
+          <li><a href="company-benefits.html">Company Benefits</a></li>
+          <li><a href="dao.html">D&amp;O</a></li>
+          <li><a href="cyber.html">Cyber</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Versicherer</h4>
+        <ul>
+          <li><a href="#">Allianz</a></li>
+          <li><a href="#">Württembergische</a></li>
+          <li><a href="#">LV 1871</a></li>
+          <li><a href="#">Hallesche</a></li>
+          <li><a href="#">Alte Leipziger</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 60); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.07 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

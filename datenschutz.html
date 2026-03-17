@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutzerklärung – Dennis Klincov</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C8922A; --gold-light: #E8B96A; --gold-pale: #F7EDD8; --gold-dark: #8A6010;
+      --ink: #1A1814; --ink-soft: #3D3830; --ink-muted: #7A7268;
+      --paper: #FDFAF5; --paper-warm: #F5EFE2;
+      --border-ink: rgba(26,24,20,0.10);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 64px; height: 68px; display: flex; align-items: center; justify-content: space-between; background: rgba(253,250,245,0.93); backdrop-filter: blur(14px); border-bottom: 0.5px solid var(--border-ink); }
+    .nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-back { font-size: 13px; font-weight: 400; color: var(--ink-muted); text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
+    .nav-back:hover { color: var(--gold); }
+
+    .page-hero { padding: 140px 80px 72px; border-bottom: 0.5px solid var(--border-ink); }
+    .page-hero .inner { max-width: 800px; margin: 0 auto; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
+    .eyebrow span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .page-title { font-family: var(--serif); font-size: clamp(40px, 5vw, 60px); font-weight: 500; color: var(--ink); line-height: 1.1; margin-bottom: 16px; }
+    .page-subtitle { font-size: 13px; font-weight: 300; color: var(--ink-muted); }
+
+    .toc { padding: 40px 80px; background: var(--paper-warm); border-bottom: 0.5px solid var(--border-ink); }
+    .toc .inner { max-width: 800px; margin: 0 auto; }
+    .toc-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .toc-links { display: flex; flex-wrap: wrap; gap: 8px; }
+    .toc-link { font-size: 12px; font-weight: 300; color: var(--ink-muted); text-decoration: none; padding: 5px 12px; border: 0.5px solid var(--border-ink); background: var(--paper); transition: color 0.2s, border-color 0.2s; }
+    .toc-link:hover { color: var(--gold); border-color: rgba(200,146,42,0.3); }
+
+    .content { padding: 72px 80px 120px; }
+    .content .inner { max-width: 800px; margin: 0 auto; }
+
+    .ds-block { margin-bottom: 52px; padding-bottom: 52px; border-bottom: 0.5px solid var(--border-ink); scroll-margin-top: 100px; }
+    .ds-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .ds-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+    .ds-label::before { content: ''; width: 20px; height: 1px; background: var(--gold); display: block; }
+
+    .ds-heading { font-family: var(--serif); font-size: 26px; font-weight: 500; color: var(--ink); margin-bottom: 20px; line-height: 1.2; }
+    .ds-subheading { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--ink); margin: 28px 0 12px; line-height: 1.2; }
+
+    .ds-body { font-size: 14px; font-weight: 300; color: var(--ink-soft); line-height: 1.85; }
+    .ds-body p { margin-bottom: 12px; }
+    .ds-body p:last-child { margin-bottom: 0; }
+    .ds-body a { color: var(--gold); text-decoration: none; }
+    .ds-body a:hover { text-decoration: underline; }
+    .ds-body ul { margin: 12px 0 12px 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .ds-body ul li { display: flex; gap: 10px; }
+    .ds-body ul li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+
+    .ds-data { display: grid; grid-template-columns: 180px 1fr; gap: 10px 24px; font-size: 14px; margin-bottom: 20px; }
+    .ds-data dt { font-weight: 400; color: var(--ink-muted); padding-top: 1px; }
+    .ds-data dd { font-weight: 300; color: var(--ink-soft); line-height: 1.6; }
+    .ds-data dd a { color: var(--gold); text-decoration: none; }
+
+    .ds-note { margin-top: 20px; padding: 14px 16px; border-left: 2px solid var(--gold); background: var(--gold-pale); font-size: 13px; font-weight: 300; color: var(--gold-dark); line-height: 1.7; }
+
+    footer { background: var(--paper); border-top: 0.5px solid var(--border-ink); padding: 32px 80px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--ink); text-decoration: none; }
+    .footer-logo span { color: var(--gold); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: var(--ink-muted); text-decoration: none; }
+    .footer-legal a:hover { color: var(--gold); }
+    .footer-legal a.active { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .page-hero, .toc, .content { padding-left: 28px; padding-right: 28px; }
+      footer { padding: 28px; flex-direction: column; gap: 16px; }
+      .ds-data { grid-template-columns: 1fr; gap: 4px 0; }
+      .ds-data dt { font-size: 12px; color: var(--ink-muted); margin-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Dennis <span>Klincov</span></a>
+        <ul class="nav-links">
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="ggf-versorgung.html">GGF-Versorgung</a></li>
+      <li><a href="company-benefits.html">Company Benefits</a></li>
+      <li><a href="ueber-mich.html">Über mich</a></li>
+    </ul>
+    <a href="kontakt.html" class="nav-cta">Termin anfragen</a>
+  </nav>
+
+  <div class="page-hero">
+    <div class="inner">
+      <div class="eyebrow"><span>Rechtliches</span></div>
+      <h1 class="page-title">Datenschutzerklärung</h1>
+      <p class="page-subtitle">Stand: März 2026 · Verantwortlicher: Dennis Klincov</p>
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="inner">
+      <div class="toc-label">Inhalt</div>
+      <div class="toc-links">
+        <a href="#verantwortlicher" class="toc-link">Verantwortlicher</a>
+        <a href="#grundsaetze" class="toc-link">Grundsätze</a>
+        <a href="#erhebung" class="toc-link">Datenerhebung</a>
+        <a href="#kontaktformular" class="toc-link">Kontaktformular</a>
+        <a href="#hosting" class="toc-link">Hosting</a>
+        <a href="#rechte" class="toc-link">Ihre Rechte</a>
+        <a href="#sicherheit" class="toc-link">Datensicherheit</a>
+        <a href="#aenderungen" class="toc-link">Änderungen</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="inner">
+
+      <!-- VERANTWORTLICHER -->
+      <div class="ds-block" id="verantwortlicher">
+        <div class="ds-label">Art. 13 DSGVO</div>
+        <h2 class="ds-heading">Verantwortlicher</h2>
+        <dl class="ds-data">
+          <dt>Name</dt>
+          <dd>Dennis Klincov</dd>
+          <dt>Anschrift</dt>
+          <dd>Friedenauer Höhe 15a<br>12159 Berlin</dd>
+          <dt>E-Mail</dt>
+          <dd><a href="/cdn-cgi/l/email-protection#7b161a12173b1f1e15151208561017121518140d55181416"><span class="__cf_email__" data-cfemail="1c717d75705c78797272756f31777075727f736a327f7371">[email&#160;protected]</span></a></dd>
+        </dl>
+        <div class="ds-body" style="margin-top: 20px;">
+          <p>Der Verantwortliche im Sinne der Datenschutz-Grundverordnung (DSGVO) und anderer nationaler Datenschutzgesetze der Mitgliedsstaaten sowie sonstiger datenschutzrechtlicher Bestimmungen ist die oben genannte Person.</p>
+        </div>
+      </div>
+
+      <!-- GRUNDSÄTZE -->
+      <div class="ds-block" id="grundsaetze">
+        <div class="ds-label">Allgemeines</div>
+        <h2 class="ds-heading">Grundsätze der Datenverarbeitung</h2>
+        <div class="ds-body">
+          <p>Der Schutz Ihrer personenbezogenen Daten ist mir ein wichtiges Anliegen. Ich verarbeite Ihre Daten ausschließlich auf Grundlage der gesetzlichen Bestimmungen, insbesondere der DSGVO und des Bundesdatenschutzgesetzes (BDSG).</p>
+          <p>Diese Datenschutzerklärung informiert Sie darüber, welche personenbezogenen Daten auf dieser Website erhoben werden, zu welchem Zweck und auf welcher Rechtsgrundlage sie verarbeitet werden und welche Rechte Ihnen zustehen.</p>
+          <p>Diese Website verwendet keine Tracking-Tools, keine Analyse-Software (wie Google Analytics) und keine Cookies, die einer Einwilligung bedürfen. Es werden ausschließlich technisch notwendige Prozesse genutzt.</p>
+        </div>
+        <div class="ds-note">
+          Diese Website setzt keine Marketing- oder Analyse-Cookies ein. Ein Cookie-Banner ist daher nicht erforderlich.
+        </div>
+      </div>
+
+      <!-- DATENERHEBUNG -->
+      <div class="ds-block" id="erhebung">
+        <div class="ds-label">Datenerhebung</div>
+        <h2 class="ds-heading">Welche Daten werden erhoben?</h2>
+        <div class="ds-body">
+          <h3 class="ds-subheading">Beim Besuch der Website</h3>
+          <p>Beim Aufrufen dieser Website werden durch den Hosting-Anbieter automatisch Informationen in sogenannten Server-Logfiles gespeichert, die Ihr Browser übermittelt. Dies sind:</p>
+          <ul>
+            <li>Browsertyp und Browserversion</li>
+            <li>Verwendetes Betriebssystem</li>
+            <li>Referrer-URL (zuvor besuchte Seite)</li>
+            <li>Hostname des zugreifenden Rechners</li>
+            <li>Uhrzeit der Serveranfrage</li>
+            <li>IP-Adresse (anonymisiert)</li>
+          </ul>
+          <p>Diese Daten werden nicht mit anderen Datenquellen zusammengeführt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem technisch fehlerfreien Betrieb der Website).</p>
+
+          <h3 class="ds-subheading">Beim Kontakt per E-Mail</h3>
+          <p>Wenn Sie mir per E-Mail eine Nachricht senden, werden Ihre Angaben (E-Mail-Adresse, Name, Inhalt der Nachricht) zum Zweck der Bearbeitung Ihrer Anfrage und für den Fall von Anschlussfragen bei mir gespeichert. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung eines Vertragsverhältnisses) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).</p>
+          <p>Eine Weitergabe dieser Daten an Dritte findet nicht statt, sofern keine gesetzliche Verpflichtung besteht oder Sie ausdrücklich eingewilligt haben.</p>
+        </div>
+      </div>
+
+      <!-- KONTAKTFORMULAR -->
+      <div class="ds-block" id="kontaktformular">
+        <div class="ds-label">Kontaktformular</div>
+        <h2 class="ds-heading">Kontaktformular & E-Mail-Versand</h2>
+        <div class="ds-body">
+          <p>Das Kontaktformular auf dieser Website nutzt den Dienst <strong>Resend</strong> (Resend Inc., 2261 Market Street #4290, San Francisco, CA 94114, USA) für den technischen E-Mail-Versand.</p>
+          <p>Beim Absenden des Formulars werden die von Ihnen eingegebenen Daten (Name, E-Mail-Adresse, Nachricht) über die Server von Resend übertragen und an meine E-Mail-Adresse weitergeleitet. Resend speichert dabei technisch notwendige Metadaten zum Versandvorgang.</p>
+          <p>Resend ist unter dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen zum Datenschutz bei Resend finden Sie unter <a href="https://resend.com/privacy-policy" target="_blank" rel="noopener">resend.com/privacy-policy</a>.</p>
+          <p>Rechtsgrundlage für die Verarbeitung ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung vorvertraglicher Maßnahmen) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem funktionierenden Kontaktweg).</p>
+          <p>Die übermittelten Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht für Marketingzwecke genutzt.</p>
+        </div>
+      </div>
+
+      <!-- HOSTING -->
+      <div class="ds-block" id="hosting">
+        <div class="ds-label">Technischer Betrieb</div>
+        <h2 class="ds-heading">Hosting</h2>
+        <div class="ds-body">
+          <p>Diese Website wird bei einem externen Hosting-Anbieter betrieben. Personenbezogene Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Der Hosting-Anbieter verarbeitet diese Daten ausschließlich in meinem Auftrag auf Grundlage eines Auftragsverarbeitungsvertrags gemäß Art. 28 DSGVO.</p>
+          <p>Rechtsgrundlage für die Verarbeitung ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem zuverlässigen Betrieb dieser Website).</p>
+        </div>
+      </div>
+
+      <!-- RECHTE DER BETROFFENEN -->
+      <div class="ds-block" id="rechte">
+        <div class="ds-label">DSGVO</div>
+        <h2 class="ds-heading">Ihre Rechte</h2>
+        <div class="ds-body">
+          <p>Sie haben gegenüber mir folgende Rechte hinsichtlich der Sie betreffenden personenbezogenen Daten:</p>
+          <ul>
+            <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
+            <li>Recht auf Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
+            <li>Recht auf Löschung (Art. 17 DSGVO)</li>
+            <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+            <li>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
+            <li>Recht auf Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+            <li>Recht auf Widerruf einer erteilten Einwilligung (Art. 7 Abs. 3 DSGVO)</li>
+          </ul>
+          <p>Zur Ausübung Ihrer Rechte wenden Sie sich bitte per E-Mail an: <a href="/cdn-cgi/l/email-protection#375a565e5b77535259595e441a5c5b5e595458411954585a"><span class="__cf_email__" data-cfemail="7a171b13163a1e1f14141309571116131419150c54191517">[email&#160;protected]</span></a>.</p>
+
+          <h3 class="ds-subheading">Beschwerderecht bei der Aufsichtsbehörde</h3>
+          <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten zu beschweren. Die zuständige Aufsichtsbehörde für Berlin ist:</p>
+          <p>
+            Berliner Beauftragte für Datenschutz und Informationsfreiheit<br>
+            Alt-Moabit 59–61<br>
+            10555 Berlin<br>
+            <a href="https://www.datenschutz-berlin.de" target="_blank" rel="noopener">datenschutz-berlin.de</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- DATENSICHERHEIT -->
+      <div class="ds-block" id="sicherheit">
+        <div class="ds-label">Technische Maßnahmen</div>
+        <h2 class="ds-heading">Datensicherheit</h2>
+        <div class="ds-body">
+          <p>Diese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://" auf „https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.</p>
+          <p>Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an mich übermitteln, nicht von Dritten mitgelesen werden.</p>
+        </div>
+      </div>
+
+      <!-- ÄNDERUNGEN -->
+      <div class="ds-block" id="aenderungen">
+        <div class="ds-label">Aktualität</div>
+        <h2 class="ds-heading">Änderungen dieser Datenschutzerklärung</h2>
+        <div class="ds-body">
+          <p>Ich behalte mir vor, diese Datenschutzerklärung anzupassen, um sie stets den aktuellen rechtlichen Anforderungen entsprechend zu halten oder um Än

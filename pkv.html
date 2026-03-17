@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Private Krankenversicherung – Dennis Klincov</title>
+  <meta name="description" content="Private Krankenversicherung für Geschäftsführer und GGF. Vorteile, Risiken, Beitragsentwicklung und ehrliche Einschätzung. PKV-Beratung Berlin.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C8922A; --gold-light: #E8B96A; --gold-pale: #F7EDD8; --gold-dark: #8A6010;
+      --ink: #1A1814; --ink-soft: #3D3830; --ink-muted: #7A7268;
+      --paper: #FDFAF5; --paper-warm: #F5EFE2;
+      --border: rgba(200,146,42,0.18); --border-ink: rgba(26,24,20,0.10);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 64px; height: 68px; display: flex; align-items: center; justify-content: space-between; background: rgba(253,250,245,0.93); backdrop-filter: blur(14px); border-bottom: 0.5px solid var(--border-ink); }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(26,24,20,0.06); }
+    .nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 400; color: var(--ink-muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { font-size: 12px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 10px 22px; background: var(--gold); color: #fff; border: none; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--gold-dark); }
+
+    .hero { padding: 148px 80px 100px; background: var(--ink); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 55%; height: 100%; background: radial-gradient(ellipse at 75% 50%, rgba(200,146,42,0.08) 0%, transparent 65%); pointer-events: none; }
+    .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); display: block; }
+    .eyebrow span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .hero-title { font-family: var(--serif); font-size: clamp(40px, 4.5vw, 64px); font-weight: 500; line-height: 1.08; color: var(--paper); margin-bottom: 24px; }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-lead { font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.65); line-height: 1.8; margin-bottom: 36px; max-width: 460px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 32px; background: var(--gold); color: #fff; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .hero-cta:hover { background: var(--gold-dark); transform: translateY(-1px); }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(253,250,245,0.08); border: 0.5px solid rgba(253,250,245,0.1); }
+    .hero-stat { background: rgba(253,250,245,0.04); padding: 28px 24px; }
+    .hero-stat-num { font-family: var(--serif); font-size: 40px; font-weight: 500; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+    .hero-stat-label { font-size: 12px; font-weight: 300; color: rgba(253,250,245,0.5); line-height: 1.4; }
+
+    .section { padding: 112px 80px; }
+    .section-warm { background: var(--paper-warm); border-top: 0.5px solid var(--border-ink); border-bottom: 0.5px solid var(--border-ink); }
+    .section-dark { background: var(--ink); }
+    .inner { max-width: 1200px; margin: 0 auto; }
+    .sect-label { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .sect-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
+    .sect-label span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .sect-heading { font-family: var(--serif); font-size: clamp(30px, 3.5vw, 48px); font-weight: 500; line-height: 1.12; margin-bottom: 20px; }
+    .sect-heading em { font-style: italic; color: var(--gold); }
+    .sect-intro { font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; max-width: 620px; margin-bottom: 52px; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+    /* EHRLICHER HINWEIS */
+    .hinweis-box { background: var(--ink); padding: 40px 44px; border-left: 3px solid var(--gold); margin-bottom: 52px; }
+    .hinweis-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 12px; }
+    .hinweis-title { font-family: var(--serif); font-size: 24px; font-weight: 500; color: var(--paper); margin-bottom: 14px; line-height: 1.2; }
+    .hinweis-text { font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.7); line-height: 1.8; }
+
+    /* VERGLEICH */
+    .vergleich-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); }
+    .vgl-card { background: var(--paper); padding: 36px 32px; }
+    .vgl-card.highlight { background: var(--paper-warm); border-top: 2px solid var(--gold); }
+    .vgl-badge { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; padding: 4px 10px; margin-bottom: 14px; border: 0.5px solid var(--border); }
+    .vgl-badge.pkv { background: var(--gold-pale); color: var(--gold-dark); }
+    .vgl-badge.gkv { background: var(--paper-warm); color: var(--ink-muted); }
+    .vgl-title { font-family: var(--serif); font-size: 24px; font-weight: 500; color: var(--ink); margin-bottom: 20px; }
+    .vgl-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .vgl-item { display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.55; }
+    .vgl-item.pro::before { content: '+'; color: var(--gold); font-weight: 500; flex-shrink: 0; width: 12px; }
+    .vgl-item.con::before { content: '!'; color: var(--ink-muted); font-weight: 500; flex-shrink: 0; width: 12px; }
+
+    /* VORAUSSETZUNGEN */
+    .voraus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(253,250,245,0.08); border: 0.5px solid rgba(253,250,245,0.1); margin-top: 48px; }
+    .voraus-card { background: rgba(253,250,245,0.04); padding: 30px 26px; }
+    .voraus-num { font-family: var(--serif); font-size: 40px; font-weight: 400; color: rgba(200,146,42,0.25); line-height: 1; margin-bottom: 12px; }
+    .voraus-title { font-family: var(--serif); font-size: 19px; font-weight: 500; color: var(--paper); margin-bottom: 8px; }
+    .voraus-desc { font-size: 12px; font-weight: 300; color: rgba(253,250,245,0.55); line-height: 1.7; }
+    .voraus-note { margin-top: 12px; padding: 8px 12px; border-left: 2px solid var(--gold); font-size: 11px; font-weight: 400; color: var(--gold-light); line-height: 1.6; }
+
+    /* BEITRAGSENTWICKLUNG */
+    .beitrag-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .beitrag-steps { display: flex; flex-direction: column; gap: 0; }
+    .beitrag-step { display: flex; gap: 20px; padding: 22px 0; border-bottom: 0.5px solid var(--border-ink); }
+    .beitrag-step:last-child { border-bottom: none; }
+    .beitrag-alter { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--gold); line-height: 1; min-width: 60px; }
+    .beitrag-body strong { display: block; font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+    .beitrag-body span { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.6; }
+    .sb-box { background: var(--ink); padding: 36px; }
+    .sb-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 12px; }
+    .sb-title { font-family: var(--serif); font-size: 24px; font-weight: 500; color: var(--paper); margin-bottom: 14px; line-height: 1.2; }
+    .sb-desc { font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.6); line-height: 1.8; margin-bottom: 20px; }
+    .sb-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .sb-item { display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.8); line-height: 1.5; }
+    .sb-item::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+    .sb-note { margin-top: 20px; padding: 14px 16px; border-left: 2px solid var(--gold); font-size: 12px; font-weight: 300; color: var(--gold-light); line-height: 1.65; }
+
+    /* RÜCKKEHR */
+    .rueck-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-top: 48px; }
+    .rueck-card { background: var(--paper); padding: 32px 28px; }
+    .rueck-card.warn { background: #FDF5F5; border-top: 2px solid #C0392B; }
+    .rueck-badge { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; padding: 4px 10px; margin-bottom: 12px; border: 0.5px solid var(--border-ink); }
+    .rueck-badge.ok { background: var(--gold-pale); color: var(--gold-dark); }
+    .rueck-badge.schwer { background: #FDF0EE; color: #8B2315; border-color: rgba(192,57,43,0.2); }
+    .rueck-title { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+    .rueck-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .rueck-item { display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.55; }
+    .rueck-item::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+    .rueck-item.warn::before { color: #C0392B; }
+
+    /* VERSICHERER */
+    .vers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-top: 48px; }
+    .vers-card { background: var(--paper-warm); padding: 36px 32px; position: relative; overflow: hidden; }
+    .vers-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); }
+    .vers-staerke { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .vers-name { font-family: var(--serif); font-size: 26px; font-weight: 500; color: var(--ink); margin-bottom: 12px; }
+    .vers-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.75; margin-bottom: 16px; }
+    .vers-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .vers-item { display: flex; gap: 10px; font-size: 12px; font-weight: 300; color: var(--ink-soft); line-height: 1.5; }
+    .vers-item::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+
+    /* PKV + BKV */
+    .kombi-box { background: var(--paper-warm); border: 0.5px solid var(--border-ink); padding: 40px; margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .kombi-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .kombi-title { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 12px; }
+    .kombi-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.75; }
+    .kombi-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .kombi-item { display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.55; }
+    .kombi-item::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+
+    .cta-section { padding: 112px 80px; background: var(--ink); text-align: center; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(200,146,42,0.11) 0%, transparent 70%); pointer-events: none; }
+    .cta-inner { position: relative; max-width: 600px; margin: 0 auto; }
+    .cta-heading { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 500; color: var(--paper); line-height: 1.1; margin-bottom: 18px; }
+    .cta-heading em { font-style: italic; color: var(--gold); }
+    .cta-sub { font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.55); line-height: 1.75; margin-bottom: 44px; }
+    .btn-gold-lg { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 16px 44px; background: var(--gold); color: #fff; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s; }
+    .btn-gold-lg:hover { background: var(--gold-light); }
+    .cta-note { display: block; margin-top: 14px; font-size: 12px; color: rgba(253,250,245,0.3); }
+
+    footer { background: var(--paper); border-top: 0.5px solid var(--border-ink); padding: 48px 80px 32px; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; max-width: 240px; }
+    .footer-col h4 { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 13px; font-weight: 300; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 20px; border-top: 0.5px solid var(--border-ink); display: flex; justify-content: flex-end; }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: var(--ink-muted); text-decoration: none; }
+    .footer-legal a:hover { color: var(--gold); }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.7s ease both; }
+    .delay-1 { animation-delay: 0.12s; }
+    .delay-2 { animation-delay: 0.24s; }
+    .delay-3 { animation-delay: 0.36s; }
+
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 120px 28px 72px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .section { padding: 72px 28px; }
+      .cta-section, footer { padding: 72px 28px; }
+      .two-col, .beitrag-wrap, .kombi-box { grid-template-columns: 1fr; gap: 40px; }
+      .vergleich-grid, .rueck-grid, .vers-grid { grid-template-columns: 1fr; }
+      .voraus-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav">
+    <a href="index.html" class="nav-logo">Dennis <span>Klincov</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="ggf-versorgung.html">GGF-Versorgung</a></li>
+      <li><a href="bkv.html">BKV</a></li>
+      <li><a href="ueber-mich.html">Über mich</a></li>
+    </ul>
+    <a href="kontakt.html" class="nav-cta">Termin anfragen</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow fade-up"><span>Private Krankenversicherung</span></div>
+        <h1 class="hero-title fade-up delay-1">PKV für GF –<br>wenn sie passt,<br><em>richtig gemacht.</em></h1>
+        <p class="hero-lead fade-up delay-2">Die PKV ist kein Sparmodell und kein Selbstläufer. Für Geschäftsführer und GGF kann sie erhebliche Vorteile bringen – bessere Leistungen, mehr Flexibilität, günstigere Beiträge im Erwerbsleben. Aber sie stellt auch Anforderungen: finanziell, gesundheitlich und strategisch. Ich berate zur PKV nur, wenn sie wirklich passt.</p>
+        <a href="kontakt.html" class="hero-cta fade-up delay-3">
+          PKV-Beratung anfragen
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <div class="fade-up delay-2">
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">GF</div>
+            <div class="hero-stat-label">Geschäftsführer sind in der Regel nicht GKV-pflichtig – freie Wahl zwischen GKV und PKV</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">≠</div>
+            <div class="hero-stat-label">PKV ist kein Sparmodell – wer spart, zahlt dafür im Alter</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">SB</div>
+            <div class="hero-stat-label">Niedriger Selbstbehalt im jungen Alter = mehr Rücklagen für steigende Beiträge im Alter</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">GKV+</div>
+            <div class="hero-stat-label">Wer unsicher ist: GKV mit Zusatzversicherungen ist die bessere Wahl</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EHRLICHER HINWEIS -->
+  <section class="section" id="hinweis">
+    <div class="inner">
+      <div class="hinweis-box reveal">
+        <div class="hinweis-label">Meine Haltung zur PKV</div>
+        <h2 class="hinweis-title">PKV ist keine Entscheidung, die man rückgängig machen kann.</h2>
+        <p class="hinweis-text">Ich empfehle die PKV aktiv für Geschäftsführer und GGF – aber nur wenn sie sich die PKV dauerhaft leisten können, gesundheitlich in guter Verfassung sind und den Mechanismus verstehen: Die PKV spart im jungen Alter Beiträge gegenüber der GKV. Dieses gesparte Geld muss man beiseitelegen – für steigende Beiträge im Alter. Wer das nicht tut, oder wer unsicher ist ob er es tun wird, ist in der GKV mit guten Zusatzversicherungen besser aufgehoben. Ich sage das zu jedem Kunden, der fragt.</p><p class="hinweis-text" style="margin-top: 16px;">Ein weiterer Hinweis: PKV ist genauso komplex wie BAV – und ich bin kein PKV-Spezialist. Ich habe spezialisierte Partner in meinem Netzwerk, die ich in jedes PKV-Gespräch einbeziehe. Ich koordiniere, stelle die richtigen Fragen und sorge dafür dass das Gesamtbild stimmt – aber die tiefe PKV-Expertise kommt aus dem Netzwerk. Das halte ich für ehrlicher als so zu tun als könnte ich alles alleine.</p>
+      </div>
+      <div class="two-col">
+        <div>
+          <div class="sect-label reveal"><span>GKV vs. PKV</span></div>
+          <h2 class="sect-heading reveal" style="color: var(--ink);">Was sich wirklich<br><em>unterscheidet.</em></h2>
+          <p class="reveal" style="font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8;">GKV und PKV sind zwei grundlegend verschiedene Systeme. Die GKV ist solidarisch – wer mehr verdient, zahlt mehr, unabhängig vom Gesundheitszustand. Die PKV ist individuell – der Beitrag hängt vom Eintrittsalter, Gesundheitszustand und gewähltem Tarif ab.</p>
+        </div>
+        <div class="reveal" style="padding-top: 8px;">
+          <p style="font-size: 14px; font-weight: 300; color: var(--ink-muted); line-height: 1.8;">Für einen gesunden 35-jährigen GF mit gutem Einkommen ist die PKV in der Regel günstiger als die GKV – und bietet deutlich bessere Leistungen. Für einen 55-jährigen mit Vorerkrankungen oder unsicherer Einkommenssituation kann die GKV die deutlich bessere Wahl sein.</p>
+          <p style="font-size: 14px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; margin-top: 16px;">Der Wechsel zurück in die GKV ist im Alter kaum möglich. Das ist die entscheidende Asymmetrie, die verstanden werden muss.</p>
+        </div>
+      </div>
+      <div class="vergleich-grid" style="margin-top: 48px;">
+        <div class="vgl-card highlight reveal">
+          <div class="vgl-badge pkv">PKV · Empfohlen für GF und GGF</div>
+          <h3 class="vgl-title">Private Krankenversicherung</h3>
+          <ul class="vgl-list">
+            <li class="vgl-item pro">Beitrag abhängig von Alter bei Eintritt und Gesundheit – nicht vom Einkommen</li>
+            <li class="vgl-item pro">Im Erwerbsleben oft günstiger als GKV bei hohem Einkommen</li>
+            <li class="vgl-item pro">Chefarztbehandlung, Einbettzimmer, Privatarzt – je nach Tarif</li>
+            <li class="vgl-item pro">Keine Familienversicherung nötig – jedes Familienmitglied separat</li>
+            <li class="vgl-item pro">Kostenerstattungsprinzip – mehr Transparenz über Kosten</li>
+            <li class="vgl-item pro">Tarif wählbar – Leistungen individuell konfigurierbar</li>
+            <li class="vgl-item con">Beiträge steigen im Alter – ohne Rücklagen problematisch</li>
+            <li class="vgl-item con">Kinder und nicht berufstätige Partner zahlen eigene Beiträge</li>
+            <li class="vgl-item con">Rückkehr in GKV im Alter kaum möglich</li>
+            <li class="vgl-item con">Gesundheitsprüfung bei Abschluss – Vorerkrankungen können ausgeschlossen werden</li>
+          </ul>
+        </div>
+        <div class="vgl-card reveal">
+          <div class="vgl-badge gkv">GKV · Sinnvoll wenn PKV nicht passt</div>
+          <h3 class="vgl-title">Gesetzliche Krankenversicherung</h3>
+          <ul class="vgl-list">
+            <li class="vgl-item pro">Beitrag einkommensabhängig – bei niedrigem Einkommen günstiger</li>
+            <li class="vgl-item pro">Familienversicherung für nicht berufstätige Partner und Kinder beitragsfrei</li>
+            <li class="vgl-item pro">Kein Gesundheits-Check bei Aufnahme</li>
+            <li class="vgl-item pro">Beiträge im Alter durch Rentner-KV stabilisiert</li>
+            <li class="vgl-item pro">Kombinierbar mit privaten Zusatzversicherungen (BKV)</li>
+            <li class="vgl-item con">Beitrag steigt mit dem Einkommen – bei GF und GGF oft teuer</li>
+            <li class="vgl-item con">Standardleistungen ohne Chefarzt, Einbettzimmer etc.</li>
+            <li class="vgl-item con">Weniger Wahlfreiheit beim Leistungsumfang</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VORAUSSETZUNGEN -->
+  <section class="section section-dark" id="voraussetzungen">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Wer in die PKV kann</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--paper);">Voraussetzungen für<br><em>den PKV-Zugang.</em></h2>
+      <p class="reveal" style="font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.6); line-height: 1.8; max-width: 620px; margin-bottom: 48px;">Nicht jeder kann in die PKV wechseln. Für Geschäftsführer und GGF ist der Zugang in der Regel möglich – aber die Bedingungen müssen stimmen.</p>
+      <div class="voraus-grid">
+        <div class="voraus-card reveal">
+          <div class="voraus-num">1</div>
+          <h3 class="voraus-title">Versicherungsfreiheit</h3>
+          <p class="voraus-desc">GGF sind in der Regel nicht GKV-versicherungspflichtig, da sie als Unternehmer gelten. Fremdgeschäftsführer können GKV-pflichtig sein – je nach Gesellschafterstellung und Weisungsgebundenheit. Im Zweifel klärt die Deutsche Rentenversicherung den Status.</p>
+          <div class="voraus-note">GGF mit mehr als 50 % Anteil sind fast immer versicherungsfrei.</div>
+        </div>
+        <div class="voraus-card reveal">
+          <div class="voraus-num">2</div>
+          <h3 class="voraus-title">Gesundheitszustand</h3>
+          <p class="voraus-desc">Die PKV verlangt eine Gesundheitsprüfung. Vorerkrankungen können zu Risikozuschlägen, Leistungsausschlüssen oder Ablehnung führen. Je jünger und gesünder, desto besser die Konditionen. Wer Vorerkrankungen hat, muss realistisch einschätzen ob die PKV noch attraktiv ist.</p>
+          <div class="voraus-note">Gesundheitsfragen müssen vollständig und wahrheitsgemäß beantwortet werden.</div>
+        </div>
+        <div class="voraus-card reveal">
+          <div class="voraus-num">3</div>
+          <h3 class="voraus-title">Finanzielle Tragfähigkeit</h3>
+          <p class="voraus-desc">Die PKV muss dauerhaft leistbar sein – auch im Alter, auch bei vorübergehend geringerem Einkommen, auch wenn die Beiträge steigen. Wer nicht sicher ist, ob er die PKV langfristig finanzieren kann, sollte nicht wechseln. Es gibt einen Notlagentarif – aber der bietet nur Minimalschutz.</p>
+          <div class="voraus-note">Faustregel: Wer in der PKV spart, zahlt das Gesparte mit Zinsen im Alter zurück.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELBSTBEHALT UND BEITRAGSENTWICKLUNG -->
+  <section class="section section-warm" id="beitrag">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Langfristige Planung</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">Selbstbehalt und<br><em>Beitragsentwicklung.</em></h2>
+      <p class="reveal" style="font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; max-width: 620px; margin-bottom: 32px;">Das ist der Kern der PKV-Planung: Welchen Selbstbehalt wähle ich, wie bilde ich Rücklagen und was passiert mit meinem Beitrag im Alter? Wer das nicht durchdenkt, bekommt böse Überraschungen.</p>
+      <div class="beitrag-wrap">
+        <div>
+          <div class="beitrag-steps">
+            <div class="beitrag-step reveal">
+              <div class="beitrag-alter">20–40</div>
+              <div class="beitrag-body"><strong>Günstige Beiträge im Erwerbsleben</strong><span>PKV oft erheblich günstiger als GKV bei hohem Einkommen. Das ist der Zeitraum in dem die PKV finanziell den größten Vorteil bringt. Diese Ersparnis muss als Rücklage aufgebaut werden.</span></div>
+            </div>
+            <div class="beitrag-step reveal">
+              <div class="beitrag-alter">40–60</div>
+              <div class="beitrag-body"><strong>Moderate Beitragssteigerungen</strong><span>PKV-Beiträge steigen mit dem Alter planmäßig. Wer Rücklagen gebildet hat, kann diese nutzen um den effektiven Beitrag zu stabilisieren. Wer nicht gespart hat, merkt hier erstmals Druck.</span></div>
+            </div>
+            <div class="beitrag-step reveal">
+              <div class="beitrag-alter">60+</div>
+              <div class="beitrag-body"><strong>Deutlich höhere Beiträge</strong><span>Im Alter steigen PKV-Beiträge stark. GKV-Rentner zahlen auf ihre Rente – das kann günstiger sein. PKV-Versicherte brauchen Rücklagen oder einen gezielten Tarifwechsel um den Beitrag zu begrenzen.</span></div>
+            </div>
+            <div class="beitrag-step reveal">
+              <div class="beitrag-alter">Rente</div>
+              <div class="beitrag-body"><strong>Kein Arbeitgeberzuschuss mehr</strong><span>Als Arbeitnehmer zahlt der AG die Hälfte des PKV-Beitrags. In der Rente fällt das weg – der Rentenversicherungsträger zahlt einen Zuschuss, aber deutlich weniger. Das muss in die Planung einbezogen werden.</span></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="sb-box reveal">
+            <div class="sb-label">Meine Empfehlung zum Selbstbehalt</div>
+            <h3 class="sb-title">Niedriger Selbstbehalt – mehr Rücklagen bilden.</h3>
+            <p class="sb-desc">Viele Berater empfehlen hohe Selbstbehalte um den laufenden Beitrag zu drücken. Das ist kurzfristig gedacht. Ich empfehle einen niedrigen bis mittleren Selbstbehalt – und die Beitragsersparnis gegenüber der GKV konsequent als Rücklage zu parken.</p>
+            <ul class="sb-list">
+              <li class="sb-item">Niedriger SB = mehr Erstattungen laufend, weniger Eigenrisiko</li>
+              <li class="sb-item">Die Differenz zur GKV als monatliche Rücklage anlegen</li>
+              <li class="sb-item">Rücklagen puffern steigende Beiträge im Alter</li>
+              <li class="sb-item">Hoher SB spart Beitrag, schafft aber kein Vermögen</li>
+              <li class="sb-item">Im Alter kann der Tarif angepasst werden – Rücklagen bleiben</li>
+            </ul>
+            <div class="sb-note">PKV ist kein Sparmodell. Der Vorteil liegt in der Leistung und der Beitragseffizienz im Erwerbsleben – nicht im möglichst niedrigen laufenden Beitrag.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RÜCKKEHR IN GKV -->
+  <section class="section" id="rueckkehr">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Wichtige Einschränkung</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">Rückkehr in die GKV –<br><em>kaum möglich im Alter.</em></h2>
+      <p class="sect-intro reveal">Das ist der häufigste Irrtum: Viele glauben, man kann jederzeit zurück in die GKV. Das stimmt nicht. Wer einmal in der PKV ist und älter als 55 ist, kommt kaum noch heraus.</p>
+      <div class="rueck-grid">
+        <div class="rueck-card reveal">
+          <div class="rueck-badge ok">Möglich</div>
+          <h3 class="rueck-title">Wann die Rückkehr funktioniert</h3>
+          <ul class="rueck-list">
+            <li class="rueck-item">Aufnahme einer sozialversicherungspflichtigen Tätigkeit unter der Jahresarbeitsentgeltgrenze</li>
+            <li class="rueck-item">Eintritt in die Arbeitslosigkeit mit ALG-I-Bezug</li>
+            <li class="rueck-item">Vor dem 55. Lebensjahr – danach greift die Altersgrenze</li>
+            <li class="rueck-item">Familienmitglied wechselt in GKV und Mitversicherung ist möglich</li>
+          </ul>
+        </div>
+        <div class="rueck-card warn reveal">
+          <div class="rueck-badge schwer">Kaum möglich</div>
+          <h3 class="rueck-title">Wann die Rückkehr scheitert</h3>
+          <ul class="rueck-list">
+            <li class="rueck-item warn">Ab 55 Jahren ist die Rückkehr in die GKV faktisch ausgeschlossen – auch bei niedrigem Einkommen</li>
+            <li class="rueck-item warn">Als GGF oder Selbstständiger ohne sozialversicherungspflichtige Tätigkeit kein Zugang zur GKV</li>
+            <li class="rueck-item warn">Wer die PKV nicht mehr bezahlen kann, landet im Notlagentarif – Minimalschutz mit nur Notfallbehandlungen</li>
+            <li class="rueck-item warn">Rückkehr in die GKV durch Scheinselbstständigkeit ist illegal</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERSICHERER -->
+  <section class="section section-warm" id="versicherer">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Empfohlene Versicherer</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">Hallesche und Alte Leipziger –<br><em>warum ich sie empfehle.</em></h2>
+      <p class="sect-intro reveal">Ich empfehle PKV nur auf ausdrücklichen Wunsch – und dann gezielt Hallesche und Alte Leipziger. Beide stehen für Beitragsstabilität, starke Bedingungen und faire Leistungsbearbeitung.</p>
+      <div class="vers-grid">
+        <div class="vers-card reveal">
+          <div class="vers-staerke">Stärke: Beitragsstabilität &amp; Leistung</div>
+          <div class="vers-name">Hallesche</div>
+          <p class="vers-desc">Die Hallesche gehört zur W&amp;W-Gruppe und ist bekannt für überdurchschnittlich stabile Beiträge und faire Leistungsbearbeitung. Besonders stark im Bereich stationäre Leistungen und Zahn. Gute Tarife für GF mit Fokus auf vollständigem Schutz ohne unnötige Einschränkungen.</p>
+          <ul class="vers-list">
+            <li class="vers-item">Überdurchschnittliche Beitragsstabilität in der Vergangenheit</li>
+            <li class="vers-item">Starke stationäre Tarife mit Chefarzt und Einbettzimmer</li>
+            <li class="vers-item">Gute Zahnleistungen inkl. Implantate</li>
+            <li class="vers-item">Faire Leistungsbearbeitung ohne unnötige Ablehnungen</li>
+            <li class="vers-item">Solide Rückstellungen für Beitragsstabilität im Alter</li>
+          </ul>
+        </div>
+        <div class="vers-card reveal">
+          <div class="vers-staerke">Stärke: Tarif-Flexibilität &amp; Rückstellungen</div>
+          <div class="vers-name">Alte Leipziger</div>
+          <p class="vers-desc">Die Alte Leipziger ist einer der finanzstärksten PKV-Anbieter Deutschlands mit sehr hohen Alterungsrückstellungen. Das ist der entscheidende Faktor für langfristige Beitragsstabilität. Flexible Tarifgestaltung und starke Bedingungen für GF und GGF.</p>
+          <ul class="vers-list">
+            <li class="vers-item">Sehr hohe Alterungsrückstellungen – wichtig für Beitragsstabilität im Alter</li>
+            <li class="vers-item">Flexible Tarifmodule – individuell konfigurierbar</li>
+            <li class="vers-item">Starke ambulante und stationäre Deckung</li>
+            <li class="vers-item">Bewährt bei Geschäftsführern und Selbstständigen</li>
+            <li class="vers-item">Solide Finanzstärke – Ratings konstant gut</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PKV + BKV -->
+  <section class="section" id="kombination">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Kombination</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">PKV + BKV –<br><em>wenn beides Sinn ergibt.</em></h2>
+      <p class="reveal" style="font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; max-width: 620px; margin-bottom: 32px;">PKV-versicherte Geschäftsführer können trotzdem von einer betrieblichen Krankenversicherung profitieren – aber nur wenn die BKV Leistungen abdeckt, die der individuelle PKV-Tarif nicht enthält.</p>
+      <div class="kombi-box reveal">
+        <div>
+          <div class="kombi-label">Wann PKV + BKV sinnvoll ist</div>
+          <h3 class="kombi-title">Gezielter Mehrwert, kein Doppelschutz</h3>
+          <p class="kombi-desc">Eine BKV für PKV-Versicherte macht nur Sinn wenn sie echten Mehrwert bringt. Das ist nicht pauschal der Fall – ich prüfe jeden PKV-Tarif individuell ob eine BKV ergänzend sinnvoll ist.</p>
+        </div>
+        <div>
+          <div class="kombi-label">Typische Mehrwert-Szenarien</div>
+          <ul class="kombi-list">
+            <li class="kombi-item">PKV mit hohem Selbstbehalt – BKV deckt laufende Kosten und schont den SB</li>
+            <li class="kombi-item">PKV-Tarif ohne oder mit schwacher Zahnleistung – BKV Zahn ergänzt</li>
+            <li class="kombi-item">Auslandsschutz im PKV-Tarif begrenzt – BKV erweitert</li>
+            <li class="kombi-item">Gesundheitskurse nicht im PKV-Tarif – BKV nach § 3 Nr. 34 EStG ergänzt</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="sect-label reveal" style="justify-content: center;"><span>Ehrliche Beratung</span></div>
+      <h2 class="cta-heading reveal">PKV nur wenn<br><em>sie wirklich passt.</em></h2>
+      <p class="cta-sub reveal">Im ersten Gespräch analysiere ich Ihre Situation ehrlich – Einkommen, Gesundheit, Familienstand, Langfristplanung. Wenn die PKV passt, empfehle ich sie und ziehe einen spezialisierten PKV-Partner aus meinem Netzwerk ins Gespräch. PKV ist genauso komplex wie BAV – und verdient genauso viel Sorgfalt.</p>
+      <a href="kontakt.html" class="btn-gold-lg reveal">Erstgespräch anfragen</a>
+      <span class="cta-note reveal">Erstes Gespräch kostenfrei · Danach transparentes Honorar</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Dennis <span>Klincov</span></div>
+        <p class="footer-tagline">BAV &amp; BKV Spezialist. Versicherungsmakler nach § 34d GewO. Honorarberatung für Geschäftsführer in Berlin.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Versorgung</h4>
+        <ul>
+          <li><a href="ggf-versorgung.html">GGF-Versorgung</a></li>
+          <li><a href="vorstandsversorgung.html">Vorstandsversorgung</a></li>
+          <li><a href="bav-mitarbeiter.html">BAV Mitarbeiter</a></li>
+          <li><a href="tantiemenmodell.html">Tantiemenmodell</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Absicherung &amp; Benefits</h4>
+        <ul>
+          <li><a href="pkv.html">PKV</a></li>
+          <li><a href="bkv.html">BKV</a></li>
+          <li><a href="bgm.html">BGM</a></li>
+          <li><a href="company-benefits.html">Company Benefits</a></li>
+          <li><a href="dao.html">D&amp;O</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Versicherer</h4>
+        <ul>
+          <li><a href="#">Allianz</a></li>
+          <li><a href="#">Württembergische</a></li>
+          <li><a href="#">LV 1871</a></li>
+          <li><a href="#">Hallesche</a></li>
+          <li><a href="#">Alte Leipziger</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 60); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.07 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

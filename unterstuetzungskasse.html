@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unterstützungskasse – Dennis Klincov</title>
+  <meta name="description" content="Unterstützungskasse als Durchführungsweg der betrieblichen Altersvorsorge. § 4d EStG, kein Bilanzeffekt, DUK und Rosenheimer U-Kasse. Honorarberatung Berlin.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C8922A; --gold-light: #E8B96A; --gold-pale: #F7EDD8; --gold-dark: #8A6010;
+      --ink: #1A1814; --ink-soft: #3D3830; --ink-muted: #7A7268;
+      --paper: #FDFAF5; --paper-warm: #F5EFE2;
+      --border: rgba(200,146,42,0.18); --border-ink: rgba(26,24,20,0.10);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 64px; height: 68px; display: flex; align-items: center; justify-content: space-between; background: rgba(253,250,245,0.93); backdrop-filter: blur(14px); border-bottom: 0.5px solid var(--border-ink); }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(26,24,20,0.06); }
+    .nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 400; color: var(--ink-muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { font-size: 12px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 10px 22px; background: var(--gold); color: #fff; border: none; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--gold-dark); }
+
+    .hero { padding: 148px 80px 100px; background: var(--ink); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 55%; height: 100%; background: radial-gradient(ellipse at 75% 50%, rgba(200,146,42,0.08) 0%, transparent 65%); pointer-events: none; }
+    .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); display: block; }
+    .eyebrow span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .hero-title { font-family: var(--serif); font-size: clamp(40px, 4.5vw, 64px); font-weight: 500; line-height: 1.08; color: var(--paper); margin-bottom: 24px; }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-lead { font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.65); line-height: 1.8; margin-bottom: 36px; max-width: 460px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 32px; background: var(--gold); color: #fff; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .hero-cta:hover { background: var(--gold-dark); transform: translateY(-1px); }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(253,250,245,0.08); border: 0.5px solid rgba(253,250,245,0.1); }
+    .hero-stat { background: rgba(253,250,245,0.04); padding: 28px 24px; }
+    .hero-stat-num { font-family: var(--serif); font-size: 40px; font-weight: 500; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+    .hero-stat-label { font-size: 12px; font-weight: 300; color: rgba(253,250,245,0.5); line-height: 1.4; }
+
+    .section { padding: 112px 80px; }
+    .section-warm { background: var(--paper-warm); border-top: 0.5px solid var(--border-ink); border-bottom: 0.5px solid var(--border-ink); }
+    .section-dark { background: var(--ink); }
+    .inner { max-width: 1200px; margin: 0 auto; }
+    .sect-label { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .sect-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
+    .sect-label span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .sect-heading { font-family: var(--serif); font-size: clamp(30px, 3.5vw, 48px); font-weight: 500; line-height: 1.12; margin-bottom: 20px; }
+    .sect-heading em { font-style: italic; color: var(--gold); }
+    .sect-intro { font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; max-width: 620px; margin-bottom: 52px; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+    /* VORTEILE */
+    .vorteile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-top: 48px; }
+    .vorteil-card { background: var(--paper); padding: 32px 28px; transition: background 0.2s; position: relative; overflow: hidden; }
+    .vorteil-card:hover { background: var(--paper-warm); }
+    .vorteil-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); opacity: 0; transition: opacity 0.2s; }
+    .vorteil-card:hover::after { opacity: 1; }
+    .vorteil-num { font-family: var(--serif); font-size: 48px; font-weight: 400; color: var(--gold-pale); line-height: 1; margin-bottom: 14px; }
+    .vorteil-title { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+    .vorteil-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; }
+
+    /* MECHANISMUS */
+    .mech-steps { display: flex; flex-direction: column; gap: 0; }
+    .mech-step { display: flex; gap: 20px; padding: 22px 0; border-bottom: 0.5px solid var(--border-ink); }
+    .mech-step:last-child { border-bottom: none; }
+    .mech-num { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--gold); line-height: 1; min-width: 28px; }
+    .mech-body strong { display: block; font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+    .mech-body span { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.6; }
+
+    /* RECHNER */
+    .rechner-box { background: var(--paper); border: 0.5px solid var(--border-ink); padding: 36px; }
+    .rechner-heading { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+    .rechner-sub { font-size: 12px; font-weight: 300; color: var(--ink-muted); margin-bottom: 24px; }
+    .rechner-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 0.5px solid var(--border-ink); font-size: 13px; }
+    .rechner-row:last-of-type { border-bottom: none; }
+    .rechner-row.total { border-top: 1px solid var(--border-ink); margin-top: 8px; padding-top: 16px; }
+    .rechner-label { font-weight: 300; color: var(--ink-muted); }
+    .rechner-label.strong { font-weight: 500; color: var(--ink); }
+    .rechner-value { font-weight: 500; color: var(--ink); font-family: var(--serif); font-size: 15px; }
+    .rechner-value.gold { color: var(--gold); font-size: 20px; }
+    .rechner-value.green { color: #2A7A4A; }
+    .rechner-note { margin-top: 16px; padding: 12px 14px; border-left: 2px solid var(--gold); font-size: 12px; font-weight: 300; color: var(--gold-dark); background: var(--gold-pale); line-height: 1.65; }
+    .rechner-disclaimer { margin-top: 10px; font-size: 11px; font-weight: 300; color: var(--ink-muted); line-height: 1.6; font-style: italic; }
+
+    /* PSV */
+    .psv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); }
+    .psv-card { background: var(--paper); padding: 36px 32px; }
+    .psv-card.risk { border-top: 2px solid var(--ink-muted); }
+    .psv-card.loesung { background: var(--paper-warm); border-top: 2px solid var(--gold); }
+    .psv-badge { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; padding: 4px 10px; margin-bottom: 14px; border: 0.5px solid var(--border-ink); }
+    .psv-badge.r { background: var(--paper-warm); color: var(--ink-muted); }
+    .psv-badge.l { background: var(--gold-pale); color: var(--gold-dark); border-color: var(--border); }
+    .psv-title { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 14px; }
+    .psv-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .psv-item { display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.55; }
+    .psv-item.pro::before { content: '+'; color: var(--gold); font-weight: 500; flex-shrink: 0; width: 12px; }
+    .psv-item.con::before { content: '!'; color: var(--ink-muted); font-weight: 500; flex-shrink: 0; width: 12px; }
+    .psv-note { margin-top: 18px; padding: 12px 14px; border-left: 2px solid var(--gold); background: var(--gold-pale); font-size: 12px; font-weight: 300; color: var(--gold-dark); line-height: 1.6; }
+
+    /* VERGLEICH */
+    .vergleich-table { width: 100%; border-collapse: collapse; margin-top: 48px; font-size: 13px; }
+    .vergleich-table th { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-muted); padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border-ink); background: var(--paper-warm); }
+    .vergleich-table th:first-child { width: 200px; }
+    .vergleich-table td { padding: 14px 16px; border-bottom: 0.5px solid var(--border-ink); font-weight: 300; color: var(--ink-soft); vertical-align: top; line-height: 1.55; }
+    .vergleich-table tr:last-child td { border-bottom: none; }
+    .vergleich-table td:first-child { font-weight: 500; color: var(--ink); background: var(--paper-warm); }
+    .vergleich-table td.gut { color: #2A7A4A; }
+    .vergleich-table td.mittel { color: var(--gold-dark); }
+    .vergleich-table td.schlecht { color: #B03020; }
+
+    /* ANBIETER */
+    .anbieter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); }
+    .anbieter-card { background: var(--paper-warm); padding: 40px 36px; position: relative; overflow: hidden; }
+    .anbieter-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); }
+    .anbieter-badge { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; padding: 4px 10px; margin-bottom: 14px; border: 0.5px solid var(--border); background: var(--gold-pale); color: var(--gold-dark); }
+    .anbieter-name { font-family: var(--serif); font-size: 28px; font-weight: 500; color: var(--ink); margin-bottom: 12px; }
+    .anbieter-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.75; margin-bottom: 20px; }
+    .anbieter-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .anbieter-item { display: flex; gap: 10px; font-size: 12px; font-weight: 300; color: var(--ink-soft); line-height: 1.5; }
+    .anbieter-item::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+
+    /* FORMAL */
+    .formal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(253,250,245,0.08); border: 0.5px solid rgba(253,250,245,0.1); }
+    .formal-card { background: rgba(253,250,245,0.04); padding: 30px 26px; }
+    .formal-icon { width: 34px; height: 34px; border: 0.5px solid rgba(200,146,42,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .formal-icon svg { width: 15px; height: 15px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .formal-title { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--paper); margin-bottom: 8px; }
+    .formal-desc { font-size: 12px; font-weight: 300; color: rgba(253,250,245,0.55); line-height: 1.7; }
+    .formal-warn { margin-top: 10px; padding: 8px 12px; border-left: 2px solid var(--gold); font-size: 11px; font-weight: 400; color: var(--gold-light); line-height: 1.6; }
+
+    .disclaimer { padding: 16px 18px; border-left: 2px solid var(--gold); background: var(--gold-pale); font-size: 12px; font-weight: 300; color: var(--gold-dark); line-height: 1.7; margin-top: 40px; }
+    .disclaimer strong { font-weight: 500; }
+    .disclaimer-dark { padding: 16px 18px; border-left: 2px solid var(--gold); background: rgba(200,146,42,0.12); font-size: 12px; font-weight: 300; color: var(--gold-light); line-height: 1.7; margin-top: 32px; }
+    .disclaimer-dark strong { font-weight: 500; }
+
+    .cta-section { padding: 112px 80px; background: var(--paper-warm); border-top: 0.5px solid var(--border-ink); text-align: center; }
+    .cta-inner { max-width: 600px; margin: 0 auto; }
+    .cta-heading { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 500; color: var(--ink); line-height: 1.1; margin-bottom: 18px; }
+    .cta-heading em { font-style: italic; color: var(--gold); }
+    .cta-sub { font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.75; margin-bottom: 40px; }
+    .btn-gold-lg { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 16px 44px; background: var(--gold); color: #fff; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s; }
+    .btn-gold-lg:hover { background: var(--gold-dark); }
+    .cta-note { display: block; margin-top: 14px; font-size: 12px; color: var(--ink-muted); }
+
+    footer { background: var(--paper); border-top: 0.5px solid var(--border-ink); padding: 48px 80px 32px; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; max-width: 240px; }
+    .footer-col h4 { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 13px; font-weight: 300; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 20px; border-top: 0.5px solid var(--border-ink); display: flex; justify-content: flex-end; }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: var(--ink-muted); text-decoration: none; }
+    .footer-legal a:hover { color: var(--gold); }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.7s ease both; }
+    .delay-1 { animation-delay: 0.12s; }
+    .delay-2 { animation-delay: 0.24s; }
+    .delay-3 { animation-delay: 0.36s; }
+
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 120px 28px 72px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .section { padding: 72px 28px; }
+      .cta-section, footer { padding: 72px 28px; }
+      .two-col { grid-template-columns: 1fr; gap: 48px; }
+      .vorteile-grid, .formal-grid, .anbieter-grid { grid-template-columns: 1fr; }
+      .psv-grid { grid-template-columns: 1fr; }
+      .vergleich-table { font-size: 12px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav">
+    <a href="index.html" class="nav-logo">Dennis <span>Klincov</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="ggf-versorgung.html">GGF-Versorgung</a></li>
+      <li><a href="company-benefits.html">Company Benefits</a></li>
+      <li><a href="ueber-mich.html">Über mich</a></li>
+    </ul>
+    <a href="kontakt.html" class="nav-cta">Termin anfragen</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow fade-up"><span>Unterstützungskasse</span></div>
+        <h1 class="hero-title fade-up delay-1">Hohe Versorgung –<br>ohne <em>Bilanz-</em><br>belastung.</h1>
+        <p class="hero-lead fade-up delay-2">Die Unterstützungskasse ist ein rechtlich selbständiger Versorgungsträger außerhalb der GmbH. Beiträge sind steuerlich abzugsfähig, es entsteht keine Pensionsrückstellung in der Bilanz – und es gibt keine Beitragsobergrenze wie bei der Direktversicherung. Für GGF und Führungskräfte mit höheren Versorgungszielen oft die bessere Wahl.</p>
+        <a href="kontakt.html" class="hero-cta fade-up delay-3">
+          Beratungsgespräch anfragen
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <div class="fade-up delay-2">
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">§ 4d</div>
+            <div class="hero-stat-label">EStG – steuerliche Grundlage für Dotierungen an die U-Kasse</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">0</div>
+            <div class="hero-stat-label">Bilanzwirkung bei der GmbH – kein Passivposten, saubere Bilanz</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">∞</div>
+            <div class="hero-stat-label">Keine Beitragsobergrenze – im Gegensatz zur Direktversicherung</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">Extern</div>
+            <div class="hero-stat-label">Rechtlich selbständige Einrichtung – außerhalb der GmbH-Bilanz</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRUNDLAGEN UND VORTEILE -->
+  <section class="section" id="grundlagen">
+    <div class="inner">
+      <div class="two-col">
+        <div>
+          <div class="sect-label reveal"><span>Was ist eine Unterstützungskasse</span></div>
+          <h2 class="sect-heading reveal" style="color: var(--ink);">Externer Versorgungsträger –<br><em>außerhalb der Bilanz.</em></h2>
+          <p class="reveal" style="font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8;">Eine Unterstützungskasse ist eine rechtlich selbständige Einrichtung – meist ein eingetragener Verein oder eine GmbH – die die Versorgungsverpflichtungen des Arbeitgebers übernimmt. Die GmbH dotiert die U-Kasse mit Beiträgen, die als Betriebsausgabe abzugsfähig sind. Das Versorgungskapital wächst außerhalb der GmbH-Bilanz.</p>
+          <p class="reveal" style="font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; margin-top: 16px;">Der zentrale Vorteil gegenüber der Direktzusage: Es entsteht keine Pensionsrückstellung in der Bilanz der GmbH. Die Bilanz bleibt sauber, Eigenkapitalquoten werden nicht belastet – und es gibt keine Beitragsobergrenze wie bei der Direktversicherung.</p>
+        </div>
+        <div class="reveal" style="padding-top: 8px;">
+          <p style="font-size: 14px; font-weight: 300; color: var(--ink-muted); line-height: 1.8;">Der Haken: Die U-Kasse ist nicht dem Pensionssicherungsverein (PSV) angeschlossen. Im Insolvenzfall des Unternehmens ist die Versorgung nicht gesetzlich geschützt – anders als bei der Direktversicherung oder dem Pensionsfonds. Dieses Risiko wird durch eine Rückdeckungsversicherung gelöst.</p>
+          <p style="font-size: 14px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; margin-top: 16px;">Für GGF und Führungskräfte mit höheren Gehältern ist die U-Kasse oft die attraktivere Alternative zur Direktzusage: Keine Bilanzwirkung, volle steuerliche Abzugsfähigkeit und unbegrenzte Beitragshöhe machen sie zum flexibelsten Versorgungsinstrument.</p>
+        </div>
+      </div>
+      <div class="vorteile-grid">
+        <div class="vorteil-card reveal">
+          <div class="vorteil-num">I</div>
+          <h3 class="vorteil-title">Keine Bilanzwirkung</h3>
+          <p class="vorteil-desc">Anders als die Direktzusage erzeugt die U-Kasse keine Pensionsrückstellung in der GmbH-Bilanz. Die Bilanz bleibt sauber, Eigenkapitalquoten werden nicht belastet. Kreditgeber und Investoren sehen keine Versorgungsverbindlichkeiten.</p>
+        </div>
+        <div class="vorteil-card reveal">
+          <div class="vorteil-num">II</div>
+          <h3 class="vorteil-title">Keine Beitragsobergrenze</h3>
+          <p class="vorteil-desc">Die Direktversicherung ist auf 8 % der Beitragsbemessungsgrenze begrenzt (2024: 7.728 €). Die U-Kasse kennt keine solche Grenze. Für GGF mit hohen Versorgungszielen ist das der entscheidende Vorteil.</p>
+        </div>
+        <div class="vorteil-card reveal">
+          <div class="vorteil-num">III</div>
+          <h3 class="vorteil-title">Steuerlich voll abzugsfähig</h3>
+          <p class="vorteil-desc">Dotierungen an die U-Kasse sind vollständige Betriebsausgaben der GmbH – sie mindern den steuerlichen Gewinn in dem Jahr, in dem sie geleistet werden. Körperschaft- und Gewerbesteuer sinken entsprechend.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MECHANISMUS UND RECHNER -->
+  <section class="section section-warm" id="mechanismus">
+    <div class="inner">
+      <div class="two-col">
+        <div>
+          <div class="sect-label reveal"><span>Wie es funktioniert</span></div>
+          <h2 class="sect-heading reveal" style="color: var(--ink);">Der Mechanismus der<br><em>Unterstützungskasse.</em></h2>
+          <p class="reveal" style="font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; margin-bottom: 32px;">Die GmbH schließt sich einer externen U-Kasse an und dotiert diese regelmäßig. Das Kapital wächst außerhalb der GmbH – rechtlich geschützt, steuerlich gefördert.</p>
+          <div class="mech-steps">
+            <div class="mech-step reveal">
+              <div class="mech-num">1</div>
+              <div class="mech-body"><strong>Anschluss an eine U-Kasse</strong><span>Die GmbH schließt eine Anschlussvereinbarung mit einer externen Unterstützungskasse. Sie wird Trägerunternehmen der Kasse.</span></div>
+            </div>
+            <div class="mech-step reveal">
+              <div class="mech-num">2</div>
+              <div class="mech-body"><strong>Versorgungszusage an den GF</strong><span>Die GmbH erteilt dem GF eine Versorgungszusage – Höhe, Art und Bedingungen der späteren Leistung werden klar definiert. Gesellschafterbeschluss erforderlich.</span></div>
+            </div>
+            <div class="mech-step reveal">
+              <div class="mech-num">3</div>
+              <div class="mech-body"><strong>Jährliche Dotierung</strong><span>Die GmbH zahlt jährlich einen Beitrag an die U-Kasse. Dieser Beitrag ist nach § 4d EStG als Betriebsausgabe abzugsfähig. Keine Rückstellung in der GmbH-Bilanz.</span></div>
+            </div>
+            <div class="mech-step reveal">
+              <div class="mech-num">4</div>
+              <div class="mech-body"><strong>Rückdeckungsversicherung</strong><span>Die U-Kasse schließt eine Rückdeckungsversicherung ab – zur Absicherung der Versorgungsleistung. Das schützt vor Insolvenz des Trägerunternehmens.</span></div>
+            </div>
+            <div class="mech-step reveal">
+              <div class="mech-num">5</div>
+              <div class="mech-body"><strong>Leistungsauszahlung im Rentenalter</strong><span>Ab dem vereinbarten Rentenalter zahlt die U-Kasse die Versorgungsleistung. Beim GF steuerpflichtig als Einkommen – in der Regel zu günstigerem Steuersatz als im Erwerbsleben.</span></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="rechner-box reveal">
+            <h3 class="rechner-heading">Beispielrechnung U-Kasse</h3>
+            <p class="rechner-sub">GGF, 48 Jahre, Jahresgehalt 150.000 €, Renteneintritt 67, angestrebte Jahresrente 36.000 €, GmbH-Steuersatz 30 %</p>
+            <div class="rechner-row"><span class="rechner-label">Jährliche Dotierung an U-Kasse</span><span class="rechner-value">ca. 22.000 €</span></div>
+            <div class="rechner-row"><span class="rechner-label">Steuerersparnis GmbH pro Jahr (30 %)</span><span class="rechner-value green">ca. 6.600 €</span></div>
+            <div class="rechner-row"><span class="rechner-label">Laufzeit bis Renteneintritt</span><span class="rechner-value">19 Jahre</span></div>
+            <div class="rechner-row"><span class="rechner-label">Gesamtdotierung kumuliert</span><span class="rechner-value">418.000 €</span></div>
+            <div class="rechner-row"><span class="rechner-label">Bilanzwirkung bei der GmbH</span><span class="rechner-value">0 €</span></div>
+            <div class="rechner-row total"><span class="rechner-label strong">Kumulierte Steuerersparnis GmbH</span><span class="rechner-value gold">ca. 125.400 €</span></div>
+            <div class="rechner-note">Über 125.000 € Steuerersparnis – bei null Bilanzbelastung. Das ist der Kernvorteil der U-Kasse gegenüber der Direktzusage.</div>
+          </div>
+          <p class="rechner-disclaimer reveal">Vereinfachte Modellrechnung. Dotierungshöhen hängen von Rentenziel, Alter und weiteren versicherungsmathematischen Faktoren ab. Keine steuerliche Beratung.</p>
+          <div class="disclaimer reveal">
+            <strong>Hinweis:</strong> Ich bin Versicherungsmakler, kein Steuerberater. Alle Angaben dienen der Orientierung. Umsetzung ausschließlich in Abstimmung mit Ihrem Steuerberater.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEIN PSV-SCHUTZ -->
+  <section class="section" id="psv">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Wichtiges Risiko</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">Kein PSV-Schutz –<br><em>und wie man das löst.</em></h2>
+      <p class="sect-intro reveal">Die Unterstützungskasse ist nicht dem Pensionssicherungsverein (PSV) angeschlossen. Das bedeutet: Im Insolvenzfall des Trägerunternehmens gibt es keinen gesetzlichen Schutz für die Versorgungsansprüche. Das ist der einzige wesentliche Nachteil – und er lässt sich lösen.</p>
+      <div class="psv-grid">
+        <div class="psv-card risk reveal">
+          <div class="psv-badge r">Das Risiko</div>
+          <h3 class="psv-title">Kein gesetzlicher Insolvenzschutz</h3>
+          <ul class="psv-list">
+            <li class="psv-item con">U-Kasse ist nicht PSV-pflichtig – kein automatischer Schutz</li>
+            <li class="psv-item con">Bei Insolvenz der GmbH könnten Versorgungsansprüche gefährdet sein</li>
+            <li class="psv-item con">Ohne Rückdeckung nur unbesichertes Versprechen der GmbH</li>
+            <li class="psv-item con">Unterschied zur Direktversicherung: dort PSV-Schutz vorhanden</li>
+          </ul>
+        </div>
+        <div class="psv-card loesung reveal">
+          <div class="psv-badge l">Die Lösung</div>
+          <h3 class="psv-title">Rückdeckungsversicherung als Insolvenzschutz</h3>
+          <ul class="psv-list">
+            <li class="psv-item pro">U-Kasse schließt Rückdeckungsversicherung auf Leben des GF ab</li>
+            <li class="psv-item pro">Verpfändung der Police an den GF sichert seinen Anspruch ab</li>
+            <li class="psv-item pro">Im Insolvenzfall greift die verpfändete Police direkt</li>
+            <li class="psv-item pro">Bilanztechnisch: Aktivwert der Rückdeckung steht der Dotierung gegenüber</li>
+          </ul>
+          <div class="psv-note">Mit Rückdeckungsversicherung und Verpfändung ist der Insolvenzschutz der U-Kasse vergleichbar mit dem einer Direktversicherung – ohne gesetzliche Absicherung, aber mit vertraglicher.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERGLEICH -->
+  <section class="section section-dark" id="vergleich">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Einordnung</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--paper);">U-Kasse vs. Direktzusage vs.<br><em>Direktversicherung.</em></h2>
+      <p class="reveal" style="font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.6); line-height: 1.8; max-width: 620px; margin-bottom: 48px;">Kein Durchführungsweg ist pauschal besser – die richtige Wahl hängt von Versorgungsziel, Gehaltshöhe, Bilanzwünschen und persönlicher Situation ab.</p>
+      <div class="reveal" style="overflow-x: auto;">
+        <table class="vergleich-table">
+          <thead>
+            <tr>
+              <th>Kriterium</th>
+              <th style="color: var(--gold-light);">Unterstützungskasse</th>
+              <th>Direktzusage</th>
+              <th>Direktversicherung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bilanzwirkung GmbH</td>
+              <td class="gut">Keine</td>
+              <td class="schlecht">Pensionsrückstellung (Passiv)</td>
+              <td class="gut">Keine</td>
+            </tr>
+            <tr>
+              <td>Beitragsobergrenze</td>
+              <td class="gut">Keine</td>
+              <td class="gut">Keine</td>
+              <td class="schlecht">8 % BBG = 7.728 € (2024)</td>
+            </tr>
+            <tr>
+              <td>Steuerliche Abzugsfähigkeit</td>
+              <td class="gut">Volle Betriebsausgabe</td>
+              <td class="gut">Rückstellung mindert Gewinn</td>
+              <td class="gut">Volle Betriebsausgabe</td>
+            </tr>
+            <tr>
+              <td>PSV-Insolvenzschutz</td>
+              <td class="schlecht">Nein – Rückdeckung nötig</td>
+              <td class="schlecht">Nein – Rückdeckung nötig</td>
+              <td class="gut">Ja – gesetzlich geschützt</td>
+            </tr>
+            <tr>
+              <td>Verwaltungsaufwand</td>
+              <td class="mittel">Mittel – externe Kasse</td>
+              <td class="schlecht">Hoch – komplexe Dokumentation</td>
+              <td class="gut">Gering</td>
+            </tr>
+            <tr>
+              <td>Formale Anforderungen</td>
+              <td class="mittel">Mittel</td>
+              <td class="schlecht">Sehr hoch – vGA-Risiko</td>
+              <td class="gut">Gering</td>
+            </tr>
+            <tr>
+              <td>Geeignet für</td>
+              <td class="gut">GGF, hohe Gehälter, hohe Versorgungsziele</td>
+              <td class="mittel">GGF wenn Bilanzwirkung akzeptiert</td>
+              <td class="gut">Alle Unternehmensgrößen, Einsteiger</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="disclaimer-dark reveal">
+        <strong>Hinweis:</strong> Alle steuerlichen Angaben dienen der Orientierung. Ich bin Versicherungsmakler – keine steuerliche Beratung durch mich. Umsetzung ausschließlich in Abstimmung mit Ihrem Steuerberater.
+      </div>
+    </div>
+  </section>
+
+  <!-- ANBIETER -->
+  <section class="section" id="anbieter">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Renommierte Anbieter</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">Mit wem wir<br><em>zusammenarbeiten.</em></h2>
+      <p class="sect-intro reveal">Die Wahl der richtigen U-Kasse ist entscheidend – für Verwaltungsqualität, Kostenstruktur und Rechtssicherheit. Ich arbeite mit zwei renommierten Anbietern zusammen.</p>
+      <div class="anbieter-grid">
+        <div class="anbieter-card reveal">
+          <div class="anbieter-badge">Spezialisiert · Tantiemenmodell</div>
+          <div class="anbieter-name">Deutsche Unterstützungskasse (DUK)</div>
+          <p class="anbieter-desc">Die Deutsche Unterstützungskasse hat sich auf das Tantiemenmodell für Geschäftsführer spezialisiert und ist einer der bekanntesten Anbieter in Deutschland. Strukturierte Lösung, rechtssichere Dokumentation und erfahrener Verwaltungsapparat – besonders geeignet für GGF die Tantiemen in die Versorgung umleiten möchten.</p>
+          <ul class="anbieter-list">
+            <li class="anbieter-item">Spezialisiert auf GF-Versorgung und Tantiemenmodell</li>
+            <li class="anbieter-item">Bundesweit aktiv, langjährige Erfahrung</li>
+            <li class="anbieter-item">Strukturierte Onboarding-Prozesse</li>
+            <li class="anbieter-item">Kombinierbar mit Rückdeckungsversicherungen aller Anbieter</li>
+          </ul>
+        </div>
+        <div class="anbieter-card reveal">
+          <div class="anbieter-badge">Renommiert · Klassische U-Kasse</div>
+          <div class="anbieter-name">Rosenheimer Unterstützungskasse</div>
+          <p class="anbieter-desc">Die Rosenheimer Unterstützungskasse ist eine der etabliertesten Einrichtungen für betriebliche Versorgung in Deutschland. Solide Verwaltung, langjährige Praxis und breite Erfahrung mit unterschiedlichen Unternehmensstrukturen – von der GmbH bis zum Konzern.</p>
+          <ul class="anbieter-list">
+            <li class="anbieter-item">Einer der ältesten und bekanntesten U-Kassen-Anbieter</li>
+            <li class="anbieter-item">Breite Erfahrung mit verschiedenen Branchen und Unternehmensgrößen</li>
+            <li class="anbieter-item">Solide Verwaltungsstruktur und transparente Kostenstruktur</li>
+            <li class="anbieter-item">Geeignet für klassische Versorgungsmodelle ohne Tantiemenkomponente</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMALE ANFORDERUNGEN -->
+  <section class="section section-dark" id="formal">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Formale Anforderungen</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--paper);">Was formal stimmen<br><em>muss.</em></h2>
+      <p class="reveal" style="font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.6); line-height: 1.8; max-width: 620px; margin-bottom: 52px;">Die U-Kasse ist formal weniger streng als die Direktzusage – aber auch hier gelten klare Anforderungen, deren Nichtbeachtung zur steuerlichen Nichtanerkennung führen kann.</p>
+      <div class="formal-grid">
+        <div class="formal-card reveal">
+          <div class="formal-icon"><svg viewBox="0 0 16 16"><rect x="3" y="2" width="10" height="13" rx="1.5"/><path d="M6 6h4M6 9h4M6 12h2"/></svg></div>
+          <h3 class="formal-title">Schriftliche Versorgungszusage</h3>
+          <p class="formal-desc">Die Versorgungszusage an den GF muss klar schriftlich dokumentiert sein – Höhe, Art, Bedingungen. Fehlerhafte oder lückenhafte Zusagen gefährden die steuerliche Anerkennung der Dotierungen.</p>
+          <div class="formal-warn">Kein Schriftformerfordernis erfüllt = Dotierungen steuerlich nicht anerkannt.</div>
+        </div>
+        <div class="formal-card reveal">
+          <div class="formal-icon"><svg viewBox="0 0 16 16"><path d="M8 2l1.5 3 3.5.5-2.5 2.5.5 3.5L8 10l-3 1.5.5-3.5L3 5.5l3.5-.5z"/></svg></div>
+          <h3 class="formal-title">Gesellschafterbeschluss</h3>
+          <p class="formal-desc">Die Versorgungszusage und der Beitritt zur U-Kasse müssen durch einen ordnungsgemäßen Gesellschafterbeschluss genehmigt werden. Dokumentation im Protokoll der Gesellschafterversammlung ist Pflicht.</p>
+          <div class="formal-warn">Fehlende Beschlüsse können zur vGA führen – besonders beim beherrschenden GGF.</div>
+        </div>
+        <div class="formal-card reveal">
+          <div class="formal-icon"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v.5"/></svg></div>
+          <h3 class="formal-title">Erdienbarkeit</h3>
+          <p class="formal-desc">Auch bei der U-Kasse gilt: Die Versorgung muss erdienbar sein. Mindestens 10 Jahre zwischen Zusageerteilung und Renteneintritt – zu späte Zusagen werden steuerlich nicht anerkannt.</p>
+          <div class="formal-warn">Erdienbarkeitsprinzip gilt genauso wie bei der Direktzusage.</div>
+        </div>
+        <div class="formal-card reveal">
+          <div class="formal-icon"><svg viewBox="0 0 16 16"><path d="M2 14V6l6-4 6 4v8"/><path d="M6 14v-4h4v4"/></svg></div>
+          <h3 class="formal-title">Angemessenheit</h3>
+          <p class="formal-desc">Die Gesamtversorgung darf 75 % der letzten Aktivbezüge nicht übersteigen. Überhöhte Zusagen führen anteilig zur vGA – auch bei U-Kassen-Dotierungen.</p>
+          <div class="formal-warn">Angemessenheitsprüfung bei Zusageerteilung und bei Gehaltsänderungen.</div>
+        </div>
+        <div class="formal-card reveal">
+          <div class="formal-icon"><svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></div>
+          <h3 class="formal-title">Abstimmung mit Steuerberater</h3>
+          <p class="formal-desc">U-Kassen-Dotierungen werden steuerlich nach § 4d EStG berechnet. Die konkreten Beträge und die steuerliche Einbettung erfordern zwingend steuerliche Begleitung.</p>
+          <div class="formal-warn">Ich bin Versicherungsmakler – keine steuerliche Beratung durch mich.</div>
+        </div>
+        <div class="formal-card reveal">
+          <div class="formal-icon"><svg viewBox="0 0 16 16"><path d="M4 8h8M8 4l4 4-4 4"/></svg></div>
+          <h3 class="formal-title">Laufende Verwaltung</h3>
+          <p class="formal-desc">Die U-Kasse übernimmt die laufende Verwaltung – Jahresabschlüsse, Mitgliederverzeichnis, Rückdeckungsmanagement. Der Trägerunternehmer zahlt laufende Verwaltungskosten an die Kasse.</p>
+          <div class="formal-warn">Verwaltungskosten als laufender Aufwand einplanen – variiert je nach Anbieter.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="sect-label reveal" style="justify-content: center;"><span>Jetzt starten</span></div>
+      <h2 class="cta-heading reveal">U-Kasse –<br><em>wenn Bilanz und Versorgung</em><br>zusammenpassen müssen.</h2>
+      <p class="cta-sub reveal">Im ersten Gespräch prüfe ich ob die U-Kasse die richtige Lösung für Ihre Situation ist – oder ob Direktversicherung oder Direktzusage besser passen. Ehrliche Analyse statt Standardempfehlung.</p>
+      <a href="kontakt.html" class="btn-gold-lg reveal">Erstgespräch anfragen</a>
+      <span class="cta-note reveal">Erstes Gespräch kostenfrei · Danach transparentes Honorar</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Dennis <span>Klincov</span></div>
+        <p class="footer-tagline">BAV &amp; BKV Spezialist. Versicherungsmakler nach § 34d GewO. Honorarberatung für Geschäftsführer in Berlin.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Versorgung</h4>
+        <ul>
+          <li><a href="ggf-versorgung.html">GGF-Versorgung</a></li>
+          <li><a href="vorstandsversorgung.html">Vorstandsversorgung</a></li>
+          <li><a href="direktzusage.html">Direktzusage</a></li>
+          <li><a href="unterstuetzungskasse.html">Unterstützungskasse</a></li>
+          <li><a href="tantiemenmodell.html">Tantiemenmodell</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Absicherung &amp; Benefits</h4>
+        <ul>
+          <li><a href="bkv.html">BKV</a></li>
+          <li><a href="bgm.html">BGM</a></li>
+          <li><a href="company-benefits.html">Company Benefits</a></li>
+          <li><a href="dao.html">D&amp;O</a></li>
+          <li><a href="cyber.html">Cyber</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Versicherer</h4>
+        <ul>
+          <li><a href="#">Allianz</a></li>
+          <li><a href="#">Württembergische</a></li>
+          <li><a href="#">LV 1871</a></li>
+          <li><a href="#">Hallesche</a></li>
+          <li><a href="#">Alte Leipziger</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 60); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.07 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

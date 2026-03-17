@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Über mich – Dennis Klincov</title>
+  <meta name="description" content="Dennis Klincov – Wirtschaftsinformatiker, Versicherungsspezialist und unabhängiger Makler. 10 Jahre Erfahrung, zertifizierter BAV- und BKV-Spezialist in Berlin.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C8922A; --gold-light: #E8B96A; --gold-pale: #F7EDD8; --gold-dark: #8A6010;
+      --ink: #1A1814; --ink-soft: #3D3830; --ink-muted: #7A7268;
+      --paper: #FDFAF5; --paper-warm: #F5EFE2;
+      --border-ink: rgba(26,24,20,0.10); --border-strong: rgba(26,24,20,0.18);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 64px; height: 68px; display: flex; align-items: center; justify-content: space-between; background: rgba(253,250,245,0.93); backdrop-filter: blur(14px); border-bottom: 0.5px solid var(--border-ink); }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(26,24,20,0.06); }
+    .nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 400; color: var(--ink-muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { font-size: 12px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 10px 22px; background: var(--gold); color: #fff; border: none; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--gold-dark); }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 68px; }
+    .hero-left { background: var(--paper-warm); display: flex; align-items: flex-end; justify-content: center; padding: 80px 64px 0; overflow: hidden; position: relative; }
+    .hero-left::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 60%, var(--paper-warm) 100%); z-index: 1; pointer-events: none; }
+    .hero-photo { width: 100%; max-width: 400px; display: block; position: relative; z-index: 0; }
+    .hero-right { padding: 80px 80px 80px 64px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+    .hero-right::before { content: ''; position: absolute; left: 0; top: 15%; bottom: 15%; width: 0.5px; background: linear-gradient(to bottom, transparent, var(--border-ink), transparent); }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); display: block; }
+    .eyebrow span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .hero-title { font-family: var(--serif); font-size: clamp(40px, 4.5vw, 62px); font-weight: 500; line-height: 1.08; color: var(--ink); margin-bottom: 24px; }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-lead { font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; max-width: 420px; margin-bottom: 40px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+    .hero-tag { font-size: 11px; font-weight: 400; letter-spacing: 0.04em; padding: 6px 14px; border: 0.5px solid var(--border-strong); color: var(--ink-soft); background: var(--paper); }
+    .hero-cta { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 32px; background: var(--gold); color: #fff; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .hero-cta:hover { background: var(--gold-dark); transform: translateY(-1px); }
+
+    /* SECTIONS */
+    .section { padding: 112px 80px; }
+    .section-dark { background: var(--ink); }
+    .section-warm { background: var(--paper-warm); border-top: 0.5px solid var(--border-ink); border-bottom: 0.5px solid var(--border-ink); }
+    .inner { max-width: 1200px; margin: 0 auto; }
+    .sect-label { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .sect-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
+    .sect-label span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .sect-heading { font-family: var(--serif); font-size: clamp(32px, 3.5vw, 48px); font-weight: 500; line-height: 1.12; margin-bottom: 20px; }
+    .sect-heading em { font-style: italic; color: var(--gold); }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+    /* STATEMENT */
+    .statement-wrap { max-width: 800px; margin: 0 auto; }
+    .statement-quote { font-family: var(--serif); font-size: clamp(22px, 3vw, 34px); font-weight: 400; font-style: italic; color: var(--paper); line-height: 1.45; margin-bottom: 32px; position: relative; padding-left: 32px; }
+    .statement-quote::before { content: '\201C'; position: absolute; left: 0; top: -8px; font-size: 72px; color: var(--gold); line-height: 1; font-style: normal; }
+    .statement-body { font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.65); line-height: 1.85; }
+    .statement-body p { margin-bottom: 16px; }
+    .statement-body p:last-child { margin-bottom: 0; }
+    .statement-sig { margin-top: 36px; display: flex; align-items: center; gap: 16px; }
+    .statement-sig-line { width: 40px; height: 1px; background: var(--gold); }
+    .statement-sig-name { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--paper); }
+    .statement-sig-title { font-size: 12px; font-weight: 300; color: rgba(253,250,245,0.45); margin-top: 2px; }
+
+    /* WERDEGANG */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .timeline-item { display: grid; grid-template-columns: 120px 1fr; gap: 32px; padding: 28px 0; border-bottom: 0.5px solid var(--border-ink); align-items: start; }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-year { font-family: var(--serif); font-size: 15px; font-weight: 500; color: var(--gold); padding-top: 3px; }
+    .timeline-content h3 { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.2; }
+    .timeline-content p { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; }
+    .timeline-tag { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 3px 9px; border: 0.5px solid var(--border); color: var(--gold-dark); background: var(--gold-pale); margin-bottom: 8px; }
+
+    /* WAS MICH AUSMACHT */
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-top: 48px; }
+    .value-card { background: var(--paper); padding: 36px 32px; transition: background 0.2s; position: relative; overflow: hidden; }
+    .value-card:hover { background: var(--paper-warm); }
+    .value-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); opacity: 0; transition: opacity 0.2s; }
+    .value-card:hover::after { opacity: 1; }
+    .value-num { font-family: var(--serif); font-size: 52px; font-weight: 400; color: var(--gold-pale); line-height: 1; margin-bottom: 16px; }
+    .value-title { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 10px; line-height: 1.2; }
+    .value-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.75; }
+
+    /* KOMPETENZEN */
+    .kompetenzen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); }
+    .kompetenz-card { background: var(--paper-warm); padding: 32px 28px; }
+    .kompetenz-icon { width: 36px; height: 36px; border: 0.5px solid var(--border); background: var(--paper); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .kompetenz-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .kompetenz-title { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+    .kompetenz-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; }
+
+    /* ZERTIFIKATE */
+    .zert-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-top: 48px; }
+    .zert-card { background: var(--paper); padding: 28px 24px; }
+    .zert-title { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+    .zert-sub { font-size: 12px; font-weight: 300; color: var(--ink-muted); line-height: 1.5; }
+
+    /* CTA */
+    .cta-section { padding: 112px 80px; background: var(--ink); text-align: center; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(200,146,42,0.11) 0%, transparent 70%); pointer-events: none; }
+    .cta-inner { position: relative; max-width: 580px; margin: 0 auto; }
+    .cta-heading { font-family: var(--serif); font-size: clamp(36px, 4vw, 54px); font-weight: 500; color: var(--paper); line-height: 1.1; margin-bottom: 18px; }
+    .cta-heading em { font-style: italic; color: var(--gold); }
+    .cta-sub { font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.55); line-height: 1.75; margin-bottom: 44px; }
+    .btn-gold-lg { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 16px 44px; background: var(--gold); color: #fff; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s; }
+    .btn-gold-lg:hover { background: var(--gold-light); }
+    .cta-note { display: block; margin-top: 14px; font-size: 12px; color: rgba(253,250,245,0.3); }
+
+    /* FOOTER */
+    footer { background: var(--paper); border-top: 0.5px solid var(--border-ink); padding: 48px 80px 32px; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; max-width: 240px; }
+    .footer-col h4 { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 13px; font-weight: 300; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 20px; border-top: 0.5px solid var(--border-ink); display: flex; justify-content: flex-end; }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: var(--ink-muted); text-decoration: none; }
+    .footer-legal a:hover { color: var(--gold); }
+
+    /* ANIMATION */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.7s ease both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 60px 28px 0; min-height: 380px; }
+      .hero-right { padding: 48px 28px; }
+      .hero-right::before { display: none; }
+      .section { padding: 72px 28px; }
+      .cta-section, footer { padding: 72px 28px; }
+      .two-col { grid-template-columns: 1fr; gap: 48px; }
+      .values-grid, .zert-grid { grid-template-columns: 1fr; }
+      .kompetenzen-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .timeline-item { grid-template-columns: 80px 1fr; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav">
+    <a href="index.html" class="nav-logo">Dennis <span>Klincov</span></a>
+        <ul class="nav-links">
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="ggf-versorgung.html">GGF-Versorgung</a></li>
+      <li><a href="company-benefits.html">Company Benefits</a></li>
+      <li><a href="ueber-mich.html">Über mich</a></li>
+    </ul>
+    <a href="kontakt.html" class="nav-cta">Termin anfragen</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <img src="dennis-klincov.jpg" alt="Dennis Klincov" class="hero-photo">
+    </div>
+    <div class="hero-right">
+      <div class="eyebrow fade-up"><span>Über mich</span></div>
+      <h1 class="hero-title fade-up delay-1">Berater.<br><em>Spezialist.</em><br>Unabhängig.</h1>
+      <p class="hero-lead fade-up delay-2">Wirtschaftsinformatiker und Wirtschaftswissenschaftler mit über 10 Jahren Erfahrung in der Versicherungsbranche. Ich kombiniere analytisches Denken, technisches Verständnis und echte Beratungserfahrung – auf drei Ebenen gleichzeitig.</p>
+      <div class="hero-tags fade-up delay-2">
+        <span class="hero-tag">Wirtschaftsinformatik</span>
+        <span class="hero-tag">Wirtschaftswissenschaften</span>
+        <span class="hero-tag">BAV-Spezialist</span>
+        <span class="hero-tag">BKV-Spezialist</span>
+        <span class="hero-tag">DMA-zertifiziert</span>
+        <span class="hero-tag">§ 34d GewO</span>
+      </div>
+      <a href="kontakt.html" class="hero-cta fade-up delay-3">
+        Gespräch anfragen
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- PERSÖNLICHES STATEMENT -->
+  <section class="section section-dark">
+    <div class="inner">
+      <div class="statement-wrap">
+        <div class="sect-label reveal"><span>Persönliches Statement</span></div>
+        <blockquote class="statement-quote reveal">
+          Ich bin nicht in die Versicherungsbranche gegangen, weil Versicherungen spannend klingen. Ich bin gegangen, weil ich gemerkt habe, dass hier echte Lücken sind – zwischen dem, was Kunden brauchen, und dem, was sie bekommen.
+        </blockquote>
+        <div class="statement-body reveal">
+          <p>Ich komme aus der Wirtschaftsinformatik und den Wirtschaftswissenschaften. Das klingt erstmal weit entfernt von Renten und Policen. Aber genau das ist mein Vorteil: Ich kann Systeme verstehen, Strukturen durchdenken und komplexe Lösungen bauen – nicht nur vermitteln.</p>
+          <p>Als externer Berater bei Versicherern habe ich gesehen, wie Produkte entstehen. Als Makler vertrete ich den Kunden. Als jemand, der Plattformen wie Probonio von innen kennt, verstehe ich auch die Technologieseite der Branche. Diese drei Perspektiven gleichzeitig zu haben ist selten – und für meine Kunden ein echter Vorteil.</p>
+          <p>Ich sage auch Nein. Wenn ein Produkt nicht passt, sage ich das. Wenn eine Lösung zu riskant ist, sage ich das. Mein Ziel ist nicht der Abschluss – mein Ziel ist, dass Sie in zehn Jahren noch zufrieden mit der Entscheidung sind.</p>
+        </div>
+        <div class="statement-sig reveal">
+          <div>
+            <div class="statement-sig-line"></div>
+          </div>
+          <div>
+            <div class="statement-sig-name">Dennis Klincov</div>
+            <div class="statement-sig-title">Versicherungsmakler · BAV &amp; BKV Spezialist · Berlin</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WERDEGANG -->
+  <section class="section" id="werdegang">
+    <div class="inner">
+      <div class="two-col">
+        <div>
+          <div class="sect-label reveal"><span>Werdegang</span></div>
+          <h2 class="sect-heading reveal" style="color: var(--ink);">Von der IT zur<br><em>spezialisierten Beratung.</em></h2>
+          <p class="reveal" style="font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8;">Der Weg vom Wirtschaftsinformatiker zum unabhängigen Versicherungsmakler ist kein Zufall – er erklärt, warum ich komplexe Kundensituationen anders angehe als die meisten in meiner Branche.</p>
+        </div>
+        <div class="timeline reveal">
+          <div class="timeline-item">
+            <div class="timeline-year">Studium</div>
+            <div class="timeline-content">
+              <span class="timeline-tag">Grundlage</span>
+              <h3>Wirtschaftsinformatik &amp; Wirtschaftswissenschaften</h3>
+              <p>Kombination aus analytischem IT-Denken und betriebswirtschaftlichem Verständnis. Die Basis für komplexe Lösungsarchitekturen bei Geschäftskunden.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Einstieg</div>
+            <div class="timeline-content">
+              <span class="timeline-tag">Branchenwechsel</span>
+              <h3>Einstieg in die Versicherungswelt</h3>
+              <p>Spezialisierung auf betriebliche Altersvorsorge und betriebliche Krankenversicherung. Zertifizierungen als BAV- und BKV-Spezialist sowie durch die DMA.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Extern</div>
+            <div class="timeline-content">
+              <span class="timeline-tag">Drei Welten</span>
+              <h3>Externer Berater bei Versicherern &amp; Maklern</h3>
+              <p>Mitarbeit an neuen Produkten direkt bei Versicherern. Beratung anderer Makler. Dadurch einzigartiger Einblick in alle drei Ebenen des Marktes.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2022</div>
+            <div class="timeline-content">
+              <span class="timeline-tag">Company Benefits</span>
+              <h3>Mitarbeit bei Probonio im Gründungsjahr</h3>
+              <p>Beteiligung am Aufbau eines der größten deutschen Anbieter für Company Benefits – Kenntnis des Feldes aus der Entstehungsphase heraus.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Heute</div>
+            <div class="timeline-content">
+              <span class="timeline-tag">Unabhängig</span>
+              <h3>Unabhängiger Versicherungsmakler in Berlin</h3>
+              <p>Honorarbasierte Beratung für Geschäftsführer, Gesellschafter und Vorstände. Schwerpunkte: GF-Versorgung, BAV, BKV, BGM und Company Benefits.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAS MICH AUSMACHT -->
+  <section class="section section-warm">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Arbeitsweise</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">Was mich als Berater<br><em>ausmacht.</em></h2>
+      <div class="values-grid">
+        <div class="value-card reveal">
+          <div class="value-num">I</div>
+          <h3 class="value-title">Unabhängig – kein Konzern im Rücken</h3>
+          <p class="value-desc">Ich bin keinem Versicherer verpflichtet. Keine Quoten, keine Zielprodukte, keine internen Vorgaben. Ich wähle aus dem gesamten Markt das aus, was für Sie am besten passt – nicht das, was mir am meisten bringt.</p>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-num">II</div>
+          <h3 class="value-title">Ich sage auch mal Nein</h3>
+          <p class="value-desc">Wenn ein Produkt nicht zu Ihrer Situation passt, sage ich das – auch wenn es bedeutet, keinen Abschluss zu machen. Nachhaltigkeit geht vor Umsatz. Das ist kein Marketingversprechen, das ist mein Geschäftsmodell.</p>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-num">III</div>
+          <h3 class="value-title">Langfristig denken, nicht schnell abschließen</h3>
+          <p class="value-desc">Eine Direktzusage oder eine Unterstützungskasse begleitet Ihren Betrieb jahrzehntelang. Ich berate entsprechend – mit dem Blick auf das, was in zehn Jahren noch trägt, nicht auf das, was heute einfach zu verkaufen ist.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KOMPETENZEN -->
+  <section class="section">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Kompetenzen</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">Drei Welten –<br><em>ein Ansprechpartner.</em></h2>
+      <p class="reveal" style="font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; max-width: 600px; margin-bottom: 48px;">Durch meine Tätigkeit als externer Berater bei Versicherern und mein akademisches Fundament kombiniere ich Fähigkeiten, die in der Branche selten gemeinsam auftreten.</p>
+      <div class="kompetenzen-grid">
+        <div class="kompetenz-card reveal">
+          <div class="kompetenz-icon">
+            <svg viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M5 7h6M5 10h4"/></svg>
+          </div>
+          <h3 class="kompetenz-title">IT &amp; Systemdenken</h3>
+          <p class="kompetenz-desc">Wirtschaftsinformatischer Hintergrund ermöglicht es mir, Plattformlösungen, Verwaltungstools und digitale Prozesse (Probonio, Degura) zu verstehen und gezielt einzusetzen – nicht nur zu empfehlen.</p>
+        </div>
+        <div class="kompetenz-card reveal">
+          <div class="kompetenz-icon">
+            <svg viewBox="0 0 16 16"><path d="M8 2L2 6v8h12V6L8 2z"/><path d="M6 14V9h4v5"/></svg>
+          </div>
+          <h3 class="kompetenz-title">Betriebswirtschaftliches Denken</h3>
+          <p class="kompetenz-desc">Ich verstehe Bilanzen, Steuerwirkungen und Unternehmensstrukturen. Für Direktzusagen, Unterstützungskassen oder Tantiemenmodelle ist das keine Nebenbedingung – es ist Kernkompetenz.</p>
+        </div>
+        <div class="kompetenz-card reveal">
+          <div class="kompetenz-icon">
+            <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2.5 2"/></svg>
+          </div>
+          <h3 class="kompetenz-title">Versicherungstechnisches Spezialwissen</h3>
+          <p class="kompetenz-desc">10 Jahre Spezialisierung, Zertifizierungen als BAV- und BKV-Spezialist, Mitarbeit an Produktentwicklungen bei Versicherern. Ich kenne den Markt von innen.</p>
+        </div>
+        <div class="kompetenz-card reveal">
+          <div class="kompetenz-icon">
+            <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
+          </div>
+          <h3 class="kompetenz-title">Komplexe Lösungsarchitektur</h3>
+          <p class="kompetenz-desc">Bei Kunden mit besonderen Anforderungen – wie dem Automatenversicherer mit eigenem Tarif – denke ich über Standardprodukte hinaus und entwickle maßgeschneiderte Lösungen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZERTIFIKATE -->
+  <section class="section section-warm">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Qualifikation</span></div>
+      <h2 class="sect-heading reveal" style="color: var(--ink);">Zertifiziert. <em>Spezialisiert.</em> Erfahren.</h2>
+      <div class="zert-grid">
+        <div class="zert-card reveal">
+          <div class="zert-title">BAV-Spezialist</div>
+          <div class="zert-sub">Zertifiziert · Betriebliche Altersvorsorge</div>
+        </div>
+        <div class="zert-card reveal">
+          <div class="zert-title">BKV-Spezialist</div>
+          <div class="zert-sub">Zertifiziert · Betriebliche Krankenversicherung</div>
+        </div>
+        <div class="zert-card reveal">
+          <div class="zert-title">DMA-Zertifikat</div>
+          <div class="zert-sub">Zertifiziert · Deutsche Makler Akademie</div>
+        </div>
+        <div class="zert-card reveal">
+          <div class="zert-title">§ 34d GewO</div>
+          <div class="zert-sub">Versicherungsmakler · Erlaubnis Abs. 1</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="sect-label reveal" style="justify-content: center;"><span>Jetzt starten</span></div>
+      <h2 class="cta-heading reveal">Lernen wir uns<br><em>kennen.</em></h2>
+      <p class="cta-sub reveal">Das erste Gespräch ist kostenlos und unverbindlich. Ich freue mich darauf, Ihre Situation zu verstehen – und ehrlich zu sagen, ob und wie ich helfen kann.</p>
+      <a href="kontakt.html" class="btn-gold-lg reveal">Termin anfragen</a>
+      <span class="cta-note reveal">Erstes Gespräch kostenfrei · Danach transparentes Honorar</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Dennis <span>Klincov</span></div>
+        <p class="footer-tagline">BAV &amp; BKV Spezialist. Versicherungsmakler nach § 34d GewO. Honorarberatung für Geschäftsführer in Berlin.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Versorgung</h4>
+        <ul>
+          <li><a href="#">Geschäftsführerversorgung</a></li>
+          <li><a href="#">GGF-Versorgung</a></li>
+          <li><a href="#">Vorstandsversorgung</a></li>
+          <li><a href="#">Direktzusage</a></li>
+          <li><a href="#">Unterstützungskasse</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Absicherung &amp; Benefits</h4>
+        <ul>
+          <li><a href="#">BKV</a></li>
+          <li><a href="#">BGM</a></li>
+          <li><a href="#">BAV Mitarbeiter</a></li>
+          <li><a href="#">Company Benefits</a></li>
+          <li><a href="#">D&amp;O</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Versicherer</h4>
+        <ul>
+          <li><a href="#">Allianz</a></li>
+          <li><a href="#">Württembergische</a></li>
+          <li><a href="#">LV 1871</a></li>
+          <li><a href="#">Hallesche</a></li>
+          <li><a href="#">Alte Leipziger</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 60); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.07 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt – Dennis Klincov</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C8922A; --gold-light: #E8B96A; --gold-pale: #F7EDD8; --gold-dark: #8A6010;
+      --ink: #1A1814; --ink-soft: #3D3830; --ink-muted: #7A7268;
+      --paper: #FDFAF5; --paper-warm: #F5EFE2;
+      --border-ink: rgba(26,24,20,0.10); --border-strong: rgba(26,24,20,0.22);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 64px; height: 68px; display: flex; align-items: center; justify-content: space-between; background: rgba(253,250,245,0.93); backdrop-filter: blur(14px); border-bottom: 0.5px solid var(--border-ink); }
+    .nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-back { font-size: 13px; font-weight: 400; color: var(--ink-muted); text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
+    .nav-back:hover { color: var(--gold); }
+
+    .page-wrap { flex: 1; display: grid; grid-template-columns: 1fr 1fr; padding-top: 68px; }
+
+    /* LEFT */
+    .info-col { background: var(--ink); padding: 80px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+    .info-col::before { content: 'DK'; position: absolute; bottom: -40px; right: -20px; font-family: var(--serif); font-size: 260px; font-weight: 600; color: rgba(200,146,42,0.055); line-height: 1; pointer-events: none; user-select: none; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
+    .eyebrow span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .info-title { font-family: var(--serif); font-size: clamp(34px, 3.5vw, 52px); font-weight: 500; color: var(--paper); line-height: 1.1; margin-bottom: 20px; }
+    .info-title em { font-style: italic; color: var(--gold); }
+    .info-lead { font-size: 14px; font-weight: 300; color: rgba(253,250,245,0.6); line-height: 1.8; margin-bottom: 48px; max-width: 380px; }
+    .info-items { display: flex; flex-direction: column; border: 0.5px solid rgba(253,250,245,0.1); }
+    .info-item { display: flex; gap: 16px; padding: 18px 20px; border-bottom: 0.5px solid rgba(253,250,245,0.08); align-items: flex-start; }
+    .info-item:last-child { border-bottom: none; }
+    .info-icon { width: 32px; height: 32px; border: 0.5px solid rgba(200,146,42,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .info-icon svg { width: 14px; height: 14px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .info-item-label { font-size: 10px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(253,250,245,0.35); margin-bottom: 3px; }
+    .info-item-value { font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.8); line-height: 1.5; }
+    .info-item-value a { color: var(--gold-light); text-decoration: none; }
+
+    /* RIGHT */
+    .form-col { padding: 72px 80px; display: flex; flex-direction: column; justify-content: center; }
+    .form-heading { font-family: var(--serif); font-size: 30px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+    .form-sub { font-size: 13px; font-weight: 300; color: var(--ink-muted); margin-bottom: 36px; line-height: 1.6; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 18px; }
+    .form-label { display: block; font-size: 10px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 7px; }
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--paper);
+      border: 0.5px solid var(--border-strong);
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--ink-muted); opacity: 0.5; }
+    .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--gold); }
+    .form-textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7268' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    .form-select option { color: var(--ink); }
+
+    .form-check { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 24px; }
+    .form-check input[type="checkbox"] { width: 15px; height: 15px; margin-top: 3px; accent-color: var(--gold); flex-shrink: 0; cursor: pointer; border-radius: 0; }
+    .form-check-label { font-size: 12px; font-weight: 300; color: var(--ink-muted); line-height: 1.6; }
+    .form-check-label a { color: var(--gold); text-decoration: none; }
+    .form-check-label a:hover { text-decoration: underline; }
+
+    .btn-submit {
+      width: 100%; font-family: var(--sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 15px 32px; background: var(--gold); color: #fff;
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-submit:hover:not(:disabled) { background: var(--gold-dark); transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+    .spinner { width: 15px; height: 15px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.65s linear infinite; flex-shrink: 0; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .form-status { margin-top: 16px; padding: 14px 16px; font-size: 13px; font-weight: 300; line-height: 1.65; display: none; }
+    .form-status.success { display: block; border-left: 2px solid var(--gold); background: var(--gold-pale); color: var(--gold-dark); }
+    .form-status.error { display: block; border-left: 2px solid #B03020; background: #FDF0EE; color: #8B2315; }
+
+    footer { background: var(--paper); border-top: 0.5px solid var(--border-ink); padding: 28px 80px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--ink); text-decoration: none; }
+    .footer-logo span { color: var(--gold); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: var(--ink-muted); text-decoration: none; }
+    .footer-legal a:hover { color: var(--gold); }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .page-wrap { grid-template-columns: 1fr; }
+      .info-col { padding: 60px 28px; }
+      .form-col { padding: 52px 28px; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { padding: 24px 28px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Dennis <span>Klincov</span></a>
+        <ul class="nav-links">
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="ggf-versorgung.html">GGF-Versorgung</a></li>
+      <li><a href="company-benefits.html">Company Benefits</a></li>
+      <li><a href="ueber-mich.html">Über mich</a></li>
+    </ul>
+    <a href="kontakt.html" class="nav-cta">Termin anfragen</a>
+  </nav>
+
+  <div class="page-wrap">
+
+    <div class="info-col">
+      <div class="eyebrow"><span>Kontakt</span></div>
+      <h1 class="info-title">Das erste Gespräch<br>ist <em>kostenlos.</em></h1>
+      <p class="info-lead">Kein Verkaufsgespräch. Kein Abschlussdruck. Schildern Sie mir Ihre Situation – ich melde mich innerhalb von 24 Stunden.</p>
+      <div class="info-items">
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 14 14"><rect x="1" y="3" width="12" height="8" rx="1.5"/><path d="M1 5l6 3.5L13 5"/></svg>
+          </div>
+          <div>
+            <div class="info-item-label">E-Mail</div>
+            <div class="info-item-value"><a href="/cdn-cgi/l/email-protection#9df0fcf4f1ddf9f8f3f3f4eeb0f6f1f4f3fef2ebb3fef2f0"><span class="__cf_email__" data-cfemail="b6dbd7dfdaf6d2d3d8d8dfc59bdddadfd8d5d9c098d5d9db">[email&#160;protected]</span></a></div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 14 14"><path d="M7 1C4.2 1 2 3.2 2 6c0 3.5 5 7 5 7s5-3.5 5-7c0-2.8-2.2-5-5-5z"/><circle cx="7" cy="6" r="1.5"/></svg>
+          </div>
+          <div>
+            <div class="info-item-label">Standort</div>
+            <div class="info-item-value">Berlin · bundesweite Beratung</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5"/><path d="M7 4.5V7l2 2"/></svg>
+          </div>
+          <div>
+            <div class="info-item-label">Antwortzeit</div>
+            <div class="info-item-value">In der Regel innerhalb von 24 Stunden</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 14 14"><path d="M2 4h10v7a1 1 0 01-1 1H3a1 1 0 01-1-1V4z"/><path d="M5 4V3a1 1 0 011-1h2a1 1 0 011 1v1"/></svg>
+          </div>
+          <div>
+            <div class="info-item-label">Erstgespräch</div>
+            <div class="info-item-value">Kostenlos und unverbindlich</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-col">
+      <h2 class="form-heading">Termin anfragen</h2>
+      <p class="form-sub">Felder mit * sind Pflichtfelder. Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="vorname">Vorname *</label>
+          <input class="form-input" type="text" id="vorname" placeholder="Max" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="nachname">Nachname *</label>
+          <input class="form-input" type="text" id="nachname" placeholder="Mustermann" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">E-Mail-Adresse *</label>
+        <input class="form-input" type="email" id="email" placeholder="max@unternehmen.de" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="telefon">Telefonnummer *</label>
+        <input class="form-input" type="tel" id="telefon" placeholder="+49 30 123456789" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="unternehmen">Unternehmen</label>
+        <input class="form-input" type="text" id="unternehmen" placeholder="Mustermann GmbH">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="thema">Thema *</label>
+        <select class="form-select" id="thema" required>
+          <option value="" disabled selected>Bitte auswählen</option>
+          <option>Geschäftsführerversorgung</option>
+          <option>Betriebliche Altersvorsorge (BAV)</option>
+          <option>Betriebliche Krankenversicherung (BKV)</option>
+          <option>Betriebliches Gesundheitsmanagement (BGM)</option>
+          <option>Company Benefits</option>
+          <option>D&amp;O Versicherung</option>
+          <option>Cyberversicherung</option>
+          <option>VSH / Betriebshaftpflicht</option>
+          <option>PKV</option>
+          <option>Sonstiges</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="nachricht">Ihre Nachricht *</label>
+        <textarea class="form-textarea" id="nachricht" placeholder="Schildern Sie kurz Ihre Situation oder Ihr Anliegen. Je mehr Kontext Sie geben, desto gezielter kann ich mich vorbereiten." required></textarea>
+      </div>
+
+      <div class="form-check">
+        <input type="checkbox" id="datenschutz">
+        <label class="form-check-label" for="datenschutz">
+          Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und bin einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert und verwendet werden. *
+        </label>
+      </div>
+
+      <button class="btn-submit" id="submit-btn" onclick="submitForm()">
+        <span id="btn-text">Anfrage absenden</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+      </button>
+
+      <div class="form-status" id="form-status"></div>
+    </div>
+
+  </div>
+
+  <footer>
+    <a href="index.html" class="footer-logo">Dennis <span>Klincov</span></a>
+    <div class="footer-legal">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    async function submitForm() {
+      const vorname    = document.getElementById('vorname').value.trim();
+      const nachname   = document.getElementById('nachname').value.trim();
+      const email      = document.getElementById('email').value.trim();
+      const telefon    = document.getElementById('telefon').value.trim();
+      const unternehmen= document.getElementById('unternehmen').value.trim();
+      const thema      = document.getElementById('thema').value;
+      const nachricht  = document.getElementById('nachricht').value.trim();
+      const datenschutz= document.getElementById('datenschutz').checked;
+      const status     = document.getElementById('form-status');
+      const btn        = document.getElementById('submit-btn');
+      const btnText    = document.getElementById('btn-text');
+
+      status.className = 'form-status';
+      status.textContent = '';
+
+      if (!vorname || !nachname || !email || !telefon || !thema || !nachricht) {
+        status.className = 'form-status error';
+        status.textContent = 'Bitte füllen Sie alle Pflichtfelder aus.';
+        return;
+      }
+      if (!datenschutz) {
+        status.className = 'form-status error';
+        status.textContent = 'Bitte stimmen Sie der Datenschutzerklärung zu.';
+        return;
+      }
+
+      btn.disabled = true;
+      btnText.textContent = 'Wird gesendet …';
+
+      const html = `
+        <div style="font-family: sans-serif; max-width: 600px; padding: 32px; background: #FDFAF5; color: #1A1814;">
+          <h2 style="font-family: Georgia, serif; font-size: 24px; margin: 0 0 24px; color: #C8922A;">Neue Kontaktanfrage</h2>
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+            <tr><td style="padding: 10px 0; color: #7A7268; width: 140px; vertical-align: top;">Name</td><td style="padding: 10px 0; font-weight: 500;">${vorname} ${nachname}</td></tr>
+            <tr style="border-top: 0.5px solid rgba(26,24,20,0.1);"><td style="padding: 10px 0; color: #7A7268; vertical-align: top;">E-Mail</td><td style="padding: 10px 0;"><a href="mailto:${email}" style="color: #C8922A;">${email}</a></td></tr>
+            <tr style="border-top: 0.5px solid rgba(26,24,20,0.1);"><td style="padding: 10px 0; color: #7A7268; vertical-align: top;">Telefon</td><td style="padding: 10px 0;">${telefon}</td></tr>
+            ${unternehmen ? `<tr style="border-top: 0.5px solid rgba(26,24,20,0.1);"><td style="padding: 10px 0; color: #7A7268; vertical-align: top;">Unternehmen</td><td style="padding: 10px 0;">${unternehmen}</td></tr>` : ''}
+            <tr style="border-top: 0.5px solid rgba(26,24,20,0.1);"><td style="padding: 10px 0; color: #7A7268; vertical-align: top;">Thema</td><td style="padding: 10px 0;">${thema}</td></tr>
+            <tr style="border-top: 0.5px solid rgba(26,24,20,0.1);"><td style="padding: 10px 0; color: #7A7268; vertical-align: top;">Nachricht</td><td style="padding: 10px 0; white-space: pre-wrap;">${nachricht}</td></tr>
+          </table>
+          <p style="margin-top: 32px; font-size: 12px; color: #7A7268;">Gesendet über das Kontaktformular auf dennis-klincov.com</p>
+        </div>
+      `;
+
+      try {
+        const res = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer re_LQVLDiKL_HDjVRXH8bkRpznvYwrV4zA43'
+          },
+          body: JSON.stringify({
+            from: 'Kontaktformular <noreply@dennis-klincov.com>',
+            to: ['mail@dennis-klincov.com'],
+            reply_to: email,
+            subject: `Neue Anfrage: ${thema} – ${vorname} ${nachname}`,
+            html: html
+          })
+        });
+
+        if (res.ok) {
+          status.className = 'form-status success';
+          status.textContent = `Vielen Dank, ${vorname}. Ihre Anfrage ist eingegangen. Ich melde mich in der Regel innerhalb von 24 Stunden bei Ihnen.`;
+          document.getElementById('vorname').value = '';
+          document.getElementById('nachname').value = '';
+          document.getElementById('email').value = '';
+          document.getElementById('telefon').value = '';
+          document.getElementById('unternehmen').value = '';
+          document.getElementById('thema').value = '';
+          document.getElementById('nachricht').value = '';
+          document.getElementById('datenschutz').checked = false;

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum – Dennis Klincov</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C8922A; --gold-light: #E8B96A; --gold-pale: #F7EDD8; --gold-dark: #8A6010;
+      --ink: #1A1814; --ink-soft: #3D3830; --ink-muted: #7A7268;
+      --paper: #FDFAF5; --paper-warm: #F5EFE2;
+      --border-ink: rgba(26,24,20,0.10);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 64px; height: 68px; display: flex; align-items: center; justify-content: space-between; background: rgba(253,250,245,0.93); backdrop-filter: blur(14px); border-bottom: 0.5px solid var(--border-ink); }
+    .nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-back { font-size: 13px; font-weight: 400; color: var(--ink-muted); text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
+    .nav-back:hover { color: var(--gold); }
+
+    .page-hero { padding: 140px 80px 72px; border-bottom: 0.5px solid var(--border-ink); }
+    .page-hero .inner { max-width: 800px; margin: 0 auto; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
+    .eyebrow span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .page-title { font-family: var(--serif); font-size: clamp(40px, 5vw, 60px); font-weight: 500; color: var(--ink); line-height: 1.1; }
+
+    .content { padding: 72px 80px 120px; }
+    .content .inner { max-width: 800px; margin: 0 auto; }
+
+    .imp-block { margin-bottom: 52px; padding-bottom: 52px; border-bottom: 0.5px solid var(--border-ink); }
+    .imp-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .imp-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+    .imp-label::before { content: ''; width: 20px; height: 1px; background: var(--gold); display: block; }
+
+    .imp-heading { font-family: var(--serif); font-size: 26px; font-weight: 500; color: var(--ink); margin-bottom: 20px; line-height: 1.2; }
+
+    .imp-body { font-size: 14px; font-weight: 300; color: var(--ink-soft); line-height: 1.85; }
+    .imp-body p { margin-bottom: 10px; }
+    .imp-body p:last-child { margin-bottom: 0; }
+    .imp-body a { color: var(--gold); text-decoration: none; }
+    .imp-body a:hover { text-decoration: underline; }
+
+    .imp-data { display: grid; grid-template-columns: 180px 1fr; gap: 10px 24px; font-size: 14px; }
+    .imp-data dt { font-weight: 400; color: var(--ink-muted); padding-top: 1px; }
+    .imp-data dd { font-weight: 300; color: var(--ink-soft); line-height: 1.6; }
+    .imp-data dd a { color: var(--gold); text-decoration: none; }
+    .imp-data dd a:hover { text-decoration: underline; }
+
+    .imp-note { margin-top: 24px; padding: 16px 18px; border-left: 2px solid var(--gold); background: var(--gold-pale); font-size: 13px; font-weight: 300; color: var(--gold-dark); line-height: 1.7; }
+
+    footer { background: var(--paper); border-top: 0.5px solid var(--border-ink); padding: 32px 80px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--ink); text-decoration: none; }
+    .footer-logo span { color: var(--gold); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: var(--ink-muted); text-decoration: none; }
+    .footer-legal a:hover { color: var(--gold); }
+    .footer-legal a.active { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .page-hero, .content { padding-left: 28px; padding-right: 28px; }
+      footer { padding: 28px; flex-direction: column; gap: 16px; }
+      .imp-data { grid-template-columns: 1fr; gap: 4px 0; }
+      .imp-data dt { color: var(--ink-muted); font-size: 12px; margin-top: 10px; }
+      .imp-data dt:first-child { margin-top: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Dennis <span>Klincov</span></a>
+        <ul class="nav-links">
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="ggf-versorgung.html">GGF-Versorgung</a></li>
+      <li><a href="company-benefits.html">Company Benefits</a></li>
+      <li><a href="ueber-mich.html">Über mich</a></li>
+    </ul>
+    <a href="kontakt.html" class="nav-cta">Termin anfragen</a>
+  </nav>
+
+  <div class="page-hero">
+    <div class="inner">
+      <div class="eyebrow"><span>Rechtliches</span></div>
+      <h1 class="page-title">Impressum</h1>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="inner">
+
+      <!-- ANGABEN GEM. § 5 TMG -->
+      <div class="imp-block">
+        <div class="imp-label">Angaben gemäß § 5 TMG</div>
+        <h2 class="imp-heading">Verantwortlicher</h2>
+        <dl class="imp-data">
+          <dt>Name</dt>
+          <dd>Dennis Klincov</dd>
+          <dt>Anschrift</dt>
+          <dd>Friedenauer Höhe 15a<br>12159 Berlin</dd>
+          <dt>E-Mail</dt>
+          <dd><a href="/cdn-cgi/l/email-protection#610c00080d2105040f0f08124c0a0d080f020e174f020e0c"><span class="__cf_email__" data-cfemail="7f121e16133f1b1a1111160c52141316111c1009511c1012">[email&#160;protected]</span></a></dd>
+          <dt>Website</dt>
+          <dd><a href="https://dennis-klincov.com">dennis-klincov.com</a></dd>
+        </dl>
+      </div>
+
+      <!-- BERUFSBEZEICHNUNG -->
+      <div class="imp-block">
+        <div class="imp-label">Berufsrechtliche Angaben</div>
+        <h2 class="imp-heading">Versicherungsmakler</h2>
+        <dl class="imp-data">
+          <dt>Berufsbezeichnung</dt>
+          <dd>Versicherungsmakler</dd>
+          <dt>Erlaubnis</dt>
+          <dd>Erlaubnis nach § 34d Abs. 1 GewO</dd>
+          <dt>Registernummer</dt>
+          <dd>D-YJOT-59ZQZ-07</dd>
+          <dt>Registerbehörde</dt>
+          <dd>
+            Vermittlerregister der Deutschen Industrie- und Handelskammer (DIHK)<br>
+            Einsicht unter: <a href="https://www.vermittlerregister.info" target="_blank" rel="noopener">vermittlerregister.info</a>
+          </dd>
+          <dt>Zuständige Behörde</dt>
+          <dd>
+            Industrie- und Handelskammer Berlin<br>
+            Fasanenstraße 85<br>
+            10623 Berlin
+          </dd>
+          <dt>Berufshaftpflicht</dt>
+          <dd>Allianz Versicherungs-AG</dd>
+        </dl>
+        <div class="imp-note">
+          Die gesetzlichen Berufsregelungen für Versicherungsmakler ergeben sich aus dem Versicherungsvertragsgesetz (VVG), der Gewerbeordnung (GewO) sowie der Verordnung über die Versicherungsvermittlung und -beratung (VersVermV). Einsehbar unter <a href="https://www.gesetze-im-internet.de" target="_blank" rel="noopener">gesetze-im-internet.de</a>.
+        </div>
+      </div>
+
+      <!-- STREITSCHLICHTUNG -->
+      <div class="imp-block">
+        <div class="imp-label">Streitschlichtung</div>
+        <h2 class="imp-heading">Außergerichtliche Streitbeilegung</h2>
+        <div class="imp-body">
+          <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
+          <p>Als Versicherungsmakler sind wir verpflichtet, auf die zuständige Schlichtungsstelle hinzuweisen:</p>
+          <p>
+            <strong>Versicherungsombudsmann e.V.</strong><br>
+            Postfach 080632<br>
+            10006 Berlin<br>
+            <a href="https://www.versicherungsombudsmann.de" target="_blank" rel="noopener">versicherungsombudsmann.de</a>
+          </p>
+          <p>Wir sind nicht verpflichtet und nicht bereit, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+        </div>
+      </div>
+
+      <!-- HAFTUNG FÜR INHALTE -->
+      <div class="imp-block">
+        <div class="imp-label">Haftungsausschluss</div>
+        <h2 class="imp-heading">Haftung für Inhalte</h2>
+        <div class="imp-body">
+          <p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+          <p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+        </div>
+      </div>
+
+      <!-- HAFTUNG FÜR LINKS -->
+      <div class="imp-block">
+        <div class="imp-label">Haftungsausschluss</div>
+        <h2 class="imp-heading">Haftung für Links</h2>
+        <div class="imp-body">
+          <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+          <p>Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+        </div>
+      </div>
+
+      <!-- URHEBERRECHT -->
+      <div class="imp-block">
+        <div class="imp-label">Urheberrecht</div>
+        <h2 class="imp-heading">Urheberrecht</h2>
+        <div class="imp-body">
+          <p>Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+          <p>Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+        </div>
+      </div>
+
+   

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dennis Klincov – Spezialist für Geschäftsführerversorgung & BAV</title>
+  <meta name="description" content="Honorarbasierte Beratung für Geschäftsführer und Gesellschafter. BAV, BKV, BGM, Company Benefits, D&O, Cyber. Zertifizierter BAV- und BKV-Spezialist in Berlin.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C8922A; --gold-light: #E8B96A; --gold-pale: #F7EDD8; --gold-dark: #8A6010;
+      --ink: #1A1814; --ink-soft: #3D3830; --ink-muted: #7A7268;
+      --paper: #FDFAF5; --paper-warm: #F5EFE2;
+      --border: rgba(200,146,42,0.18); --border-ink: rgba(26,24,20,0.10);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 64px; height: 68px; display: flex; align-items: center; justify-content: space-between; background: rgba(253,250,245,0.93); backdrop-filter: blur(14px); border-bottom: 0.5px solid var(--border-ink); }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(26,24,20,0.06); }
+    .nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 400; color: var(--ink-muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { font-size: 12px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 10px 22px; background: var(--gold); color: #fff; border: none; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--gold-dark); }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 68px; }
+    .hero-left { padding: 80px 64px 80px 80px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+    .hero-left::after { content: ''; position: absolute; right: 0; top: 15%; bottom: 15%; width: 0.5px; background: linear-gradient(to bottom, transparent, var(--border-ink), transparent); }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); display: block; }
+    .eyebrow span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .hero-title { font-family: var(--serif); font-size: clamp(44px, 5vw, 68px); font-weight: 500; line-height: 1.08; color: var(--ink); margin-bottom: 28px; }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-lead { font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; max-width: 420px; margin-bottom: 44px; }
+    .hero-actions { display: flex; align-items: center; gap: 24px; }
+    .btn-primary { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 32px; background: var(--gold); color: #fff; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--gold-dark); transform: translateY(-1px); }
+    .btn-ghost { font-size: 13px; font-weight: 400; color: var(--ink-muted); text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
+    .btn-ghost:hover { color: var(--gold); }
+    .hero-right { background: var(--paper-warm); display: flex; flex-direction: column; justify-content: center; padding: 80px 64px; position: relative; overflow: hidden; }
+    .hero-right::before { content: 'DK'; position: absolute; bottom: -40px; right: -20px; font-family: var(--serif); font-size: 260px; font-weight: 600; color: rgba(200,146,42,0.055); line-height: 1; pointer-events: none; user-select: none; }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-bottom: 36px; }
+    .stat { background: var(--paper-warm); padding: 26px 22px; }
+    .stat-num { font-family: var(--serif); font-size: 42px; font-weight: 500; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-size: 12px; font-weight: 300; color: var(--ink-muted); line-height: 1.4; }
+    .cert-list { display: flex; flex-direction: column; gap: 10px; }
+    .cert-item { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 300; color: var(--ink-soft); }
+    .cert-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+    /* SECTION BASICS */
+    .section { padding: 112px 80px; }
+    .section-dark { background: var(--ink); color: var(--paper); }
+    .section-warm { background: var(--paper-warm); border-top: 0.5px solid var(--border-ink); border-bottom: 0.5px solid var(--border-ink); }
+    .inner { max-width: 1200px; margin: 0 auto; }
+    .sect-label { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .sect-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
+    .sect-label span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .sect-heading { font-family: var(--serif); font-size: clamp(32px, 3.5vw, 50px); font-weight: 500; line-height: 1.12; margin-bottom: 20px; }
+    .sect-heading em { font-style: italic; color: var(--gold); }
+
+    /* TWO COL */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .two-col-top { align-items: start; }
+
+    /* WARUM GF */
+    .why-list { display: flex; flex-direction: column; gap: 22px; margin-top: 16px; }
+    .why-item { display: flex; gap: 16px; align-items: flex-start; }
+    .why-icon { width: 34px; height: 34px; border: 0.5px solid rgba(200,146,42,0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--serif); font-size: 14px; color: var(--gold); }
+    .why-text strong { display: block; font-size: 14px; font-weight: 500; color: var(--paper); margin-bottom: 3px; }
+    .why-text span { font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.55); line-height: 1.55; }
+
+    /* LEISTUNGEN */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); }
+    .service-card { background: var(--paper); padding: 34px 30px; transition: background 0.2s; }
+    .service-card:hover { background: var(--paper-warm); }
+    .service-card.featured { background: var(--paper-warm); }
+    .svc-num { font-family: var(--serif); font-size: 12px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 14px; }
+    .svc-title { font-family: var(--serif); font-size: 21px; font-weight: 500; color: var(--ink); margin-bottom: 10px; line-height: 1.2; }
+    .svc-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; margin-bottom: 18px; }
+    .svc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 9px; border: 0.5px solid var(--border); color: var(--gold-dark); background: var(--gold-pale); }
+
+    /* USP */
+    .usp-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 0.5px solid var(--border-ink); padding-bottom: 40px; margin-bottom: 48px; }
+    .usp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); }
+    .usp-card { background: var(--paper); padding: 40px 36px; position: relative; overflow: hidden; transition: background 0.2s; }
+    .usp-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); opacity: 0; transition: opacity 0.2s; }
+    .usp-card:hover { background: var(--paper-warm); }
+    .usp-card:hover::after { opacity: 1; }
+    .usp-glyph { font-family: var(--serif); font-size: 56px; font-weight: 400; color: var(--gold-pale); line-height: 1; margin-bottom: 16px; }
+    .usp-title { font-family: var(--serif); font-size: 24px; font-weight: 500; color: var(--ink); margin-bottom: 12px; line-height: 1.15; }
+    .usp-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.75; }
+    .usp-highlight { margin-top: 16px; padding: 12px 14px; background: var(--gold-pale); border-left: 2px solid var(--gold); font-size: 12px; font-weight: 400; color: var(--gold-dark); line-height: 1.6; }
+
+    /* COMPANY BENEFITS */
+    .benefits-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .benefits-note { margin-top: 24px; padding: 14px 16px; border-left: 2px solid var(--gold); background: var(--paper-warm); font-size: 12px; font-weight: 300; color: var(--gold-dark); line-height: 1.65; }
+    .benefit-items { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+    .benefit-item { display: flex; gap: 14px; align-items: flex-start; }
+    .benefit-icon { width: 32px; height: 32px; background: var(--gold-pale); border: 0.5px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .benefit-icon svg { width: 14px; height: 14px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .benefit-text strong { display: block; font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+    .benefit-text span { font-size: 12px; font-weight: 300; color: var(--ink-muted); line-height: 1.5; }
+
+    /* BGM */
+    .bgm-intro { font-size: 15px; font-weight: 300; color: var(--ink-muted); line-height: 1.8; max-width: 620px; margin-bottom: 56px; }
+    .bgm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-bottom: 40px; }
+    .bgm-card { background: var(--paper); padding: 32px 28px; transition: background 0.2s; }
+    .bgm-card:hover { background: var(--paper-warm); }
+    .bgm-icon { width: 36px; height: 36px; border: 0.5px solid var(--border); background: var(--gold-pale); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .bgm-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .bgm-card-title { font-family: var(--serif); font-size: 19px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.2; }
+    .bgm-card-desc { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; }
+    .bgm-sylo { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); }
+    .bgm-sylo-left { background: var(--ink); padding: 36px 40px; }
+    .bgm-sylo-right { background: var(--paper-warm); padding: 36px 40px; display: flex; flex-direction: column; justify-content: center; }
+    .sylo-badge { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; background: rgba(200,146,42,0.2); color: var(--gold-light); margin-bottom: 14px; }
+    .sylo-title { font-family: var(--serif); font-size: 26px; font-weight: 500; color: var(--paper); margin-bottom: 12px; line-height: 1.15; }
+    .sylo-desc { font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.6); line-height: 1.75; }
+    .sylo-right-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .sylo-points { display: flex; flex-direction: column; gap: 10px; }
+    .sylo-point { display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.5; }
+    .sylo-point::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+    .bgm-cross { margin-top: 28px; padding: 16px 18px; border-left: 2px solid var(--gold); background: var(--gold-pale); font-size: 13px; font-weight: 300; color: var(--gold-dark); line-height: 1.65; }
+    .bgm-cross strong { font-weight: 500; }
+
+    /* HONORAR */
+    .honorar-steps { list-style: none; display: flex; flex-direction: column; margin-top: 32px; }
+    .honorar-step { display: flex; gap: 20px; padding: 22px 0; border-bottom: 0.5px solid var(--border-ink); }
+    .honorar-step:last-child { border-bottom: none; }
+    .hstep-num { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--gold); line-height: 1; min-width: 28px; }
+    .hstep-body strong { display: block; font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+    .hstep-body span { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.6; }
+    .honorar-box { background: var(--ink); padding: 40px 44px; }
+    .hbox-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 16px; }
+    .hbox-title { font-family: var(--serif); font-size: 28px; font-weight: 500; color: var(--paper); margin-bottom: 14px; line-height: 1.2; }
+    .hbox-body { font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.6); line-height: 1.7; margin-bottom: 28px; }
+    .hbox-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .hbox-item { display: flex; gap: 10px; font-size: 13px; font-weight: 300; color: rgba(253,250,245,0.8); line-height: 1.5; }
+    .hbox-item::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+    .hbox-note { padding: 14px 16px; border-left: 2px solid var(--gold); font-size: 12px; font-weight: 300; color: rgba(253,250,245,0.5); line-height: 1.65; }
+
+    /* ZERTIFIKATE */
+    .zert-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-ink); border: 0.5px solid var(--border-ink); margin-top: 48px; }
+    .zert-card { background: var(--paper); padding: 28px 24px; }
+    .zert-title { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+    .zert-sub { font-size: 12px; font-weight: 300; color: var(--ink-muted); line-height: 1.5; }
+
+    /* CTA */
+    .cta-section { padding: 120px 80px; background: var(--ink); text-align: center; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(200,146,42,0.11) 0%, transparent 70%); pointer-events: none; }
+    .cta-inner { position: relative; max-width: 640px; margin: 0 auto; }
+    .cta-heading { font-family: var(--serif); font-size: clamp(38px, 4vw, 58px); font-weight: 500; color: var(--paper); line-height: 1.1; margin-bottom: 20px; }
+    .cta-heading em { font-style: italic; color: var(--gold); }
+    .cta-sub { font-size: 15px; font-weight: 300; color: rgba(253,250,245,0.55); line-height: 1.75; margin-bottom: 48px; }
+    .btn-gold-lg { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 18px 48px; background: var(--gold); color: #fff; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s; }
+    .btn-gold-lg:hover { background: var(--gold-light); }
+    .cta-note { display: block; margin-top: 16px; font-size: 12px; color: rgba(253,250,245,0.3); }
+
+    /* FOOTER */
+    footer { background: var(--paper); border-top: 0.5px solid var(--border-ink); padding: 60px 80px 36px; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    .footer-logo { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 12px; }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline { font-size: 13px; font-weight: 300; color: var(--ink-muted); line-height: 1.7; max-width: 240px; }
+    .footer-col h4 { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 13px; font-weight: 300; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 24px; border-top: 0.5px solid var(--border-ink); display: flex; justify-content: flex-end; }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: var(--ink-muted); text-decoration: none; }
+    .footer-legal a:hover { color: var(--gold); }
+
+    /* ANIMATION */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.7s ease both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 60px 28px; }
+      .hero-right { padding: 48px 28px; }
+      .section { padding: 72px 28px; }
+      .cta-section, footer { padding: 72px 28px; }
+      .services-grid, .usp-grid, .bgm-grid, .zert-grid { grid-template-columns: 1fr; }
+      .two-col, .benefits-inner, .bgm-sylo { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .usp-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav">
+    <a href="#" class="nav-logo">Dennis <span>Klincov</span></a>
+    <ul class="nav-links">
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#warum">Warum ich</a></li>
+      <li><a href="#bgm">BGM</a></li>
+      <li><a href="#honorar">Honorar</a></li>
+    </ul>
+    <a href="#termin" class="nav-cta">Termin anfragen</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="eyebrow fade-up"><span>BAV &amp; BKV Spezialist · Berlin</span></div>
+      <h1 class="hero-title fade-up delay-1">Altersvorsorge,<br>die <em>wirklich</em><br>für Sie arbeitet.</h1>
+      <p class="hero-lead fade-up delay-2">Ich berate Geschäftsführer und Gesellschafter zu betrieblicher Altersvorsorge, Krankenversicherung und Absicherung. Unabhängig, honorarbasiert und mit dem Ziel nachhaltiger Lösungen.</p>
+      <div class="hero-actions fade-up delay-3">
+        <a href="#termin" class="btn-primary">Erstes Gespräch anfragen</a>
+        <a href="#leistungen" class="btn-ghost">Leistungen ansehen <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stats fade-up delay-2">
+        <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Jahre Erfahrung in der Versicherungsberatung</div></div>
+        <div class="stat"><div class="stat-num">4</div><div class="stat-label">Durchführungswege für Geschäftsführerversorgung</div></div>
+        <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Honorarberatung für nachhaltige Ergebnisse</div></div>
+        <div class="stat"><div class="stat-num">§ 34d</div><div class="stat-label">Versicherungsmakler mit Erlaubnis nach GewO</div></div>
+      </div>
+      <div class="cert-list fade-up delay-3">
+        <div class="cert-item"><div class="cert-dot"></div>Zertifizierter BAV-Spezialist</div>
+        <div class="cert-item"><div class="cert-dot"></div>Zertifizierter BKV-Spezialist</div>
+        <div class="cert-item"><div class="cert-dot"></div>Zertifiziert von der DMA</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARUM GESCHÄFTSFÜHRER -->
+  <section class="section section-dark" id="geschaeftsfuehrer">
+    <div class="inner">
+      <div class="two-col">
+        <div>
+          <div class="sect-label reveal"><span>Zielgruppe</span></div>
+          <h2 class="sect-heading reveal">Warum gerade<br><em>Geschäftsführer?</em></h2>
+          <p class="reveal" style="font-size:15px; font-weight:300; color:rgba(253,250,245,0.6); line-height:1.8;">Geschäftsführer und Gesellschafter haben andere und bessere steuerliche Gestaltungsmöglichkeiten als Angestellte. Viele sind von der gesetzlichen Rentenversicherung befreit und brauchen Lösungen, die klassische Produkte nicht bieten können.</p>
+        </div>
+        <ul class="why-list">
+          <li class="why-item reveal"><div class="why-icon">I</div><div class="why-text"><strong>Keine gesetzliche Rente</strong><span>Gesellschafter-GF sind oft rentenversicherungsfrei – vollständig auf private und betriebliche Vorsorge angewiesen.</span></div></li>
+          <li class="why-item reveal"><div class="why-icon">II</div><div class="why-text"><strong>Steuerhebel nutzen</strong><span>Direktzusage, Unterstützungskasse oder Pensionsfonds ermöglichen Gestaltungen, die für Angestellte nicht erreichbar sind.</span></div></li>
+          <li class="why-item reveal"><div class="why-icon">III</div><div class="why-text"><strong>Absicherung der Leitungsebene</strong><span>D&amp;O, Cyber und Berufshaftpflicht schützen die Person und das Unternehmen auf Geschäftsführungsebene.</span></div></li>
+          <li class="why-item reveal"><div class="why-icon">IV</div><div class="why-text"><strong>Individuelle Lösungen statt Massenprodukte</strong><span>Honorarbasierte Beratung ohne Provisionsinteressen – Ihr Ergebnis steht im Vordergrund.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN -->
+  <section class="section" id="leistungen">
+    <div class="inner">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; border-bottom: 0.5px solid var(--border-ink); padding-bottom:36px; margin-bottom:48px;">
+        <div>
+          <div class="sect-label reveal"><span>Leistungen</span></div>
+          <h2 class="sect-heading reveal" style="margin-bottom:0;">Was ich für Sie abdecke</h2>
+        </div>
+        <p class="reveal" style="font-size:13px; color:var(--ink-muted); max-width:260px; font-weight:300; line-height:1.7; text-align:right;">Alle Leistungen honorarbasiert. Erstes Gespräch kostenlos.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card featured">
+          <div class="svc-num">01</div>
+          <h3 class="svc-title">Geschäftsführerversorgung</h3>
+          <p class="svc-desc">Direktzusage, Direktversicherung, Unterstützungskasse und Pensionsfonds für größere Unternehmen. Keine Pensionskassen.</p>
+          <div class="svc-tags"><span class="tag">Direktzusage</span><span class="tag">Direktversicherung</span><span class="tag">U-Kasse</span><span class="tag">Pensionsfonds</span></div>
+        </div>
+        <div class="service-card">
+          <div class="svc-num">02</div>
+          <h3 class="svc-title">Betriebliche Krankenversicherung</h3>
+          <p class="svc-desc">BKV für Geschäftsführer und Mitarbeiter als steuerfreier Sachbezug. Budget 300 bis 1.500 € mit maßgeschneiderten Tarifen.</p>
+          <div class="svc-tags"><span class="tag">Sehhilfe</span><span class="tag">Zahn</span><span class="tag">Krankenhaus</span></div>
+        </div>
+        <div class="service-card">
+          <div class="svc-num">03</div>
+          <h3 class="svc-title">Betriebliches Gesundheitsmanagement</h3>
+          <p class="svc-desc">Strukturierte Gesundheitsförderung im Unternehmen. Von Vorsorgeuntersuchungen bis zur KI-gestützten Meditation. Geht Hand in Hand mit BKV.</p>
+          <div class="svc-tags"><span class="tag">BGM</span><span class="tag">Prävention</span><span class="tag">SYLO Digital</span></div>
+        </div>
+        <div class="service-card">
+          <div class="svc-num">04</div>
+          <h3 class="svc-title">Company Benefits</h3>
+          <p class="svc-desc">Strukturierte Mitarbeiterbenefits über Probonio und weitere spezialisierte Plattformen. Steueroptimierte Sachbezüge und Gesundheitsleistungen.</p>
+          <div class="svc-tags"><span class="tag">Probonio</span><span class="tag">Sachbezüge</span><span class="tag">Plattformen</span></div>
+        </div>
+        <div class="service-card">
+          <div class="svc-num">05</div>
+          <h3 class="svc-title">BAV für Mitarbeiter</h3>
+          <p class="svc-desc">Betriebliche Altersvorsorge als Instrument zur Mitarbeiterbindung. Entgeltumwandlung und alle Durchführungswege.</p>
+          <div class="svc-tags"><span class="tag">Entgeltumwandlung</span><span class="tag">Gruppenverträge</span></div>
+        </div>
+        <div class="service-card">
+          <div class="svc-num">06</div>
+          <h3 class="svc-title">D&amp;O Versicherung</h3>
+          <p class="svc-desc">Managerhaftpflicht für Geschäftsführer und Vorstände. Schutz vor persönlicher Inanspruchnahme bei Pflichtverletzungen.</p>
+          <div class="svc-tags"><span class="tag">Manager-Haftpflicht</span></div>
+        </div>
+        <div class="service-card">
+          <div class="svc-num">07</div>
+          <h3 class="svc-title">Cyberversicherung</h3>
+          <p class="svc-desc">Absicherung bei Datenschutzverletzungen, Betriebsunterbrechungen durch Cyberangriffe und Haftungsansprüchen Dritter.</p>
+          <div class="svc-tags"><span class="tag">Datenschutz</span><span class="tag">Betriebsunterbrechung</span></div>
+        </div>
+        <div class="service-card">
+          <div class="svc-num">08</div>
+          <h3 class="svc-title">VSH &amp; Betriebshaftpflicht</h3>
+          <p class="svc-desc">Vermögensschaden-Haftpflicht und Berufshaftpflicht für Unternehmen und deren Leitungsebene.</p>
+          <div class="svc-tags"><span class="tag">VSH</span><span class="tag">Betriebshaftpflicht</span></div>
+        </div>
+        <div class="service-card">
+          <div class="svc-num">09</div>
+          <h3 class="svc-title">PKV</h3>
+          <p class="svc-desc">Private Krankenversicherung auf ausdrücklichen Wunsch. Nicht aktiv angeboten, aber vollumfänglich beratbar.</p>
+          <div class="svc-tags"><span class="tag">Auf Wunsch</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARUM DENNIS KLINCOV -->
+  <section class="section section-warm" id="warum">
+    <div class="inner">
+      <div class="usp-header">
+        <div>
+          <div class="sect-label reveal"><span>Alleinstellung</span></div>
+          <h2 class="sect-heading reveal" style="margin-bottom:0; color:var(--ink);">Warum <em>Dennis Klincov</em></h2>
+        </div>
+        <p class="reveal" style="font-size:13px; color:var(--ink-muted); max-width:340px; font-weight:300; line-height:1.7; text-align:right;">Als externer Berater bei Versicherern und anderen Maklern kenne ich alle drei Perspektiven aus eigener Arbeit.</p>
+      </div>
+      <div class="usp-grid">
+        <div class="usp-card reveal">
+          <div class="usp-glyph">I</div>
+          <h3 class="usp-title">Das Bindeglied aller drei Welten</h3>
+          <p class="usp-desc">Ich kenne den Kunden, den Versicherer und den Makler – aus eigener Arbeit in allen drei Rollen. Als externer Berater bei Versicherern habe ich an neuen Produkten mitgearbeitet. Als Makler vertrete ich den Kunden. Als Insider der Branche kenne ich, was hinter den Kulissen passiert.</p>
+          <div class="usp-highlight">Drei Perspektiven. Ein Berater. Keine Informationsasymmetrie zu Ihren Lasten.</div>
+        </div>
+        <div class="usp-card reveal">
+          <div class="usp-glyph">II</div>
+          <h3 class="usp-title">Produktentwicklung aus der Praxis</h3>
+          <p class="usp-desc">Wenn das Geschäftsmodell meiner Kunden es zulässt, denke ich weiter als ein Standardmakler. Für einen Kunden mit über 300 Automaten habe ich neben der Geschäftsführerversorgung einen eigenen Versicherungstarif entwickelt – maßgeschneidert auf seine spezifische Risikostruktur.</p>
+          <div class="usp-highlight">Erfahrung in der Produktentwicklung bei Versicherern macht den Unterschied bei komplexen Fällen.</div>
+        </div>
+        <div class="usp-card reveal">
+          <div class="usp-glyph">III</div>
+          <h3 class="usp-title">Company Benefits von Anfang an</h3>
+          <p class="usp-desc">2022 habe ich im Gründungsjahr bei einem der größten deutschen Anbieter für Company Benefits mitgewirkt – Probonio. Ich kenne das Feld nicht aus der Theorie, sondern aus dem Aufbau heraus.</p>
+          <div class="usp-highlight">Mitgründungsphase bei Probonio 2022 – strukturiertes Know-how, das Wettbewerber nicht haben.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPANY BENEFITS -->
+  <section class="section" id="benefits">
+    <div class="inner">
+      <div class="benefits-inner">
+        <div>
+          <div class="sect-label reveal"><span>Company Benefits</span></div>
+          <h2 class="sect-heading reveal" style="color:var(--ink);">Mitarbeiterbenefits,<br>die <em>wirklich ankommen.</em></h2>
+          <p class="reveal" style="font-size:15px; font-weight:300; color:var(--ink-muted); line-height:1.8; margin-top:8px;">Company Benefits sind heute ein entscheidender Faktor bei der Gewinnung und Bindung von Fachkräften. Ich helfe bei der Auswahl der richtigen Plattform, der steuerlichen Einbettung und der Einführung im Unternehmen.</p>
+          <div class="benefits-note reveal">
+            Ich arbeite mit Probonio zusammen – einem der größten deutschen Anbieter für Company Benefits, an dessen Aufbau ich 2022 im Gründungsjahr mitgewirkt habe. Drei Anbieter, ein Ansprechpartner.
+          </div>
+        </div>
+        <div>
+          <div class="sect-label reveal"><span>Was dazugehört</span></div>
+          <p class="reveal" style="font-size:15px; font-weight:300; color:var(--ink-muted); line-height:1.8;">Benefits sind mehr als ein nettes Extra. Richtig eingebettet sind sie ein steuerlich wirksames Instrument zur Personalstrategie.</p>
+          <div class="benefit-items">
+            <div class="benefit-item reveal">
+              <div class="benefit-icon"><svg viewBox="0 0 14 14"><rect x="1" y="4" width="12" height="7" rx="1.5"/><path d="M4 4V3a1 1 0 012 0v1M8 4V3a1 1 0 012 0v1"/></svg></div>
+              <div class="benefit-text"><strong>Steuerfreie Sachbezüge</strong><span>Bis 50 € monatlich pro Mitarbeiter steuerfrei – der klassische Einstieg in Company Benefits.</span></div>
+            </div>
+            <div class="benefit-item reveal">
+              <div class="benefit-icon"><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5"/><path d="M7 4.5v2.75l1.75 1.75"/></svg></div>
+              <div class="benefit-text"><strong>Flexible Benefit-Budgets</strong><span>Mitarbeiter wählen selbst aus einem definierten Budget – Mobilität, Gesundheit, Weiterbildung.</span></div>
+            </div>
+            <div class="benefit-item reveal">
+              <div class="benefit-icon"><svg viewBox="0 0 14 14"><path d="M7 1.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11z"/><path d="M4.5 7l1.75 1.75L9.5 5"/></svg></div>
+              <div class="benefit-text"><strong>Gesundheitsleistungen</strong><span>Kombination mit BKV und BGM möglich – ganzheitliches Gesundheitspaket aus einer Hand.</span></div>
+            </div>
+            <div class="benefit-item reveal">
+              <div class="benefit-icon"><svg viewBox="0 0 14 14"><path d="M2 11L7 3l5 8H2z"/></svg></div>
+              <div class="benefit-text"><strong>Onboarding &amp; Einführung</strong><span>Von der Plattformauswahl bis zur Kommunikation an die Belegschaft.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BETRIEBLICHES GESUNDHEITSMANAGEMENT -->
+  <section class="section section-warm" id="bgm">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Betriebliches Gesundheitsmanagement</span></div>
+      <h2 class="sect-heading reveal" style="color:var(--ink);">Gesundheit im Unternehmen<br><em>strategisch denken.</em></h2>
+      <p class="bgm-intro reveal">
+        BGM ist kein Zusatz – es ist eine Investition in Produktivität, Mitarbeiterbindung und Arbeitgeberattraktivität. Richtig aufgesetzt verzahnt es sich nahtlos mit BKV, Company Benefits und steuerlichen Förderinstrumenten. Ich begleite Unternehmen beim Aufbau einer strukturierten Gesundheitsstrategie.
+      </p>
+      <div class="bgm-grid">
+        <div class="bgm-card reveal">
+          <div class="bgm-icon">
+            <svg viewBox="0 0 16 16"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z"/><path d="M8 5v3l2 2"/></svg>
+          </div>
+          <h3 class="bgm-card-title">Gesundheitschecks &amp; Vorsorge</h3>
+          <p class="bgm-card-desc">Strukturierte Vorsorgeuntersuchungen für Führungskräfte und Belegschaft. Steuerlich gefördert über §3 Nr. 34 EStG bis 600 € jährlich pro Mitarbeiter.</p>
+        </div>
+        <div class="bgm-card reveal">
+          <div class="bgm-icon">
+            <svg viewBox="0 0 16 16"><path d="M8 14s-6-4.5-6-8a6 6 0 0112 0c0 3.5-6 8-6 8z"/></svg>
+          </div>
+          <h3 class="bgm-card-title">Stressmanagement &amp; Mental Health</h3>
+          <p class="bgm-card-desc">Psychische Gesundheit als Teil der Unternehmenskultur. Programme zur Stressreduktion, Resilienz und mentalen Stärke – für Führungskräfte und Teams.</p>
+        </div>
+        <div class="bgm-card reveal">
+          <div class="bgm-icon">
+            <svg viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 8h6M8 5v6"/></svg>
+          </div>
+          <h3 class="bgm-card-title">Betriebliche Eingliederung (BEM)</h3>
+          <p class="bgm-card-desc">Strukturiertes Wiedereingliederungsmanagement nach Krankheitsausfällen. Rechtssicher, dokumentiert und mit Blick auf Langzeitprävention.</p>
+        </div>
+        <div class="bgm-card reveal">
+          <div class="bgm-icon">
+            <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2.5 2.5"/></svg>
+          </div>
+          <h3 class="bgm-card-title">Gesundheitsbudgets für Mitarbeiter</h3>
+          <p class="bgm-card-desc">Flexible Budgets für individuelle Gesundheitsmaßnahmen. Kombinierbar mit BKV-Tarifen und steuerfreien Sachbezügen über Company Benefit-Plattformen.</p>
+        </div>
+        <div class="bgm-card reveal">
+          <div class="bgm-icon">
+            <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
+          </div>
+          <h3 class="bgm-card-title">Kombination mit BKV</h3>
+          <p class="bgm-card-desc">BGM und BKV greifen ineinander. Vorsorgeuntersuchungen, Sehhilfe, Zahn und Krankenhaus werden über die BKV abgedeckt – BGM ergänzt auf Präventionsebene.</p>
+        </div>
+        <div class="bgm-card reveal">
+          <div class="bgm-icon">
+            <svg viewBox="0 0 16 16"><path d="M2 12l4-4 3 3 5-7"/></svg>
+          </div>
+          <h3 class="bgm-card-title">Präventionskurse &amp; Workshops</h3>
+          <p class="bgm-card-desc">Geförderte Präventionsmaßnahmen nach §20 SGB V. Bewegung, Ernährung, Entspannung – als Einzelkurs oder als Teil eines strukturierten BGM-Programms.</p>
+        </div>
+      </div>
+
+      <!-- SYLO Digital Kooperation -->
+      <div class="bgm-sylo reveal">
+        <div class="bgm-sylo-left">
+          <div class="sylo-badge">Kooperationspartner</div>
+          <h3 class="sylo-title">SYLO Digital –<br>KI-gestützte Meditation<br>für Arbeitnehmer</h3>
+          <p class="sylo-desc">Über die Kooperation mit SYLO Digital erhalten Arbeitnehmer Zugang zu einer KI-gestützten Meditationsapp – gefördert durch den Arbeitgeber als Teil des BGM. Mental Health wird damit messbar, skalierbar und steuerlich einbettbar.</p>
+        </div>
+        <div class="bgm-sylo-right">
+          <div class="sylo-right-label">Warum SYLO Digital</div>
+          <div class="sylo-points">
+            <div class="sylo-point">KI-personalisierte Meditationsprogramme für jeden Mitarbeiter individuell</div>
+            <div class="sylo-point">Finanzierung über den Arbeitgeber als geförderter Sachbezug</div>
+            <div class="sylo-point">Nahtlose Integration in bestehende BGM- und BKV-Strukturen</div>
+            <div class="sylo-point">Messbarer Effekt auf Stressreduktion und Mitarbeiterzufriedenheit</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bgm-cross reveal">
+        <strong>BGM, BKV und Company Benefits aus einer Hand.</strong> Alle drei Themen greifen ineinander und werden von mir gemeinsam konzipiert – so entsteht eine kohärente Gesundheitsstrategie statt drei voneinander isolierter Einzelprodukte.
+      </div>
+    </div>
+  </section>
+
+  <!-- HONORAR -->
+  <section class="section" id="honorar">
+    <div class="inner">
+      <div class="two-col">
+        <div>
+          <div class="sect-label reveal"><span>Transparenz</span></div>
+          <h2 class="sect-heading reveal" style="color:var(--ink);">Honorarberatung –<br><em>Ihr Interesse zuerst.</em></h2>
+          <p class="reveal" style="font-size:15px; font-weight:300; color:var(--ink-muted); line-height:1.8; margin-bottom:8px;">Ich arbeite ausschließlich auf Honorarbasis mit Servicepauschalen. So entstehen keine Interessenkonflikte durch Provisionen. Das erste Gespräch ist kostenlos.</p>
+          <ol class="honorar-steps">
+            <li class="honorar-step reveal"><div class="hstep-num">1</div><div class="hstep-body"><strong>Erstgespräch – kostenlos</strong><span>Kennenlernen, Bedarfserfassung, erste Einschätzung der Möglichkeiten.</span></div></li>
+            <li class="honorar-step reveal"><div class="hstep-num">2</div><div class="hstep-body"><strong>Analyse &amp; Konzept</strong><span>Detaillierte Aufnahme der Situation, steuerliche Prüfung, Ausarbeitung der optimalen Lösung.</span></div></li>
+            <li class="honorar-step reveal"><div class="hstep-num">3</div><div class="hstep-body"><strong>Honorarvereinbarung</strong><span>Transparente Offenlegung der Kosten vor der Umsetzung. Keine versteckten Gebühren.</span></div></li>
+            <li class="honorar-step reveal"><div class="hstep-num">4</div><div class="hstep-body"><strong>Umsetzung &amp; laufende Betreuung</strong><span>Einrichtung und jährliche Überprüfung über eine Servicepauschale.</span></div></li>
+          </ol>
+        </div>
+        <div class="reveal">
+          <div class="honorar-box">
+            <div class="hbox-label">Warum Honorar?</div>
+            <h3 class="hbox-title">Ihre Interessen zuerst – ohne Kompromiss.</h3>
+            <p class="hbox-body">Provisionsbasierte Beratung belohnt den Abschluss, nicht das richtige Ergebnis. Honorarberatung belohnt Qualität.</p>
+            <ul class="hbox-list">
+              <li class="hbox-item">Kein Interessenkonflikt durch Produktprovisionen</li>
+              <li class="hbox-item">Vollständige Kostentransparenz vor dem Auftrag</li>
+              <li class="hbox-item">Produktauswahl nach Qualität, nicht nach Marge</li>
+              <li class="hbox-item">Nachhaltige Beratungsbeziehung statt Einmalabschluss</li>
+            </ul>
+            <div class="hbox-note">Nur wenn das Volumen ein Honorar unverhältnismäßig hoch werden lässt, kann auf Wunsch die Bruttovariante gewählt werden. Dies ist die Ausnahme.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZERTIFIKATE -->
+  <section class="section section-warm">
+    <div class="inner">
+      <div class="sect-label reveal"><span>Qualifikation</span></div>
+      <h2 class="sect-heading reveal" style="color:var(--ink);">Zertifiziert. <em>Spezialisiert.</em> Erfahren.</h2>
+      <div class="zert-grid">
+        <div class="zert-card reveal"><div class="zert-title">BAV-Spezialist</div><div class="zert-sub">Zertifiziert · Betriebliche Altersvorsorge</div></div>
+        <div class="zert-card reveal"><div class="zert-title">BKV-Spezialist</div><div class="zert-sub">Zertifiziert · Betriebliche Krankenversicherung</div></div>
+        <div class="zert-card reveal"><div class="zert-title">DMA-Zertifikat</div><div class="zert-sub">Zertifiziert · Deutsche Makler Akademie</div></div>
+        <div class="zert-card reveal"><div class="zert-title">§ 34d GewO</div><div class="zert-sub">Versicherungsmakler · Erlaubnis Abs. 1</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="termin">
+    <div class="cta-inner">
+      <div class="sect-label reveal" style="justify-content:center;"><span>Jetzt starten</span></div>
+      <h2 class="cta-heading reveal">Das erste Gespräch<br>ist <em>kostenlos.</em></h2>
+      <p class="cta-sub reveal">Kein Verkaufsgespräch. Kein Abschlussdruck. Wir schauen gemeinsam, ob und wie ich Ihnen helfen kann – und was eine Zusammenarbeit konkret bedeuten würde.</p>
+      <a href="mailto:info@dennis-klincov.com" class="btn-gold-lg reveal">Termin anfragen</a>
+      <span class="cta-note reveal">Erstes Gespräch kostenfrei · Danach transparentes Honorar</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Dennis <span>Klincov</span></div>
+        <p class="footer-tagline">BAV &amp; BKV Spezialist. Versicherungsmakler nach § 34d GewO. Honorarberatung für Geschäftsführer in Berlin.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Versorgung</h4>
+        <ul>
+          <li><a href="#">Geschäftsführerversorgung</a></li>
+          <li><a href="#">GGF-Versorgung</a></li>
+          <li><a href="#">Vorstandsversorgung</a></li>
+          <li><a href="#">Direktzusage</a></li>
+          <li><a href="#">Unterstützungskasse</a></li>
+          <li><a href="#">Tantiemenmodell</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Absicherung &amp; Benefits</h4>
+        <ul>
+          <li><a href="#">BKV</a></li>
+          <li><a href="#">BGM</a></li>
+          <li><a href="#">BAV Mitarbeiter</a></li>
+          <li><a href="#">Company Benefits</a></li>
+          <li><a href="#">D&amp;O</a></li>
+          <li><a href="#">Cyber</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Versicherer</h4>
+        <ul>
+          <li><a href="#">Allianz</a></li>
+          <li><a href="#">Württembergische</a></li>
+          <li><a href="#">LV 1871</a></li>
+          <li><a href="#">Hallesche</a></li>
+          <li><a href="#">Alte Leipziger</a></li>
+          <li><a href="#">Volkswohlbund</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 60); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.07 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

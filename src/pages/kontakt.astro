@@ -1,0 +1,275 @@
+---
+/*
+  Kontakt-Seite — Beratungsanfrage-Form mit Netlify Forms.
+  Netlify scannt beim Build die HTML auf data-netlify="true" und legt
+  die Form-Submission-Pipeline automatisch an. Submissions landen
+  im Netlify-Dashboard und können per Email weitergeleitet werden.
+*/
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Kontakt"
+  description="Beratungsanfrage. 30 Minuten Erstgespräch, kostenlos. Honorarberatung für Geschäftsführer und Vorstände. Berlin."
+>
+
+  <section class="kontakt-hero">
+    <div class="container">
+      <div class="kontakt-hero__inner">
+        <div class="eyebrow">Kontakt</div>
+        <h1 class="display-1 kontakt-hero__title">
+          Das erste Gespräch<br>ist <em>kostenlos.</em>
+        </h1>
+        <p class="body-large kontakt-hero__lead">
+          30 Minuten am Telefon oder vor Ort in Berlin. Wir klären die Situation, ich gebe eine erste Einschätzung. Sie entscheiden, ob ein Mandat sinnvoll ist.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="kontakt-content">
+    <div class="container">
+      <div class="kontakt-grid">
+
+        <!-- Form -->
+        <div class="kontakt-form-wrap">
+          <div class="eyebrow kontakt-form-label">Beratungsanfrage</div>
+          <h2 class="h2 kontakt-form-heading">Schreiben Sie kurz, worum es geht.</h2>
+
+          <form
+            name="beratungsanfrage"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            class="kontakt-form"
+          >
+            <input type="hidden" name="form-name" value="beratungsanfrage" />
+            <p class="hidden-field">
+              <label>Bitte leer lassen: <input name="bot-field" /></label>
+            </p>
+
+            <div class="form-row">
+              <label class="form-label" for="name">Name</label>
+              <input class="form-input" id="name" type="text" name="name" required autocomplete="name" />
+            </div>
+
+            <div class="form-row">
+              <label class="form-label" for="firma">Unternehmen</label>
+              <input class="form-input" id="firma" type="text" name="firma" autocomplete="organization" />
+            </div>
+
+            <div class="form-row">
+              <label class="form-label" for="email">Email</label>
+              <input class="form-input" id="email" type="email" name="email" required autocomplete="email" />
+            </div>
+
+            <div class="form-row">
+              <label class="form-label" for="telefon">Telefon (optional)</label>
+              <input class="form-input" id="telefon" type="tel" name="telefon" autocomplete="tel" />
+            </div>
+
+            <div class="form-row">
+              <label class="form-label" for="thema">Worum geht es?</label>
+              <select class="form-input" id="thema" name="thema">
+                <option value="">Bitte wählen</option>
+                <option value="bav">Betriebliche Altersvorsorge</option>
+                <option value="bkv">Betriebliche Krankenversicherung</option>
+                <option value="bgm">Betriebliches Gesundheitsmanagement</option>
+                <option value="company-benefits">Company Benefits</option>
+                <option value="vorstandsversorgung">Vorstandsversorgung</option>
+                <option value="ggf-versorgung">GGF-Versorgung</option>
+                <option value="direktzusage">Direktzusage</option>
+                <option value="tantieme">Tantiemenmodell</option>
+                <option value="dao">D&O</option>
+                <option value="vsh">VSH</option>
+                <option value="cyber">Cyber</option>
+                <option value="anderes">Anderes Thema</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label class="form-label" for="nachricht">Nachricht</label>
+              <textarea class="form-input" id="nachricht" name="nachricht" rows="5" required></textarea>
+            </div>
+
+            <div class="form-row form-row--consent">
+              <label class="form-consent">
+                <input type="checkbox" name="datenschutz" required />
+                <span>Ich habe die <a href="/datenschutz/" class="link">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung der Anfrage zu.</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn--primary">Anfrage senden</button>
+          </form>
+        </div>
+
+        <!-- Direkter Kontakt -->
+        <aside class="kontakt-side">
+          <div class="kontakt-card">
+            <div class="eyebrow kontakt-card__label">Direkter Kontakt</div>
+
+            <ul class="kontakt-list">
+              <li>
+                <div class="kontakt-list__label mono">Email</div>
+                <a href="mailto:mail@dennis-klincov.com" class="kontakt-list__value">mail@dennis-klincov.com</a>
+              </li>
+              <li>
+                <div class="kontakt-list__label mono">Adresse</div>
+                <div class="kontakt-list__value">Friedenauer Höhe 15a<br>12159 Berlin</div>
+              </li>
+              <li>
+                <div class="kontakt-list__label mono">LinkedIn</div>
+                <a href="https://www.linkedin.com/in/dennisklincov" target="_blank" rel="noopener" class="kontakt-list__value">linkedin.com/in/dennisklincov</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="kontakt-card kontakt-card--quiet">
+            <div class="eyebrow kontakt-card__label">Erwartung an die Erstberatung</div>
+            <p class="body-small" style="color: var(--slate-600); line-height: 1.7;">
+              Beim ersten Gespräch klären wir die Situation und das Beratungsziel. Sie bekommen eine erste Einschätzung, ob und wie ich helfen kann. Es entstehen keine Kosten, es gibt keine Verpflichtung. Mandate beginnen erst, wenn beide Seiten sicher sind.
+            </p>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* === HERO ===================================== */
+  .kontakt-hero {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+  }
+  .kontakt-hero__inner { max-width: 720px; }
+  .kontakt-hero__title { margin: var(--space-md) 0 var(--space-lg); }
+  .kontakt-hero__lead { color: var(--slate-600); }
+
+  /* === GRID ===================================== */
+  .kontakt-content {
+    padding-bottom: var(--space-4xl);
+  }
+  .kontakt-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-3xl);
+  }
+
+  @media (max-width: 900px) {
+    .kontakt-grid { grid-template-columns: 1fr; gap: var(--space-2xl); }
+  }
+
+  /* === FORM ===================================== */
+  .kontakt-form-wrap {
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--radius-md);
+    padding: var(--space-2xl);
+  }
+  .kontakt-form-label { margin-bottom: var(--space-sm); }
+  .kontakt-form-heading { margin-bottom: var(--space-xl); font-size: 26px; }
+
+  .kontakt-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: var(--slate-600);
+    font-weight: 500;
+  }
+  .form-input {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    color: var(--slate-800);
+    padding: 12px 14px;
+    background: var(--bone);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--radius-sm);
+    transition: border-color 0.2s, background 0.2s;
+    width: 100%;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: var(--brass);
+    background: var(--white);
+  }
+  textarea.form-input {
+    resize: vertical;
+    min-height: 100px;
+    font-family: var(--font-sans);
+    line-height: 1.55;
+  }
+  select.form-input {
+    cursor: pointer;
+  }
+
+  .form-row--consent {
+    margin-top: var(--space-xs);
+  }
+  .form-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--slate-600);
+    cursor: pointer;
+  }
+  .form-consent input[type="checkbox"] {
+    margin-top: 3px;
+    accent-color: var(--brass);
+  }
+
+  .hidden-field { display: none; }
+
+  /* === SIDE ===================================== */
+  .kontakt-side {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .kontakt-card {
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+  }
+  .kontakt-card--quiet {
+    background: var(--bone-warm);
+    border-color: var(--brass-soft);
+  }
+  .kontakt-card__label { margin-bottom: var(--space-md); }
+
+  .kontakt-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .kontakt-list__label {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--slate-500);
+    margin-bottom: 2px;
+  }
+  .kontakt-list__value {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    color: var(--indigo);
+    line-height: 1.4;
+    transition: color 0.2s;
+  }
+  a.kontakt-list__value:hover { color: var(--brass); }
+</style>

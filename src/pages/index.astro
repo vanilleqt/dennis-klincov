@@ -1,17 +1,358 @@
 ---
+/*
+  Startseite — dennis-klincov.com
+  Magazine-Spread Hero mit Portrait + Themen-Overview + Werte + CTA.
+*/
+import BaseLayout from '../layouts/BaseLayout.astro';
 
+const themen = [
+  {
+    eyebrow: 'Corporate Benefits',
+    titel: 'Betriebliche Altersvorsorge',
+    text: 'Alle fünf Durchführungswege, von Direktversicherung über Unterstützungskasse bis Direktzusage. Steuerliche Tiefe, Bilanzwirkung, Erdienbarkeit.',
+    href: '/themen/bav-mitarbeiter/',
+  },
+  {
+    eyebrow: 'Corporate Benefits',
+    titel: 'Betriebliche Krankenversicherung',
+    text: 'bKV als Mitarbeiterbindungs-Instrument und steuerlich begünstigte Zusatzleistung. Konzeption und Carrier-Auswahl.',
+    href: '/themen/bkv/',
+  },
+  {
+    eyebrow: 'Executive Compensation',
+    titel: 'Vorstandsversorgung',
+    text: 'Versorgungs- und Tantiemenkonzepte für Vorstände und Geschäftsführer. § 6a EStG, Pensionszusage, Rückdeckung.',
+    href: '/themen/vorstandsversorgung/',
+  },
+  {
+    eyebrow: 'Executive Compensation',
+    titel: 'D&O-Versicherung',
+    text: 'Organhaftung für Geschäftsführer und Vorstände. Deckungskonzeption, Manuskript-Wordings, Schadenfallbegleitung.',
+    href: '/themen/dao/',
+  },
+];
+
+const werte = [
+  {
+    nummer: 'I',
+    titel: 'Substanz vor Sichtbarkeit',
+    text: 'Mandate werden geliefert, nicht beworben. Erfolge sprechen über Empfehlungen, nicht über LinkedIn-Beiträge.',
+  },
+  {
+    nummer: 'II',
+    titel: 'Skin in the Game',
+    text: 'Ich berate nur Themen, die ich regulatorisch und operativ vollständig durchdrungen habe. Die Reputation hängt am Mandat-Ergebnis.',
+  },
+  {
+    nummer: 'III',
+    titel: 'Markttiefe in zwei Feldern',
+    text: 'Corporate Benefits und Executive Compensation. Andere Themen werden nur betreten, wenn die nötige Tiefe nachgeholt werden kann.',
+  },
+  {
+    nummer: 'IV',
+    titel: 'Diskretion als Standard',
+    text: 'Mandate, konkrete Zahlen, Verhandlungen bleiben vertraulich. Was kommuniziert wird, ist abstrakt genug, dass kein Mandant identifizierbar wird.',
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Dennis Klincov"
+  description="Honorarberatung für Geschäftsführer und Vorstände. Corporate Benefits, betriebliche Vorsorge und Executive Compensation. Über zehn Jahre Erfahrung, zertifizierter bAV- und bKV-Spezialist. Berlin."
+>
+
+  <!-- ============================================================
+       HERO · Magazine-Spread mit Portrait
+       ============================================================ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__grid">
+
+        <div class="hero__text">
+          <div class="hero__eyebrow eyebrow">
+            <span class="hero__eyebrow-line"></span>
+            <span>Berater · Corporate Benefits · Executive Compensation</span>
+          </div>
+
+          <h1 class="hero__title display-1">
+            Substanz vor <em>Sichtbarkeit.</em>
+          </h1>
+
+          <p class="hero__lead body-large">
+            Honorarberatung für Geschäftsführer und Vorstände in Corporate Benefits, betrieblicher Vorsorge und Executive Compensation. Über zehn Jahre Mandatserfahrung. Berlin.
+          </p>
+
+          <div class="hero__actions">
+            <a href="/kontakt/" class="btn btn--primary">Gespräch anfragen</a>
+            <a href="/ueber-mich/" class="btn btn--ghost">Über mich →</a>
+          </div>
+        </div>
+
+        <div class="hero__portrait">
+          <span class="hero__portrait-line"></span>
+          <img
+            src="/images/portrait-dennis-klincov.jpg"
+            alt="Dennis Klincov, Berater für Corporate Benefits und Executive Compensation"
+            width="640"
+            height="800"
+            loading="eager"
+          />
+          <span class="hero__portrait-credit mono">Foto · Chris Marxen</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       THEMEN-ÜBERSICHT
+       ============================================================ -->
+  <section class="section themen">
+    <div class="container">
+      <div class="themen__head">
+        <div class="eyebrow">Beratungsfelder</div>
+        <h2 class="h1">Themen mit Bilanzwirkung<br>und steuerlicher <em>Tiefe.</em></h2>
+        <p class="body-large themen__intro">
+          Vier Beratungsfelder. Jedes mit operativer Mandatserfahrung. Keine generischen Konzepte aus Folien, sondern Lösungen aus konkreten Fällen.
+        </p>
+      </div>
+
+      <div class="themen__grid">
+        {themen.map((thema) => (
+          <a href={thema.href} class="themen-card">
+            <div class="themen-card__eyebrow eyebrow">{thema.eyebrow}</div>
+            <h3 class="themen-card__titel h3">{thema.titel}</h3>
+            <p class="themen-card__text body">{thema.text}</p>
+            <span class="themen-card__more mono">Mehr →</span>
+          </a>
+        ))}
+      </div>
+
+      <div class="themen__more">
+        <a href="/themen/" class="link">Alle Themen ansehen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WERTE
+       ============================================================ -->
+  <section class="section section--indigo werte">
+    <div class="container">
+      <div class="werte__head">
+        <div class="eyebrow">Arbeitsweise</div>
+        <h2 class="h1" style="color: var(--white);">Warum<br>Dennis <em>Klincov.</em></h2>
+      </div>
+
+      <div class="werte__grid">
+        {werte.map((wert) => (
+          <div class="wert-card">
+            <div class="wert-card__nummer">{wert.nummer}</div>
+            <h3 class="wert-card__titel">{wert.titel}</h3>
+            <p class="wert-card__text">{wert.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA
+       ============================================================ -->
+  <section class="section cta">
+    <div class="container">
+      <div class="cta__inner">
+        <div class="eyebrow">Kontakt</div>
+        <h2 class="h1 cta__heading">
+          Das erste Gespräch<br>ist <em>kostenlos.</em>
+        </h2>
+        <p class="body-large cta__text">
+          30 Minuten am Telefon oder vor Ort in Berlin. Wir klären Ihre Situation, ich gebe eine erste Einschätzung. Sie entscheiden, ob ein Mandat sinnvoll ist.
+        </p>
+        <div class="cta__actions">
+          <a href="/kontakt/" class="btn btn--primary">Gespräch anfragen</a>
+          <a href="mailto:mail@dennis-klincov.com" class="btn btn--outline">mail@dennis-klincov.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* === HERO ================================================== */
+  .hero {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-4xl);
+  }
+  .hero__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: var(--space-4xl);
+    align-items: center;
+  }
+  .hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: var(--space-lg);
+  }
+  .hero__eyebrow-line {
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--brass);
+  }
+  .hero__title { margin-bottom: var(--space-lg); }
+  .hero__lead { margin-bottom: var(--space-xl); max-width: 480px; }
+  .hero__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+  .hero__portrait {
+    position: relative;
+    aspect-ratio: 4 / 5;
+  }
+  .hero__portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .hero__portrait-line {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 80px;
+    height: 2px;
+    background: var(--brass);
+    z-index: 2;
+  }
+  .hero__portrait-credit {
+    position: absolute;
+    bottom: -28px;
+    left: 0;
+    font-size: 11px;
+    color: var(--slate-500);
+  }
+
+  @media (max-width: 900px) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+    }
+    .hero__portrait { max-width: 480px; margin: 0 auto; }
+  }
+
+  /* === THEMEN ================================================ */
+  .themen__head {
+    max-width: 720px;
+    margin-bottom: var(--space-3xl);
+  }
+  .themen__head .h1 { margin: var(--space-md) 0 var(--space-lg); }
+  .themen__intro { color: var(--slate-600); }
+
+  .themen__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .themen-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+  .themen-card:hover {
+    border-color: var(--brass);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(15, 23, 72, 0.06);
+  }
+  .themen-card__eyebrow { margin-bottom: var(--space-sm); }
+  .themen-card__titel { margin-bottom: var(--space-sm); }
+  .themen-card__text { margin-bottom: var(--space-lg); flex: 1; }
+  .themen-card__more {
+    color: var(--brass);
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    align-self: flex-start;
+  }
+
+  .themen__more {
+    margin-top: var(--space-2xl);
+    text-align: center;
+  }
+
+  @media (max-width: 720px) {
+    .themen__grid { grid-template-columns: 1fr; }
+  }
+
+  /* === WERTE ================================================= */
+  .werte__head {
+    max-width: 640px;
+    margin-bottom: var(--space-3xl);
+  }
+  .werte__head .h1 { margin-top: var(--space-md); }
+
+  .werte__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .wert-card {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: var(--space-lg);
+  }
+  .wert-card__nummer {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 28px;
+    color: var(--brass);
+    margin-bottom: var(--space-md);
+  }
+  .wert-card__titel {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--white);
+    margin-bottom: var(--space-sm);
+  }
+  .wert-card__text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @media (max-width: 900px) {
+    .werte__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .werte__grid { grid-template-columns: 1fr; }
+  }
+
+  /* === CTA =================================================== */
+  .cta__inner {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    padding: var(--space-2xl) 0;
+  }
+  .cta__heading { margin: var(--space-md) 0 var(--space-lg); }
+  .cta__text { margin-bottom: var(--space-xl); color: var(--slate-600); }
+  .cta__actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+</style>

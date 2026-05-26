@@ -1,0 +1,158 @@
+---
+/*
+  Themen-Übersichtsseite — listet alle Themen aus der Content Collection,
+  gruppiert nach Kategorie.
+*/
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const alleThemen = await getCollection('themen');
+const themenSorted = alleThemen.sort((a, b) => a.data.sortierung - b.data.sortierung);
+
+// Nach Kategorie gruppieren — gleiche drei Gruppen wie im Mega-Menu im Header
+const kategorien = [
+  {
+    name: 'Corporate Benefits',
+    untertitel: 'Für die Belegschaft',
+    beschreibung: 'Versorgung, Gesundheit und Vergütung für Mitarbeiter. bAV, bKV, BGM und steueroptimierte Benefits.',
+  },
+  {
+    name: 'Versorgung Geschäftsführer',
+    untertitel: 'Pension, Tantieme, Direktzusage',
+    beschreibung: 'Versorgung für Geschäftsführer, GGF und Vorstände. Direktzusage, Unterstützungskasse, Tantiemenmodelle.',
+  },
+  {
+    name: 'Risikoschutz',
+    untertitel: 'D&O, Cyber, VSH, PKV',
+    beschreibung: 'Persönliche Haftung, Berufsrisiken und private Krankenversicherung. Organhaftung, Vermögensschäden, Cyber.',
+  },
+];
+
+const themenNachKategorie = kategorien.map((kat) => ({
+  ...kat,
+  items: themenSorted.filter((t) => t.data.kategorie === kat.name),
+})).filter((g) => g.items.length > 0);
+---
+
+<BaseLayout
+  title="Themen"
+  description="Beratungsthemen: bAV, bKV, BGM, Vorstandsversorgung, Tantiemenmodelle, D&O, VSH, Cyber, Direktzusage. Honorarberatung Berlin."
+>
+
+  <section class="themen-overview-hero">
+    <div class="container">
+      <div class="themen-overview-hero__inner">
+        <div class="eyebrow">Beratungsfelder</div>
+        <h1 class="h1">Themen mit <em>Tiefe.</em></h1>
+        <p class="body-large themen-overview-hero__lead">
+          Beratung in Corporate Benefits und Executive Compensation. Jedes Thema mit operativer Mandatserfahrung und regulatorischer Tiefe.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="themen-list section">
+    <div class="container">
+      {themenNachKategorie.map((gruppe) => (
+        <div class="kategorie-block">
+          <div class="kategorie-block__head">
+            <span class="brass-line brass-line--small"></span>
+            <div>
+              <h2 class="h2 kategorie-block__title">{gruppe.name}</h2>
+              <div class="kategorie-block__sub mono">{gruppe.untertitel}</div>
+              <p class="kategorie-block__desc body">{gruppe.beschreibung}</p>
+            </div>
+          </div>
+
+          <div class="themen-grid">
+            {gruppe.items.map((thema) => (
+              <a href={`/themen/${thema.id}/`} class="themen-item">
+                <div class="themen-item__titel h3">{thema.data.titel}</div>
+                <p class="themen-item__lead body">{thema.data.lead.slice(0, 160)}...</p>
+                <span class="themen-item__more mono">Mehr lesen →</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .themen-overview-hero {
+    padding: var(--space-3xl) 0 var(--space-xl);
+  }
+  .themen-overview-hero__inner {
+    max-width: 720px;
+  }
+  .themen-overview-hero__inner .eyebrow { margin-bottom: var(--space-md); }
+  .themen-overview-hero__inner .h1 { margin-bottom: var(--space-lg); }
+  .themen-overview-hero__lead { color: var(--slate-600); }
+
+  .kategorie-block { margin-bottom: var(--space-4xl); }
+  .kategorie-block:last-child { margin-bottom: 0; }
+
+  .kategorie-block__sub {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin: 4px 0 var(--space-md);
+  }
+  .kategorie-block__desc {
+    color: var(--slate-600);
+    max-width: 640px;
+    margin-bottom: 0;
+  }
+
+  .kategorie-block__head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+  .kategorie-block__title {
+    font-size: 28px;
+    color: var(--indigo);
+  }
+
+  .themen-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .themen-item {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-xl);
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--radius-md);
+    transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+  .themen-item:hover {
+    border-color: var(--brass);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(15, 23, 72, 0.06);
+  }
+  .themen-item__titel { margin-bottom: var(--space-sm); }
+  .themen-item__lead {
+    color: var(--slate-600);
+    flex: 1;
+    margin-bottom: var(--space-md);
+  }
+  .themen-item__more {
+    color: var(--brass);
+    font-size: 12px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    align-self: flex-start;
+  }
+
+  @media (max-width: 720px) {
+    .themen-grid { grid-template-columns: 1fr; }
+  }
+</style>

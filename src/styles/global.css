@@ -1,0 +1,254 @@
+/* ============================================================
+   Dennis Klincov · Globale Brand-Styles
+   ============================================================
+   Editorial-Premium-Brand: Indigo · Brass · Bone
+   Typografie: EB Garamond (Editorial) · Inter (Body) · JetBrains Mono (Mono)
+   Brand-Strategie: 30_Ventures/dennis-klincov/26-05-2026_Brand-Strategie_DK_v1.md
+   ============================================================ */
+
+/* --- BRAND TOKENS ------------------------------------------- */
+:root {
+  /* Primärfarben */
+  --indigo: #1B2545;
+  --indigo-deep: #0F1730;
+  --brass: #B08C5A;
+  --brass-soft: rgba(176, 140, 90, 0.15);
+  --brass-line: rgba(176, 140, 90, 0.4);
+
+  /* Hintergründe */
+  --bone: #FAF8F5;
+  --bone-warm: #F4EFE5;
+  --white: #FFFFFF;
+
+  /* Neutral / Slate (für Body-Text, Borders) */
+  --slate-50: #F8FAFC;
+  --slate-100: #F1F5F9;
+  --slate-200: #E2E8F0;
+  --slate-300: #CBD5E1;
+  --slate-400: #94A3B8;
+  --slate-500: #64748B;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1E293B;
+  --slate-900: #0F172A;
+
+  /* Schrift-Stacks */
+  --font-serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+  /* Spacing-Skala (4-px-Basis) */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --space-5xl: 128px;
+
+  /* Container */
+  --container-max: 1280px;
+  --container-padding: 40px;
+  --reading-width: 680px;
+
+  /* Border-Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* Header-Höhe */
+  --header-height: 80px;
+}
+
+/* --- RESET -------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--slate-700);
+  background: var(--bone);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img, picture, svg, video { max-width: 100%; display: block; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; background: none; border: none; cursor: pointer; }
+ul, ol { list-style: none; }
+
+/* --- TYPOGRAFIE-KLASSEN ------------------------------------- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.display-1 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(48px, 6vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  color: var(--indigo);
+}
+.display-1 em { font-style: italic; color: var(--brass); font-weight: 500; }
+
+.h1 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--indigo);
+}
+.h1 em { font-style: italic; color: var(--brass); }
+
+.h2 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--indigo);
+}
+.h2 em { font-style: italic; color: var(--brass); }
+
+.h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--indigo);
+}
+
+.body-large {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--slate-700);
+}
+
+.body {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--slate-700);
+}
+
+.body-small {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--slate-500);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: var(--slate-600);
+}
+
+/* --- LAYOUT-HELFER ------------------------------------------ */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.section {
+  padding: var(--space-4xl) 0;
+}
+.section--compact { padding: var(--space-3xl) 0; }
+.section--indigo {
+  background: var(--indigo);
+  color: var(--bone);
+}
+.section--indigo .h1,
+.section--indigo .h2,
+.section--indigo .h3 { color: var(--white); }
+.section--indigo .body,
+.section--indigo .body-large { color: rgba(255, 255, 255, 0.75); }
+
+.reading {
+  max-width: var(--reading-width);
+  margin: 0 auto;
+}
+
+/* Brass-Strich-Element (Old-Money-Detail) */
+.brass-line {
+  display: block;
+  width: 44px;
+  height: 2px;
+  background: var(--brass);
+}
+.brass-line--small { width: 28px; }
+.brass-line--large { width: 80px; }
+
+/* --- BUTTONS ------------------------------------------------ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
+}
+.btn--primary {
+  background: var(--indigo);
+  color: var(--white);
+}
+.btn--primary:hover { background: var(--indigo-deep); transform: translateY(-1px); }
+.btn--outline {
+  background: transparent;
+  color: var(--indigo);
+  border: 1px solid var(--indigo);
+}
+.btn--outline:hover { background: var(--indigo); color: var(--white); }
+.btn--ghost {
+  color: var(--slate-600);
+  padding-left: 0;
+  padding-right: 0;
+}
+.btn--ghost:hover { color: var(--brass); }
+
+/* --- LINKS -------------------------------------------------- */
+.link {
+  color: var(--indigo);
+  border-bottom: 1px solid var(--brass);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.link:hover { color: var(--brass); }
+
+/* --- FOCUS-STILE (Accessibility) ---------------------------- */
+:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+}
+
+/* --- RESPONSIVE BREAKPOINTS --------------------------------- */
+@media (max-width: 900px) {
+  :root {
+    --container-padding: 24px;
+    --space-4xl: 64px;
+    --space-3xl: 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --container-padding: 16px;
+    --header-height: 64px;
+  }
+  body { font-size: 15px; }
+}

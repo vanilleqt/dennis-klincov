@@ -1,0 +1,495 @@
+---
+/*
+  Über-mich-Seite — Editorial-Layout mit Portrait, Werdegang-Timeline,
+  Werte und Qualifikationen.
+*/
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const werdegang = [
+  {
+    epoche: 'Studium',
+    label: 'Grundlage',
+    titel: 'Wirtschaftsinformatik und Wirtschaftswissenschaften',
+    text: 'Kombination aus analytischem IT-Denken und betriebswirtschaftlichem Verständnis. Die Basis für komplexe Lösungsarchitekturen bei Geschäftskunden.',
+  },
+  {
+    epoche: 'Einstieg',
+    label: 'Branchenwechsel',
+    titel: 'Einstieg in die Versicherungswelt',
+    text: 'Spezialisierung auf betriebliche Altersvorsorge und betriebliche Krankenversicherung. Zertifizierungen als bAV- und bKV-Spezialist sowie durch die DMA.',
+  },
+  {
+    epoche: 'Extern',
+    label: 'Drei Welten',
+    titel: 'Externer Berater bei Versicherern und Maklern',
+    text: 'Mitarbeit an neuen Produkten direkt bei Versicherern. Beratung anderer Makler. Dadurch einzigartiger Einblick in alle drei Ebenen des Marktes.',
+  },
+  {
+    epoche: '2022',
+    label: 'Company Benefits',
+    titel: 'Mitarbeit bei Probonio im Gründungsjahr',
+    text: 'Beteiligung am Aufbau eines der größten deutschen Anbieter für Company Benefits. Kenntnis des Feldes aus der Entstehungsphase heraus.',
+  },
+  {
+    epoche: 'Heute',
+    label: 'Unabhängig',
+    titel: 'Unabhängiger Versicherungsmakler in Berlin',
+    text: 'Honorarbasierte Beratung für Geschäftsführer, Gesellschafter und Vorstände. Schwerpunkte: Corporate Benefits, Versorgung Geschäftsführer und Executive Compensation.',
+  },
+];
+
+const arbeitsweise = [
+  {
+    nummer: 'I',
+    titel: 'Unabhängig, kein Konzern im Rücken',
+    text: 'Ich bin keinem Versicherer verpflichtet. Keine Quoten, keine Zielprodukte, keine internen Vorgaben. Ich wähle aus dem gesamten Markt das aus, was zum Mandat passt, nicht das, was die höchste Provision bringt.',
+  },
+  {
+    nummer: 'II',
+    titel: 'Ich sage auch mal Nein',
+    text: 'Wenn ein Produkt nicht zur Situation passt, sage ich das, auch wenn es bedeutet, keinen Abschluss zu machen. Nachhaltigkeit geht vor Umsatz. Das ist kein Marketingversprechen, das ist das Geschäftsmodell.',
+  },
+  {
+    nummer: 'III',
+    titel: 'Langfristig denken, nicht schnell abschließen',
+    text: 'Eine Direktzusage oder eine Unterstützungskasse begleitet ein Unternehmen über Jahrzehnte. Beratung mit dem Blick auf das, was in zehn Jahren noch trägt, nicht auf das, was heute einfach zu verkaufen ist.',
+  },
+];
+
+const kompetenzen = [
+  {
+    titel: 'IT und Systemdenken',
+    text: 'Wirtschaftsinformatischer Hintergrund. Plattformlösungen, Verwaltungstools und digitale Prozesse (Probonio, Degura) gezielt einsetzen, nicht nur empfehlen.',
+  },
+  {
+    titel: 'Betriebswirtschaftliches Denken',
+    text: 'Bilanzen, Steuerwirkungen, Unternehmensstrukturen. Für Direktzusagen, Unterstützungskassen oder Tantiemenmodelle ist das keine Nebenbedingung, sondern Kernkompetenz.',
+  },
+  {
+    titel: 'Versicherungstechnisches Spezialwissen',
+    text: 'Zehn Jahre Spezialisierung, Zertifizierungen als bAV- und bKV-Spezialist, Mitarbeit an Produktentwicklungen bei Versicherern. Der Markt von innen.',
+  },
+  {
+    titel: 'Komplexe Lösungsarchitektur',
+    text: 'Bei Mandaten mit besonderen Anforderungen geht die Beratung über Standardprodukte hinaus. Maßgeschneiderte Konstruktionen statt Vorlagen-Empfehlungen.',
+  },
+];
+
+const qualifikationen = [
+  { titel: 'bAV-Spezialist', sub: 'Zertifiziert · Betriebliche Altersvorsorge' },
+  { titel: 'bKV-Spezialist', sub: 'Zertifiziert · Betriebliche Krankenversicherung' },
+  { titel: 'DMA-zertifiziert', sub: 'Deutsche Maklerakademie' },
+  { titel: '§ 34d GewO', sub: 'Erlaubnis Versicherungsvermittlung' },
+];
+---
+
+<BaseLayout
+  title="Über mich"
+  description="Dennis Klincov · Wirtschaftsinformatiker, Versicherungsspezialist und unabhängiger Makler. Über zehn Jahre Erfahrung, zertifizierter bAV- und bKV-Spezialist in Berlin."
+>
+
+  <!-- HERO ====================================== -->
+  <section class="ueber-hero">
+    <div class="container">
+      <div class="ueber-hero__grid">
+
+        <div class="ueber-hero__text">
+          <div class="eyebrow">Über mich</div>
+          <h1 class="display-1 ueber-hero__title">
+            Berater. <em>Spezialist.</em><br>Unabhängig.
+          </h1>
+          <p class="body-large ueber-hero__lead">
+            Wirtschaftsinformatiker und Wirtschaftswissenschaftler mit über zehn Jahren Erfahrung in der Versicherungsbranche. Analytisches Denken, technisches Verständnis und Mandatserfahrung auf drei Ebenen gleichzeitig.
+          </p>
+
+          <div class="ueber-hero__tags">
+            <span class="tag">Wirtschaftsinformatik</span>
+            <span class="tag">Wirtschaftswissenschaften</span>
+            <span class="tag">bAV-Spezialist</span>
+            <span class="tag">bKV-Spezialist</span>
+            <span class="tag">DMA-zertifiziert</span>
+            <span class="tag">§ 34d GewO</span>
+          </div>
+        </div>
+
+        <div class="ueber-hero__portrait">
+          <span class="hero__portrait-line"></span>
+          <img
+            src="/images/portrait-dennis-klincov.jpg"
+            alt="Dennis Klincov"
+            width="640"
+            height="800"
+            loading="eager"
+          />
+          <span class="mono ueber-hero__credit">Foto · Chris Marxen</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STATEMENT ================================== -->
+  <section class="section ueber-statement">
+    <div class="container">
+      <div class="reading">
+        <div class="eyebrow">Persönliches Statement</div>
+        <h2 class="h1 ueber-statement__heading">Drei Welten, <em>ein Ansprechpartner.</em></h2>
+
+        <p class="body-large">
+          Ich komme aus der Wirtschaftsinformatik und den Wirtschaftswissenschaften. Das klingt erstmal weit entfernt von Renten und Policen. Aber genau das ist der Vorteil: Systeme verstehen, Strukturen durchdenken, komplexe Lösungen bauen, nicht nur vermitteln.
+        </p>
+
+        <p class="body-large">
+          Als externer Berater bei Versicherern habe ich gesehen, wie Produkte entstehen. Als Makler vertrete ich den Mandanten. Als jemand, der Plattformen wie Probonio von innen kennt, verstehe ich die Technologieseite der Branche. Diese drei Perspektiven gleichzeitig zu haben ist selten und für Mandanten ein echter Vorteil.
+        </p>
+
+        <p class="body-large">
+          Ich sage auch Nein. Wenn ein Produkt nicht passt, sage ich das. Wenn eine Lösung zu riskant ist, sage ich das. Das Ziel ist nicht der Abschluss, das Ziel ist, dass der Mandant in zehn Jahren noch zufrieden mit der Entscheidung ist.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WERDEGANG ================================== -->
+  <section class="section section--indigo ueber-werdegang">
+    <div class="container">
+      <div class="ueber-werdegang__head">
+        <div class="eyebrow">Werdegang</div>
+        <h2 class="h1" style="color: var(--white);">Von der IT zur<br><em>spezialisierten Beratung.</em></h2>
+        <p class="body-large ueber-werdegang__lead" style="color: rgba(255,255,255,0.7);">
+          Der Weg vom Wirtschaftsinformatiker zum unabhängigen Versicherungsmakler ist kein Zufall. Er erklärt, warum komplexe Mandantensituationen anders angegangen werden als in den meisten Häusern der Branche.
+        </p>
+      </div>
+
+      <div class="timeline">
+        {werdegang.map((item) => (
+          <div class="timeline-item">
+            <div class="timeline-item__epoche mono">{item.epoche}</div>
+            <div class="timeline-item__content">
+              <div class="timeline-item__label">{item.label}</div>
+              <h3 class="timeline-item__titel">{item.titel}</h3>
+              <p class="timeline-item__text">{item.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ARBEITSWEISE =============================== -->
+  <section class="section ueber-arbeitsweise">
+    <div class="container">
+      <div class="ueber-arbeitsweise__head">
+        <div class="eyebrow">Arbeitsweise</div>
+        <h2 class="h1">Was die Beratung <em>ausmacht.</em></h2>
+      </div>
+
+      <div class="arbeitsweise-grid">
+        {arbeitsweise.map((w) => (
+          <div class="arbeitsweise-card">
+            <div class="arbeitsweise-card__nummer">{w.nummer}</div>
+            <h3 class="arbeitsweise-card__titel h3">{w.titel}</h3>
+            <p class="body arbeitsweise-card__text">{w.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- KOMPETENZEN ================================ -->
+  <section class="section section--indigo ueber-kompetenzen">
+    <div class="container">
+      <div class="ueber-kompetenzen__head">
+        <div class="eyebrow">Kompetenzen</div>
+        <h2 class="h1" style="color: var(--white);">Drei Welten gleichzeitig.</h2>
+      </div>
+
+      <div class="kompetenzen-grid">
+        {kompetenzen.map((k) => (
+          <div class="kompetenz-card">
+            <h3 class="kompetenz-card__titel">{k.titel}</h3>
+            <p class="kompetenz-card__text">{k.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- QUALIFIKATIONEN ============================ -->
+  <section class="section ueber-qualifikationen">
+    <div class="container">
+      <div class="ueber-qualifikationen__head">
+        <div class="eyebrow">Qualifikation</div>
+        <h2 class="h1">Zertifiziert. <em>Spezialisiert.</em> Erfahren.</h2>
+      </div>
+
+      <div class="qualifikationen-grid">
+        {qualifikationen.map((q) => (
+          <div class="qualifikation">
+            <span class="brass-line"></span>
+            <div class="qualifikation__titel">{q.titel}</div>
+            <div class="qualifikation__sub mono">{q.sub}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA ======================================== -->
+  <section class="section cta">
+    <div class="container">
+      <div class="cta__inner">
+        <div class="eyebrow">Kontakt</div>
+        <h2 class="h1 cta__heading">Beratung anfragen.</h2>
+        <p class="body-large cta__text">
+          30 Minuten Erstgespräch, kostenlos. Telefonisch oder vor Ort in Berlin.
+        </p>
+        <div class="cta__actions">
+          <a href="/kontakt/" class="btn btn--primary">Gespräch anfragen</a>
+          <a href="mailto:mail@dennis-klincov.com" class="btn btn--outline">mail@dennis-klincov.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* === HERO ==================================== */
+  .ueber-hero {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-4xl);
+  }
+  .ueber-hero__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: var(--space-4xl);
+    align-items: center;
+  }
+  .ueber-hero__title { margin: var(--space-md) 0 var(--space-lg); }
+  .ueber-hero__lead { margin-bottom: var(--space-xl); }
+
+  .ueber-hero__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.8px;
+    color: var(--slate-600);
+    padding: 6px 12px;
+    background: var(--bone-warm);
+    border: 1px solid var(--brass-soft);
+    border-radius: 4px;
+  }
+
+  .ueber-hero__portrait {
+    position: relative;
+    aspect-ratio: 4 / 5;
+  }
+  .ueber-hero__portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .ueber-hero__portrait .hero__portrait-line {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 80px;
+    height: 2px;
+    background: var(--brass);
+    z-index: 2;
+  }
+  .ueber-hero__credit {
+    position: absolute;
+    bottom: -28px;
+    left: 0;
+    font-size: 11px;
+    color: var(--slate-500);
+  }
+
+  @media (max-width: 900px) {
+    .ueber-hero__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+    }
+    .ueber-hero__portrait { max-width: 480px; margin: 0 auto; }
+  }
+
+  /* === STATEMENT =============================== */
+  .ueber-statement__heading { margin: var(--space-md) 0 var(--space-xl); }
+  .ueber-statement .body-large { margin-bottom: var(--space-md); }
+
+  /* === WERDEGANG (Timeline) ==================== */
+  .ueber-werdegang__head { max-width: 720px; margin-bottom: var(--space-3xl); }
+  .ueber-werdegang__head .h1 { margin: var(--space-md) 0 var(--space-md); }
+  .ueber-werdegang__lead { max-width: 640px; }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: var(--space-2xl);
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .timeline-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .timeline-item__epoche {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--brass);
+    padding-top: 4px;
+  }
+  .timeline-item__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: var(--space-xs);
+  }
+  .timeline-item__titel {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--white);
+    margin-bottom: var(--space-sm);
+  }
+  .timeline-item__text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 640px;
+  }
+
+  @media (max-width: 720px) {
+    .timeline-item {
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+    }
+  }
+
+  /* === ARBEITSWEISE ============================ */
+  .ueber-arbeitsweise__head { max-width: 640px; margin-bottom: var(--space-2xl); }
+  .ueber-arbeitsweise__head .h1 { margin-top: var(--space-md); }
+
+  .arbeitsweise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+  .arbeitsweise-card {
+    padding-top: var(--space-md);
+    border-top: 2px solid var(--brass);
+  }
+  .arbeitsweise-card__nummer {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 32px;
+    color: var(--brass);
+    margin-bottom: var(--space-md);
+    line-height: 1;
+  }
+  .arbeitsweise-card__titel {
+    margin-bottom: var(--space-sm);
+    font-size: 20px;
+  }
+
+  @media (max-width: 900px) {
+    .arbeitsweise-grid { grid-template-columns: 1fr; }
+  }
+
+  /* === KOMPETENZEN ============================= */
+  .ueber-kompetenzen__head { max-width: 640px; margin-bottom: var(--space-2xl); }
+  .ueber-kompetenzen__head .h1 { margin-top: var(--space-md); }
+
+  .kompetenzen-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+  .kompetenz-card {
+    padding: var(--space-xl);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+  }
+  .kompetenz-card__titel {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: var(--space-sm);
+  }
+  .kompetenz-card__text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @media (max-width: 720px) {
+    .kompetenzen-grid { grid-template-columns: 1fr; }
+  }
+
+  /* === QUALIFIKATIONEN ========================= */
+  .ueber-qualifikationen__head { max-width: 720px; margin-bottom: var(--space-2xl); }
+  .ueber-qualifikationen__head .h1 { margin-top: var(--space-md); }
+
+  .qualifikationen-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xl);
+  }
+  .qualifikation {
+    padding-top: var(--space-md);
+  }
+  .qualifikation .brass-line { margin-bottom: var(--space-md); }
+  .qualifikation__titel {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--indigo);
+    margin-bottom: var(--space-xs);
+    line-height: 1.2;
+  }
+  .qualifikation__sub {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--slate-500);
+  }
+
+  @media (max-width: 900px) {
+    .qualifikationen-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* === CTA ===================================== */
+  .cta__inner {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    padding: var(--space-2xl) 0;
+  }
+  .cta__heading { margin: var(--space-md) 0 var(--space-lg); }
+  .cta__text { margin-bottom: var(--space-xl); color: var(--slate-600); }
+  .cta__actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+</style>

@@ -1,0 +1,165 @@
+# =====================================================
+# Netlify Build- und Deploy-Konfiguration
+# Dennis Klincov · dennis-klincov.com
+# =====================================================
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NPM_VERSION = "10"
+
+# Astro generiert statische HTML, daher kein Adapter nötig.
+# Netlify scannt beim Build die data-netlify="true" Forms und legt
+# die Submission-Pipeline automatisch an.
+
+# =====================================================
+# Security Headers
+# =====================================================
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+# =====================================================
+# Cache-Control für statische Assets
+# =====================================================
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# =====================================================
+# Redirects: alte GitHub-Pages-URLs (.html) auf neue Astro-Routes
+# Damit alte Backlinks und Lesezeichen weiterhin funktionieren.
+# =====================================================
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ueber-mich.html"
+  to = "/ueber-mich/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/kontakt.html"
+  to = "/kontakt/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/impressum.html"
+  to = "/impressum/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/datenschutz.html"
+  to = "/datenschutz/"
+  status = 301
+  force = true
+
+# Themen-Pages: jede alte .html zu /themen/<slug>/
+[[redirects]]
+  from = "/bav-mitarbeiter.html"
+  to = "/themen/bav-mitarbeiter/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/bkv.html"
+  to = "/themen/bkv/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/bgm.html"
+  to = "/themen/bgm/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/company-benefits.html"
+  to = "/themen/company-benefits/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/allianz-meine-gesundheit.html"
+  to = "/themen/allianz-meine-gesundheit/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/direktzusage.html"
+  to = "/themen/direktzusage/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/unterstuetzungskasse.html"
+  to = "/themen/unterstuetzungskasse/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ggf-versorgung.html"
+  to = "/themen/ggf-versorgung/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vorstandsversorgung.html"
+  to = "/themen/vorstandsversorgung/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tantiemenmodell.html"
+  to = "/themen/tantiemenmodell/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dao.html"
+  to = "/themen/dao/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vsh.html"
+  to = "/themen/vsh/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/cyber.html"
+  to = "/themen/cyber/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pkv.html"
+  to = "/themen/pkv/"
+  status = 301
+  force = true

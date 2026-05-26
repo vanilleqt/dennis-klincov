@@ -1,0 +1,447 @@
+---
+/*
+  Header — Sticky-Nav mit Mega-Menu für Themen.
+  Klick auf "Themen" öffnet ein helles Editorial-Dropdown ohne Backdrop.
+  Die Seite bleibt voll interaktiv, Scrollen weiter möglich.
+
+  Animation: Soft Slide-Down + Fade-In, 0.32s cubic-bezier.
+  Schließt bei Klick außerhalb, ESC, oder Klick auf Link.
+*/
+import { getCollection } from 'astro:content';
+
+const path = Astro.url.pathname;
+
+const themen = await getCollection('themen');
+const themenSorted = themen.sort((a, b) => a.data.sortierung - b.data.sortierung);
+
+const kategorien = [
+  {
+    name: 'Corporate Benefits',
+    untertitel: 'Für die Belegschaft',
+    themen: themenSorted.filter((t) => t.data.kategorie === 'Corporate Benefits'),
+  },
+  {
+    name: 'Versorgung Geschäftsführer',
+    untertitel: 'Pension, Tantieme, Direktzusage',
+    themen: themenSorted.filter((t) => t.data.kategorie === 'Versorgung Geschäftsführer'),
+  },
+  {
+    name: 'Risikoschutz',
+    untertitel: 'D&O, Cyber, VSH, PKV',
+    themen: themenSorted.filter((t) => t.data.kategorie === 'Risikoschutz'),
+  },
+];
+
+function isActive(href: string) {
+  if (href === '/') return path === '/';
+  return path.startsWith(href);
+}
+const themenActive = path.startsWith('/themen');
+---
+
+<header class="header" id="site-header">
+  <div class="container header__inner">
+
+    <a href="/" class="header__logo" aria-label="Dennis Klincov Startseite">
+      Dennis Klincov
+    </a>
+
+    <nav class="header__nav" aria-label="Hauptnavigation">
+
+      <!-- Themen mit Mega-Menu Trigger -->
+      <button
+        class={`header__link header__trigger ${themenActive ? 'header__link--active' : ''}`}
+        id="themen-trigger"
+        aria-expanded="false"
+        aria-controls="themen-mega"
+        aria-haspopup="true"
+        type="button"
+      >
+        Themen
+        <svg class="header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <a
+        href="/ueber-mich/"
+        class={`header__link ${isActive('/ueber-mich/') ? 'header__link--active' : ''}`}
+      >
+        Über mich
+      </a>
+
+      <a
+        href="/kontakt/"
+        class={`header__link ${isActive('/kontakt/') ? 'header__link--active' : ''}`}
+      >
+        Kontakt
+      </a>
+
+    </nav>
+  </div>
+
+  <!-- Mega-Menu Panel mit hellem Bone-Schleier dahinter -->
+  <div
+    class="mega"
+    id="themen-mega"
+    role="menu"
+    aria-labelledby="themen-trigger"
+    hidden
+  >
+    <div class="mega__veil" aria-hidden="true"></div>
+
+    <div class="container mega__panel">
+
+      <div class="mega__head">
+        <div class="eyebrow mega__eyebrow">Beratungsfelder</div>
+        <h2 class="mega__heading">Themen mit <em>Tiefe.</em></h2>
+      </div>
+
+      <div class="mega__grid">
+        {kategorien.map((kat) => (
+          <div class="mega__col">
+            <div class="mega__col-head">
+              <span class="brass-line brass-line--small"></span>
+              <div>
+                <div class="mega__col-title">{kat.name}</div>
+                <div class="mega__col-sub mono">{kat.untertitel}</div>
+              </div>
+            </div>
+            <ul class="mega__list">
+              {kat.themen.map((t) => (
+                <li>
+                  <a href={`/themen/${t.id}/`} class="mega__item" role="menuitem">
+                    <span class="mega__item-titel">{t.data.titel}</span>
+                    <span class="mega__item-arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div class="mega__foot">
+        <a href="/themen/" class="mega__all">Alle Themen in der Übersicht <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  // Mega-Menu Toggle-Logik
+  (function() {
+    const trigger = document.getElementById('themen-trigger');
+    const mega = document.getElementById('themen-mega');
+    const header = document.getElementById('site-header');
+    if (!trigger || !mega || !header) return;
+
+    let isOpen = false;
+
+    function openMega() {
+      if (isOpen) return;
+      mega.hidden = false;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          mega.classList.add('is-open');
+        });
+      });
+      trigger.setAttribute('aria-expanded', 'true');
+      isOpen = true;
+    }
+
+    function closeMega() {
+      if (!isOpen) return;
+      mega.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', 'false');
+      isOpen = false;
+      // Nach Transition wirklich ausblenden für a11y
+      setTimeout(() => { if (!isOpen) mega.hidden = true; }, 340);
+    }
+
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      isOpen ? closeMega() : openMega();
+    });
+
+    // ESC schließt
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen) closeMega();
+    });
+
+    // Klick außerhalb des Headers schließt
+    document.addEventListener('click', (e) => {
+      if (!isOpen) return;
+      if (header.contains(e.target)) return;
+      closeMega();
+    });
+
+    // Klick auf Themen-Link schließt, Klick auf Schleier schließt auch
+    mega.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href]');
+      if (link) { closeMega(); return; }
+      if (e.target.classList && e.target.classList.contains('mega__veil')) {
+        closeMega();
+      }
+    });
+  })();
+</script>
+
+<style>
+  /* === HEADER ================================================ */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(250, 248, 245, 0.92);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid rgba(27, 37, 69, 0.08);
+  }
+
+  .header__inner {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header__logo {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.4px;
+    color: var(--indigo);
+    transition: color 0.2s;
+  }
+  .header__logo:hover { color: var(--brass); }
+
+  .header__nav {
+    display: flex;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  .header__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--slate-600);
+    transition: color 0.2s;
+    position: relative;
+    padding: 4px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .header__link:hover { color: var(--indigo); }
+  .header__link--active { color: var(--indigo); }
+  .header__link--active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    background: var(--brass);
+  }
+
+  .header__chevron {
+    transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+  .header__trigger[aria-expanded="true"] .header__chevron {
+    transform: rotate(180deg);
+  }
+  .header__trigger[aria-expanded="true"] {
+    color: var(--indigo);
+  }
+
+  /* === MEGA-MENU PANEL ======================================= */
+  .mega {
+    position: absolute;
+    top: calc(var(--header-height) - 1px);
+    left: 0;
+    right: 0;
+    z-index: 51;
+    pointer-events: none;
+  }
+  .mega.is-open {
+    pointer-events: auto;
+  }
+
+  /* Heller Bone-Schleier mit Frosted-Glass-Effekt unter dem Panel */
+  .mega__veil {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(250, 248, 245, 0.55);
+    backdrop-filter: blur(8px) saturate(160%);
+    -webkit-backdrop-filter: blur(8px) saturate(160%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.32s cubic-bezier(0.2, 0.7, 0.3, 1);
+    z-index: -1;
+  }
+  .mega.is-open .mega__veil {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mega__panel {
+    background: var(--white);
+    border: 1px solid rgba(27, 37, 69, 0.08);
+    border-top: 1px solid rgba(27, 37, 69, 0.05);
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 28px 64px -16px rgba(15, 23, 48, 0.22);
+    padding: var(--space-2xl);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition:
+      opacity 0.32s cubic-bezier(0.2, 0.7, 0.3, 1),
+      transform 0.34s cubic-bezier(0.2, 0.7, 0.3, 1);
+    max-width: var(--container-max);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .mega.is-open .mega__panel {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* === MEGA HEAD ============================================= */
+  .mega__head {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid rgba(27, 37, 69, 0.06);
+  }
+  .mega__eyebrow { margin-bottom: 0; }
+  .mega__heading {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--indigo);
+  }
+  .mega__heading em {
+    font-style: italic;
+    color: var(--brass);
+  }
+
+  /* === MEGA GRID ============================================= */
+  .mega__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-lg);
+  }
+
+  .mega__col-head {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid rgba(27, 37, 69, 0.06);
+  }
+  .mega__col-head .brass-line { margin-top: 8px; flex-shrink: 0; }
+  .mega__col-title {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: -0.2px;
+    color: var(--indigo);
+    line-height: 1.2;
+  }
+  .mega__col-sub {
+    font-size: 10px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--slate-500);
+    margin-top: 4px;
+  }
+
+  .mega__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .mega__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    margin: 0 -12px;
+    border-radius: 6px;
+    color: var(--slate-700);
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+  .mega__item:hover {
+    background: var(--bone-warm);
+    color: var(--indigo);
+  }
+  .mega__item:hover .mega__item-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+    color: var(--brass);
+  }
+  .mega__item-arrow {
+    opacity: 0;
+    color: var(--slate-400);
+    transition: opacity 0.18s ease, transform 0.18s ease, color 0.18s ease;
+    font-family: var(--font-serif);
+    font-size: 15px;
+    margin-left: var(--space-sm);
+  }
+
+  /* === MEGA FOOT ============================================= */
+  .mega__foot {
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(27, 37, 69, 0.06);
+  }
+  .mega__all {
+    color: var(--indigo);
+    font-size: 13px;
+    font-weight: 500;
+    border-bottom: 1px solid var(--brass);
+    padding-bottom: 1px;
+    transition: color 0.2s;
+  }
+  .mega__all:hover { color: var(--brass); }
+
+  /* === RESPONSIVE ============================================ */
+  @media (max-width: 900px) {
+    .mega__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-xl);
+    }
+    .mega__panel { padding: var(--space-xl); }
+  }
+
+  @media (max-width: 600px) {
+    .header__nav { gap: var(--space-md); }
+    .header__link { font-size: 13px; }
+    .header__logo { font-size: 18px; }
+    .mega__grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+    .mega__heading { font-size: 22px; }
+    .mega__panel { padding: var(--space-lg); }
+  }
+
+  /* Prefers reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .mega__panel, .header__chevron { transition: none !important; }
+  }
+</style>

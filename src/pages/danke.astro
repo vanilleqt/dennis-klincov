@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Danke · Dennis Klincov"
+  description="Vielen Dank für Ihre Mandats-Anfrage. Antwort innerhalb von zehn Werktagen."
+>
+  <section class="danke">
+    <div class="container-narrow">
+      <span class="eyebrow">Eingegangen</span>
+      <h1>Vielen <em>Dank.</em></h1>
+      <p class="lead">
+        Ihre Mandats-Anfrage ist eingegangen. Innerhalb von zehn Werktagen erhalten Sie eine Antwort, ob ein Erstgespräch sinnvoll ist.
+      </p>
+      <p class="meta">
+        Antwort kommt an die von Ihnen angegebene Email-Adresse · <a href="mailto:mail@dennis-klincov.com">mail@dennis-klincov.com</a>
+      </p>
+      <a href="/" class="btn-back">← Zurück zur Praxis</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .danke {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 200px 0 120px; text-align: center;
+    background: linear-gradient(180deg, var(--wine-deep) 0%, var(--wine-deepest) 100%);
+    position: relative; overflow: hidden;
+  }
+  .danke::before {
+    content: ''; position: absolute;
+    top: 30%; left: 50%; transform: translate(-50%, -50%);
+    width: 80%; height: 80%;
+    background: radial-gradient(circle, rgba(201,169,97,0.18) 0%, transparent 60%);
+    filter: blur(80px); pointer-events: none;
+  }
+  .danke::after {
+    content: ''; position: absolute;
+    bottom: -10%; right: -10%; width: 60%; height: 70%;
+    background: radial-gradient(circle, rgba(91,44,111,0.30) 0%, transparent 65%);
+    filter: blur(60px); pointer-events: none;
+  }
+  .danke .container-narrow { position: relative; z-index: 1; }
+  .danke .eyebrow { display: block; margin-bottom: 32px; }
+  .danke h1 {
+    font-family: var(--font-headline); font-weight: 500;
+    font-size: clamp(56px, 9vw, 144px);
+    line-height: 0.95; letter-spacing: -0.045em;
+    color: var(--marble); margin-bottom: 32px;
+  }
+  .danke h1 em {
+    font-style: italic; font-weight: 500;
+    background: linear-gradient(180deg, var(--gold-300), var(--gold-500));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .danke .lead { margin: 0 auto 32px; max-width: 600px; }
+  .danke .meta {
+    font-family: var(--font-mono); font-size: 12px;
+    color: var(--text-on-dark-faint); letter-spacing: 1.4px;
+    text-transform: uppercase; margin-bottom: 56px;
+  }
+  .danke .meta a { color: var(--gold-300); text-decoration: none; }
+  .danke .meta a:hover { color: var(--gold-100); }
+  .btn-back {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--font-body); font-weight: 600;
+    font-size: 15px;
+    color: var(--gold-300); text-decoration: none;
+    padding: 16px 32px;
+    border: 1px solid var(--border-gold-strong);
+    border-radius: 999px;
+    transition: all 200ms var(--ease-editorial);
+  }
+  .btn-back:hover {
+    background: rgba(201, 169, 97, 0.15);
+    border-color: var(--gold-300);
+    color: var(--gold-100);
+  }
+</style>

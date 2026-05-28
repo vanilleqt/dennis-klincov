@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+  Static form snapshot für Netlify Form Detection.
+  Astro-Templates werden von Netlifys Build-Scanner manchmal nicht erkannt.
+  Diese Datei stellt sicher, dass das Bewerbungs-Formular registriert wird.
+  Nur Felder müssen übereinstimmen, die echte Form-Logik steht in /index.astro
+-->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Form Definitions</title>
+</head>
+<body>
+  <form name="bewerbung" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="text" name="position" />
+    <input type="text" name="firma" />
+    <input type="text" name="branche" />
+    <input type="email" name="email" />
+    <select name="thema">
+      <option value="bav"></option>
+      <option value="vorstand"></option>
+      <option value="risk"></option>
+      <option value="bkv"></option>
+      <option value="mehrere"></option>
+    </select>
+    <textarea name="anlass"></textarea>
+  </form>
+</body>
+</html>

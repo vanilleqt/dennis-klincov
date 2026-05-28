@@ -1,192 +1,115 @@
 ---
-/*
-  Footer — Indigo-Hintergrund mit DK-Monogramm und Deep-Knowledge-Subtitle.
-  Drei Spalten: Über, Themen, Kontakt. DK-Monogramm als Brand-Geste links oben.
-*/
-const year = new Date().getFullYear();
-
-const themenLinks = [
-  { href: '/themen/bav-mitarbeiter/', label: 'bAV' },
-  { href: '/themen/bkv/', label: 'bKV' },
-  { href: '/themen/bgm/', label: 'BGM' },
-  { href: '/themen/vorstandsversorgung/', label: 'Vorstandsversorgung' },
-  { href: '/themen/tantiemenmodell/', label: 'Tantiemenmodelle' },
-  { href: '/themen/dao/', label: 'D&O' },
-  { href: '/themen/vsh/', label: 'VSH' },
-  { href: '/themen/cyber/', label: 'Cyber' },
-];
-
-const ueberLinks = [
-  { href: '/ueber-mich/', label: 'Über mich' },
-  { href: '/kontakt/', label: 'Kontakt' },
-  { href: '/impressum/', label: 'Impressum' },
-  { href: '/datenschutz/', label: 'Datenschutz' },
-];
+// Footer mit DK-Deep-Knowledge-Wordmark links und drei Link-Spalten rechts
 ---
 
-<footer class="footer">
+<footer class="site-footer">
   <div class="container">
-
-    <div class="footer__top">
-
-      <!-- Brand-Spalte mit DK-Monogramm -->
-      <div class="footer__brand">
-        <div class="footer__monogram">
-          <span class="footer__dk">DK</span>
-          <span class="footer__brass-line"></span>
-          <span class="footer__deep">Deep Knowledge</span>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="dk-mark">
+          <div class="dk">DK</div>
+          <div class="divider"></div>
+          <div class="deep">Deep Knowledge</div>
         </div>
-        <p class="footer__tagline">
-          Honorarbasierte Beratung für Corporate Benefits, betriebliche Vorsorge und Executive Compensation.
+        <p>
+          Dennis Klincov · Beratungs-Praxis für Corporate Benefits und Executive Compensation. Selektiver Mandantenstamm im deutschen Mittelstand. Sitz Berlin.
         </p>
       </div>
-
-      <!-- Themen-Spalte -->
-      <div class="footer__col">
-        <div class="footer__col-label">Themen</div>
-        <ul class="footer__links">
-          {themenLinks.map((link) => (
-            <li><a href={link.href} class="footer__link">{link.label}</a></li>
-          ))}
+      <div class="footer-col">
+        <h4>Schwerpunkte</h4>
+        <ul>
+          <li><a href="/#schwerpunkte">Corporate Benefits</a></li>
+          <li><a href="/#schwerpunkte">Executive Compensation</a></li>
+          <li><a href="/#schwerpunkte">D&amp;O · VSH · Cyber</a></li>
         </ul>
       </div>
-
-      <!-- Über-Spalte -->
-      <div class="footer__col">
-        <div class="footer__col-label">Über</div>
-        <ul class="footer__links">
-          {ueberLinks.map((link) => (
-            <li><a href={link.href} class="footer__link">{link.label}</a></li>
-          ))}
+      <div class="footer-col">
+        <h4>Praxis</h4>
+        <ul>
+          <li><a href="/#gruende">Warum Dennis Klincov</a></li>
+          <li><a href="/#erfahrung">Erfahrungs-Leiste</a></li>
+          <li><a href="/#dionysus">Ein Wort zum Namen</a></li>
+          <li><a href="/#bewerbung">Mandats-Anfrage</a></li>
         </ul>
       </div>
-
-      <!-- Kontakt-Spalte -->
-      <div class="footer__col">
-        <div class="footer__col-label">Kontakt</div>
-        <ul class="footer__links">
-          <li><a href="mailto:mail@dennis-klincov.com" class="footer__link">mail@dennis-klincov.com</a></li>
-          <li><a href="https://www.linkedin.com/in/dennis-klincov" class="footer__link" target="_blank" rel="noopener">LinkedIn</a></li>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:mail@dennis-klincov.com">mail@dennis-klincov.com</a></li>
+          <li>Berlin</li>
         </ul>
       </div>
-
     </div>
-
-    <div class="footer__bottom">
-      <div class="footer__copyright">© {year} Dennis Klincov · Berlin</div>
-      <div class="footer__domain">dennis-klincov.com</div>
+    <div class="footer-bottom">
+      <div>© 2026 Dennis Klincov · Alle Rechte vorbehalten</div>
+      <div class="legal">
+        <a href="/impressum/">Impressum</a>
+        <a href="/datenschutz/">Datenschutz</a>
+      </div>
     </div>
-
   </div>
 </footer>
 
 <style>
-  .footer {
-    background: var(--indigo-deep);
-    color: rgba(255, 255, 255, 0.7);
-    padding: var(--space-4xl) 0 var(--space-2xl);
-    margin-top: var(--space-4xl);
+  .site-footer {
+    background: var(--wine-deepest); color: var(--text-on-dark-mute);
+    padding: 96px 0 40px; position: relative; overflow: hidden;
+    border-top: 1px solid var(--border-gold);
   }
-
-  .footer__top {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr 1fr;
-    gap: var(--space-3xl);
-    margin-bottom: var(--space-3xl);
+  .site-footer::before {
+    content: ''; position: absolute;
+    top: 0; right: 0; width: 50%; height: 70%;
+    background: radial-gradient(circle at top right, rgba(201,169,97,0.10) 0%, transparent 55%);
+    pointer-events: none;
   }
-
-  /* --- Brand-Spalte --- */
-  .footer__brand {
-    max-width: 320px;
+  .site-footer .container { position: relative; z-index: 1; }
+  .footer-top {
+    display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 56px; padding-bottom: 56px;
+    border-bottom: 1px solid var(--border-on-dark);
   }
-  .footer__monogram {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    margin-bottom: var(--space-lg);
+  .footer-brand .dk-mark { display: flex; align-items: baseline; gap: 18px; margin-bottom: 28px; }
+  .footer-brand .dk {
+    font-family: var(--font-headline); font-weight: 500;
+    font-size: 52px; letter-spacing: -2px; color: var(--marble); line-height: 1;
   }
-  .footer__dk {
-    font-family: var(--font-serif);
-    font-weight: 500;
-    font-size: 52px;
-    letter-spacing: -3px;
-    line-height: 0.9;
-    color: var(--white);
+  .footer-brand .divider {
+    width: 1px; height: 46px;
+    background: linear-gradient(180deg, transparent, var(--gold-500), transparent);
   }
-  .footer__brass-line {
-    display: block;
-    width: 28px;
-    height: 2px;
-    background: var(--brass);
+  .footer-brand .deep {
+    font-family: var(--font-mono); font-size: 12px;
+    letter-spacing: 2.4px; color: var(--gold-300); text-transform: uppercase;
   }
-  .footer__deep {
-    font-family: var(--font-mono);
-    font-weight: 500;
-    font-size: 10px;
-    letter-spacing: 2.4px;
+  .footer-brand p { font-size: 14px; color: var(--text-on-dark-faint); max-width: 360px; line-height: 1.7; }
+  .footer-col h4 {
+    font-family: var(--font-mono); font-weight: 500;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--gold-500); margin-bottom: 24px;
+  }
+  .footer-col ul {
+    list-style: none; padding: 0;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .footer-col li { font-size: 14px; color: var(--text-on-dark); }
+  .footer-col a { color: inherit; text-decoration: none; transition: color 150ms var(--ease-editorial); }
+  .footer-col a:hover { color: var(--gold-300); }
+  .footer-bottom {
+    padding-top: 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--text-on-dark-faint); letter-spacing: 1.4px;
     text-transform: uppercase;
-    color: var(--brass);
   }
-  .footer__tagline {
-    font-size: 14px;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.6);
-  }
+  .footer-bottom .legal { display: flex; gap: 28px; }
+  .footer-bottom .legal a { color: inherit; text-decoration: none; }
+  .footer-bottom .legal a:hover { color: var(--gold-300); }
 
-  /* --- Link-Spalten --- */
-  .footer__col-label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--brass);
-    margin-bottom: var(--space-md);
-  }
-  .footer__links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .footer__link {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.7);
-    transition: color 0.2s;
-  }
-  .footer__link:hover { color: var(--brass); }
-
-  /* --- Bottom-Bar --- */
-  .footer__bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: var(--space-lg);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.5px;
-    color: rgba(255, 255, 255, 0.4);
-  }
-  .footer__domain { color: var(--brass); }
-
-  /* --- Responsive --- */
   @media (max-width: 900px) {
-    .footer__top {
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-2xl);
-    }
-    .footer__brand { grid-column: 1 / -1; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
   }
   @media (max-width: 600px) {
-    .footer__top {
-      grid-template-columns: 1fr;
-      gap: var(--space-xl);
-    }
-    .footer__bottom {
-      flex-direction: column;
-      gap: var(--space-xs);
-      align-items: flex-start;
-    }
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 16px; }
   }
 </style>
